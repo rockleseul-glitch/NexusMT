@@ -1,0 +1,636 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mon Technicien — Nexus V3</title><meta name="theme-color" content="#0b5d66"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<style>:root{--p:#0b5d66;--a:#f2a93b;--bg:#f4f7f8;--tx:#16282b;--mu:#5b6f73}*{box-sizing:border-box}body{margin:0;font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx);padding:56px 0 76px}
+header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--p);color:#fff;display:flex;align-items:center;gap:8px;padding:0 16px;z-index:5;padding-top:env(safe-area-inset-top)}header img{border-radius:8px;background:#fff}header span{background:var(--a);color:#2a1d00;font-size:12px;font-weight:700;border-radius:99px;padding:2px 8px}
+main{max-width:640px;margin:0 auto;padding:12px 14px}h2{font-size:17px;margin:20px 2px 8px}h2 small{font-weight:400;color:var(--mu)}h3{margin:6px 0}.sub{color:var(--mu);font-size:14px}
+.card{background:#fff;border-radius:14px;padding:14px;margin:10px 0;box-shadow:0 1px 3px #0002}.hero{background:linear-gradient(135deg,#0b5d66,#14808c);color:#fff}.hero select{background:#ffffff26;color:#fff;border-color:#fff6}.hero option{color:#000}.hero small{opacity:.8}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kpi{background:#fff;border-radius:14px;padding:12px;box-shadow:0 1px 3px #0002}.kpi b{display:block;font-size:24px;color:var(--p)}.kpi span{font-size:13px}.kpi i{display:block;font-size:12px;color:var(--mu);font-style:normal}
+.chip{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:2px 10px;color:#fff}.P1{--c:#c62828}.P2{--c:#ef6c00}.P3{--c:#b58900}.OK{--c:#2e7d32}.chip{background:var(--c)}.al{border-left:5px solid var(--c)}.why{background:#eef4f5;border-radius:10px;padding:2px 12px;margin-top:8px}
+input,select,textarea{width:100%;font:inherit;padding:12px;border:1px solid #b9c7ca;border-radius:10px;background:#fff;margin:4px 0 12px;min-height:48px}label{font-size:14px;color:var(--mu);display:block}
+.btn{display:inline-block;background:var(--p);color:#fff;border:0;border-radius:12px;padding:13px 18px;font:inherit;font-weight:600;min-height:48px;cursor:pointer;margin:4px 6px 4px 0}.btn.alt{background:#fff;color:var(--p);border:2px solid var(--p)}.btn:disabled{opacity:.5}
+.lnk{background:none;border:0;color:var(--p);font:inherit;font-weight:600;padding:10px 0;min-height:44px;cursor:pointer}.seg{display:flex;gap:6px;overflow-x:auto;padding:2px 0}.seg button{flex:none;border:1px solid #b9c7ca;background:#fff;border-radius:99px;padding:10px 14px;font:inherit;min-height:44px}.seg .on{background:var(--p);color:#fff;border-color:var(--p)}
+.neg{color:#c62828}.errtxt{color:#c62828;min-height:1.2em;margin:0 0 8px}.note{background:#fff7e0;border-radius:10px;padding:10px;margin-bottom:12px}.state{font-size:13px;color:var(--mu);margin:14px 4px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}.dot.on{background:#2e7d32}.dot.off{background:var(--a)}
+.chat{display:flex;flex-direction:column;gap:8px}.m{max-width:88%;padding:10px 12px;border-radius:14px}.m.u{align-self:flex-end;background:var(--p);color:#fff}.m.n{background:#fff;box-shadow:0 1px 3px #0002}.sugg{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.sugg button{border:1px solid #b9c7ca;background:#fff;border-radius:99px;padding:8px 12px;font:inherit;font-size:14px;min-height:40px}
+.ask{display:flex;gap:6px}.ask input{margin:0}svg{width:100%;height:auto}.obj{stroke:#999;stroke-dasharray:4}.cur{fill:none;stroke:var(--p);stroke-width:2.5}circle{fill:var(--a)}.hist{list-style:none;margin:0;padding:0;font-size:14px}.hist li{padding:8px 0;border-bottom:1px solid #e3eaec}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#fff;box-shadow:0 -1px 6px #0003;padding-bottom:env(safe-area-inset-bottom);z-index:5}nav button{flex:1;border:0;background:none;padding:14px 2px;font:inherit;font-size:13px;color:var(--mu);min-height:56px}nav .on{color:var(--p);font-weight:700;box-shadow:inset 0 3px var(--p)}
+#toast{position:fixed;left:14px;right:14px;bottom:84px;background:#16282b;color:#fff;padding:12px 14px;border-radius:12px;opacity:0;pointer-events:none;transition:.2s;z-index:9}#toast.show{opacity:1}#toast.err{background:#c62828}
+</style></head>
+<body><header><img src="data:image/png;base64,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" alt="" width="32" height="32"><b>Mon Technicien</b><span>Nexus V3</span></header><main id="v" aria-live="polite"><p class="sub">Chargement…</p></main><div id="toast" role="status"></div>
+<nav aria-label="Navigation principale"><button data-go="accueil">Accueil</button><button data-go="saisie">Saisie</button><button data-go="nexus">Nexus</button><button data-go="resultats">Résultats</button><button data-go="plus">Plus</button></nav>
+<script>const __m = {};
+__m.reference = (() => { 
+const __d = {"normes": {"Clarias": {"Température": [24, 26, 30, 32], "pH": [6, 6.5, 8.5, 9], "Oxygène dissous": [2, 3, 8, 10], "Salinité": [0, 0, 5, 8], "Turbidité": [0, 0, 50, 100]}, "Tilapia": {"Température": [20, 25, 32, 35], "pH": [5, 6.5, 9, 10], "Oxygène dissous": [1, 3, 8, 10], "Salinité": [0, 0, 5, 10], "Turbidité": [0, 0, 50, 100]}}, "tempFacteur": [[-999, 0], [20, 0.5], [24, 0.8], [28, 1]], "fcrPaliers": [[-999, "🔴 ANORMALEMENT BAS — CONTRÔLE OBLIGATOIRE (vérifier les données avant de conclure à une excellente performance)", 1], [0.5, "🟡 TRÈS FAIBLE — À SURVEILLER", 3], [1, "🟢 TRÈS BON", 4], [1.4, "🟢 BON / SATISFAISANT", 4], [1.8, "🟡 MOYEN — À SURVEILLER", 3], [2.2, "🟠 ÉLEVÉ — À CORRIGER", 2], [2.8, "🔴 CRITIQUE — ACTION REQUISE", 1]], "tables": {"Clarias": [["Poids min (g)", "Poids max (g)", "Ration (% biomasse/j)", "Repas/j"], [0, 5, 0.1, 3], [5, 20, 0.08, 3], [20, 50, 0.06, 3], [50, 100, 0.05, 3], [100, 250, 0.04, 3], [250, 500, 0.03, 2], [500, 1000, 0.025, 2], [1000, 999999, 0.02, 2]], "Tilapia": [["Poids min (g)", "Poids max (g)", "Ration (% biomasse/j)", "Repas/j"], [0, 5, 0.125, 4], [5, 20, 0.09, 4], [20, 100, 0.06, 3], [100, 250, 0.035, 3], [250, 500, 0.025, 2], [500, 999999, 0.0175, 2]]}};
+
+return { default: __d }; })();
+__m.engine = (() => { const R = __m.reference.default;
+// Moteur de calcul : fonctions pures, sans DOM. Règles lues dans le XLSM V4.8 (voir docs). Version des règles : 0.1
+
+const VERSION_REGLES = '0.1';
+const OBJECTIF = { poidsG: 1000, joursCible: 180 }; // Paramètres B21, B22
+// ROUND d'Excel : demi vers l'extérieur, sans erreur binaire (2.675 -> 2.68)
+const xround = (x, d = 0) => { const s = x < 0 ? -1 : 1; return s * Number(Math.round(Number(Math.abs(x) + 'e' + d)) + 'e-' + d); };
+const survivants = (n0, mort) => Math.max(0, n0 - mort);
+const biomasse = (n, g) => (n * g) / 1000;
+const fcr = (aliment, gain) => (gain > 0 ? xround(aliment / gain, 2) : '-');
+function fcrStatut(f) {
+  if (f === '-') return { texte: 'FCR non calculable : données insuffisantes', rang: 4, nc: true };
+  let p = R.fcrPaliers[0];
+  for (const x of R.fcrPaliers) if (f >= x[0]) p = x;
+  return { texte: p[1], rang: p[2] };
+}
+function statutParam(esp, param, v) {
+  const n = R.normes[esp]?.[param]; if (!n || v === '' || v == null || isNaN(v)) return null;
+  const [minA, minO, maxO, maxA] = n;
+  return v >= minO && v <= maxO ? 'Vert' : v >= minA && v <= maxA ? 'Jaune' : 'Rouge';
+}
+const facteurTemp = (t) => { let f = R.tempFacteur[0][1]; for (const [s, k] of R.tempFacteur) if (t >= s) f = k; return f; };
+function rationTable(esp, poids) {
+  const rows = R.tables[esp].slice(1); const r = rows.find((x) => poids >= x[0] && poids < x[1]) || rows[rows.length - 1];
+  return { pct: r[2], repas: r[3] };
+}
+function ration(esp, poidsG, biomasseKg, tempC) {
+  const t = rationTable(esp, poidsG), f = facteurTemp(tempC);
+  return { pct: t.pct, repas: t.repas, facteur: f, ajustee: t.pct * f, kg: xround(biomasseKg * t.pct * f, 2), stop: f === 0 };
+}
+const jours = (d0, d1) => Math.round((new Date(d1) - new Date(d0)) / 864e5);
+function calculerCycle(c, mesures, aujourdhui) {
+  const dernier = (t) => mesures.filter((m) => m.type === t).at(-1);
+  const mort = mesures.filter((m) => m.type === 'mortalite').reduce((s, m) => s + m.nb, 0);
+  const alim = mesures.filter((m) => m.type === 'nourrissage').reduce((s, m) => s + m.distribue, 0);
+  const pes = dernier('pesee'), n = survivants(c.effectif, mort), g = pes ? pes.poids : c.poids0;
+  const bio0 = biomasse(c.effectif, c.poids0), bio = biomasse(n, g), j = Math.max(0, jours(c.date, aujourdhui));
+  const attendu = xround((j / OBJECTIF.joursCible) * OBJECTIF.poidsG, 0);
+  return { n, mort, survie: c.effectif ? n / c.effectif : 0, g, bio0, bio, alim, fcr: fcr(alim, bio - bio0), jours: j,
+    attendu, ecart: g - attendu, gmq: j > 0 ? xround((g - c.poids0) / j, 2) : 0, pesee: !!pes,
+    eau: dernier('eau'), nour: dernier('nourrissage') };
+}
+// --- Stocks d'aliments : règles de la feuille « Stocks d'aliments » et de Paramètres §15 (seuils 15 / 7 / 3 jours, horizon 30 j)
+const PARAMS_STOCK = { anticipation: 15, urgent: 7, critique: 3, horizon: 30, delai: 0, securite: 0 };
+const mround = (x, m) => xround(x / m, 0) * m;
+const jour = (d, n) => new Date(Date.parse(d) + n * 864e5).toISOString().slice(0, 10);
+const somme = (l) => l.reduce((s, x) => s + x.qte, 0);
+const moy = (ex, a, b) => { const w = ex.filter((s) => s.date >= a && s.date <= b); return w.length ? xround(somme(w) / w.length, 2) : '-'; };
+function stockType(achats, sorties, auj, initial = 0, p = PARAMS_STOCK) {
+  const entrees = somme(achats), sort = somme(sorties), stock = initial + entrees - sort;
+  const ex = sorties.filter((s) => s.qte > 0), M = ex.length ? ex.map((s) => s.date).sort().at(-1) : null;
+  const conso = M ? (moy(ex, jour(M, -13), M) === '-' ? 0 : moy(ex, jour(M, -13), M)) : 0; // moyenne par ligne de distribution, fenêtre de 14 j ancrée sur la dernière sortie (comme Excel)
+  const jours = initial === 0 && entrees === 0 && sort === 0 ? 'Données insuffisantes' : stock <= 0 ? 'Rupture' : conso <= 0 ? 'Aucune consommation enregistrée' : xround(stock / conso, 1);
+  const statut = jours === 'Données insuffisantes' ? '⚪ DONNÉES INSUFFISANTES' : jours === 'Rupture' ? '🚨 RUPTURE' : jours === 'Aucune consommation enregistrée' ? '⚪ AUCUNE CONSOMMATION ENREGISTRÉE'
+    : jours <= p.critique ? '🔴 CRITIQUE' : jours <= p.urgent ? '🟠 URGENT' : jours <= p.anticipation ? '🟡 À ANTICIPER' : '🟢 NORMAL';
+  const q7 = moy(ex, jour(auj, -6), auj), r14 = moy(ex, jour(auj, -13), auj);
+  const signal = q7 === '-' || r14 === '-' ? '🔘 Données insuffisantes (pas assez de sorties enregistrées sur la fenêtre).'
+    : q7 > r14 * 1.2 ? '🟠 Consommation en accélération vs moyenne 14j : le nombre de jours de stock restants peut surestimer l\'autonomie réelle.' : '🟢 Rythme de consommation cohérent avec la moyenne 14j.';
+  const reco = jours === 'Données insuffisantes' || conso <= 0 ? 0 : Math.max(0, mround(Math.max(0, conso * (p.horizon + p.delai) + p.securite - stock), 5)); // Excel : MROUND d'un négatif = #NUM!, ici 0
+  return { initial, entrees, sorties: sort, stock: xround(stock, 2), conso, jours, statut, rupture: typeof jours === 'number' ? jour(auj, Math.floor(jours)) : 'Prévision indisponible', qte: reco, q7, r14, signal };
+}
+// --- Économie par cycle : colonnes AF à AS de la feuille « Cycles » (un prix absent vaut 0, comme dans Excel)
+function economie(F, K, M, p = {}, statut = 'Actif') {
+  const v = (x) => (typeof x === 'number' && !isNaN(x) ? x : 0);
+  const AF = F * v(p.alevin), AG = M * v(p.aliment), AH = K * v(p.vente), AN = AF + AG + v(p.autres), AO = AH - AN;
+  return { AF, AG, AH, AI: AH - AF - AG, AN, AO, AP: K > 0 ? xround(AN / K, 0) : '-', AQ: K > 0 ? xround(AO / K, 0) : '-', AR: AH ? AO / AH : '-',
+    AS: statut === 'Terminé' ? 'Finale' : statut === 'Actif' ? 'Provisoire (en cours)' : '-', prixSaisis: ['alevin', 'aliment', 'vente'].some((k) => typeof p[k] === 'number') };
+}
+// --- Rentabilité et Compte d'exploitation : feuilles « Rentabilité » et « Compte d'Exploitation ».
+// Attention (comme dans le classeur) : la rentabilité d'un cycle inclut TOUTES les charges fixes ; la périodicité des charges n'est qu'une étiquette.
+const nv = (x) => (typeof x === 'number' && !isNaN(x) ? x : 0);
+const chargesFixes = (l) => { const tot = l.reduce((s, c) => s + nv(+c.montant), 0), sal = l.filter((c) => c.categorie === 'Salaires permanents').reduce((s, c) => s + nv(+c.montant), 0); return { salaires: sal, autres: tot - sal, total: tot }; };
+const investissement = (l) => l.reduce((s, i) => s + nv(+i.quantite) * nv(+i.cout), 0);
+function rentabiliteCycle(F, K, M, p = {}, cf = { salaires: 0, autres: 0 }) {
+  const alevins = F * nv(p.alevin), aliment = M * nv(p.aliment), total = alevins + aliment + cf.salaires + cf.autres + nv(p.autres), ca = K * nv(p.vente), benefice = ca - total, renta = ca ? benefice / ca : '-';
+  const reco = renta === '-' ? 'Renseignez les données du cycle pour obtenir une recommandation.' : renta < 0 ? '⚠️ Cycle non rentable au prix actuel. Pistes : revoir le prix de vente, réduire le FCR/coût aliment, ou diminuer les charges fixes.'
+    : renta < 0.15 ? 'Rentabilité faible. Pistes : augmenter le nombre d\'alevins si la densité le permet, optimiser l\'alimentation (FCR), ou agrandir les infrastructures.' : '✅ Rentabilité satisfaisante. Vous pouvez envisager d\'augmenter le nombre d\'alevins ou d\'agrandir les infrastructures pour le prochain cycle.';
+  return { alevins, aliment, total, production: K, revient: K ? total / K : '-', ca, benefice, renta, reco };
+}
+function consolidee(cycles, cf) { // cycles : { F, K, M, prix, statut } ; seuls les cycles Actif et Terminé comptent
+  const l = cycles.filter((c) => c.statut === 'Actif' || c.statut === 'Terminé'), n = l.length, s = (f) => l.reduce((a, c) => a + f(c), 0);
+  const prod = xround(s((c) => c.K), 2), ca = xround(s((c) => c.K * nv(c.prix.vente)), 0), alim = xround(s((c) => c.M * nv(c.prix.aliment)), 0), alev = xround(s((c) => c.F * nv(c.prix.alevin)), 0), aut = xround(s((c) => nv(c.prix.autres)), 0);
+  const fixes = n > 0 ? cf.salaires + cf.autres : 0, cout = alim + alev + aut + fixes, res = ca - cout;
+  return { n, prod, ca, alim, alev, aut, fixes, cout, res, renta: ca ? res / ca : '-', prodMoy: n ? prod / n : '-', resMoy: n ? res / n : '-', coutKg: prod ? cout / prod : '-' };
+}
+function compteExploitation(inv, c) {
+  const invest = investissement(inv);
+  return { invest, roi: invest === 0 ? 'Analyse partielle : investissement non renseigné.' : c.res / invest,
+    etat: c.renta === '-' ? '⚪ Analyse partielle : données de charges/prix insuffisantes.' : c.renta < 0 ? '🔴 Résultat consolidé négatif.' : c.renta < 0.1 ? '🟠 Rentabilité positive mais faible (<10%).' : '🟢 Rentabilité consolidée satisfaisante (≥10%).',
+    partAliment: c.cout === 0 ? null : c.alim / c.cout };
+}
+
+return { VERSION_REGLES, OBJECTIF, xround, survivants, biomasse, fcr, fcrStatut, statutParam, facteurTemp, rationTable, ration, calculerCycle, PARAMS_STOCK, mround, stockType, economie, chargesFixes, investissement, rentabiliteCycle, consolidee, compteExploitation }; })();
+__m.db = (() => { 
+// Base locale IndexedDB (schéma v1). Écriture en cas d'erreur : la promesse est rejetée, rien n'est affiché comme enregistré.
+const NOM = 'mon-technicien', VERSION = 5, STORES = { cycles: 'id', mesures: 'id', meta: 'k', achats: 'id', chrono: 'seq', invest: 'id', charges: 'id', activites: 'id' }; // v2 : achats ; v3 : chrono ; v4 : invest, charges ; v5 : activites
+let _db;
+const ouvrir = () => _db ? Promise.resolve(_db) : new Promise((ok, ko) => {
+  const r = indexedDB.open(NOM, VERSION);
+  r.onupgradeneeded = () => { for (const [s, k] of Object.entries(STORES)) if (!r.result.objectStoreNames.contains(s)) r.result.createObjectStore(s, { keyPath: k }); };
+  r.onsuccess = () => ok((_db = r.result)); r.onerror = () => ko(r.error);
+});
+const tx = async (s, mode, f) => { const db = await ouvrir(); return new Promise((ok, ko) => { const t = db.transaction(s, mode), q = f(t.objectStore(s)); t.oncomplete = () => ok(q?.result); t.onerror = t.onabort = () => ko(t.error); }); };
+const stockage = { mode: 'indexedDB' }; // passe à 'memoire' si le navigateur interdit IndexedDB (ex. fichier ouvert via content://)
+const MEM = { cycles: new Map(), mesures: new Map(), meta: new Map(), achats: new Map(), chrono: new Map(), invest: new Map(), charges: new Map(), activites: new Map() }, cl = (x) => JSON.parse(JSON.stringify(x));
+const mem = (s, o, a) => (o === 'put' ? void MEM[s].set(a[STORES[s]], cl(a)) : o === 'all' ? [...MEM[s].values()].map(cl) : o === 'get' ? (MEM[s].has(a) ? cl(MEM[s].get(a)) : undefined) : void MEM[s].delete(a));
+const op = async (s, o, a, mode, f) => { if (stockage.mode === 'indexedDB') { try { return await tx(s, mode, f); } catch (e) { if (_db) throw e; stockage.mode = 'memoire'; } } return mem(s, o, a); };
+const put = (s, o) => op(s, 'put', o, 'readwrite', (st) => st.put(o));
+const all = (s) => op(s, 'all', null, 'readonly', (st) => st.getAll());
+const get = (s, k) => op(s, 'get', k, 'readonly', (st) => st.get(k));
+const del = (s, k) => op(s, 'del', k, 'readwrite', (st) => st.delete(k));
+function sha256js(txt) {
+  const K = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+  const m = new TextEncoder().encode(txt), l = m.length, n = (((l + 8) >> 6) + 1) * 16, w = new Uint32Array(n), W = new Uint32Array(64), r = (x, k) => (x >>> k) | (x << (32 - k));
+  for (let i = 0; i < l; i++) w[i >> 2] |= m[i] << (24 - (i & 3) * 8);
+  w[l >> 2] |= 0x80 << (24 - (l & 3) * 8); w[n - 2] = Math.floor((l * 8) / 4294967296); w[n - 1] = (l * 8) >>> 0;
+  let H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  for (let o = 0; o < n; o += 16) {
+    for (let i = 0; i < 16; i++) W[i] = w[o + i];
+    for (let i = 16; i < 64; i++) W[i] = (W[i - 16] + (r(W[i - 15], 7) ^ r(W[i - 15], 18) ^ (W[i - 15] >>> 3)) + W[i - 7] + (r(W[i - 2], 17) ^ r(W[i - 2], 19) ^ (W[i - 2] >>> 10))) | 0;
+    let [a, b, c, d, e, f, g, h] = H;
+    for (let i = 0; i < 64; i++) { const t1 = (h + (r(e, 6) ^ r(e, 11) ^ r(e, 25)) + ((e & f) ^ (~e & g)) + K[i] + W[i]) | 0, t2 = ((r(a, 2) ^ r(a, 13) ^ r(a, 22)) + ((a & b) ^ (a & c) ^ (b & c))) | 0; h = g; g = f; f = e; e = (d + t1) | 0; d = c; c = b; b = a; a = (t1 + t2) | 0; }
+    H = H.map((x, i) => (x + [a, b, c, d, e, f, g, h][i]) | 0);
+  }
+  return H.map((x) => (x >>> 0).toString(16).padStart(8, '0')).join('');
+}
+const sha = async (t) => { if (globalThis.crypto?.subtle) { try { return [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)))].map((b) => b.toString(16).padStart(2, '0')).join(''); } catch {} } return sha256js(t); };
+async function exporter() {
+  const d = { cycles: await all('cycles'), mesures: await all('mesures'), achats: await all('achats'), chrono: await all('chrono'), invest: await all('invest'), charges: await all('charges'), activites: await all('activites') };
+  return { format: 'mon-technicien-mobile', schema: 5, regles: '0.1', date: new Date().toISOString(), ...d, sha256: await sha(JSON.stringify(d)) };
+}
+async function importer(texte) {
+  const o = JSON.parse(texte);
+  if (o.format !== 'mon-technicien-mobile' || ![1, 2, 3, 4, 5].includes(o.schema)) throw new Error('Format de sauvegarde non reconnu.');
+  if (o.sha256 !== await sha(JSON.stringify(o.schema === 1 ? { cycles: o.cycles, mesures: o.mesures } : o.schema === 2 ? { cycles: o.cycles, mesures: o.mesures, achats: o.achats } : o.schema === 3 ? { cycles: o.cycles, mesures: o.mesures, achats: o.achats, chrono: o.chrono } : o.schema === 4 ? { cycles: o.cycles, mesures: o.mesures, achats: o.achats, chrono: o.chrono, invest: o.invest, charges: o.charges } : { cycles: o.cycles, mesures: o.mesures, achats: o.achats, chrono: o.chrono, invest: o.invest, charges: o.charges, activites: o.activites }))) throw new Error('Sauvegarde altérée : empreinte incorrecte, import refusé.');
+  // Import contrôlé : seuls les enregistrements nouveaux sont ajoutés ; un même identifiant au contenu différent est un conflit, ignoré et signalé (jamais écrasé).
+  const fp = (x) => JSON.stringify(x, Object.keys(x).sort()), res = { ajoutes: 0, identiques: 0, conflits: [] };
+  for (const [s, l] of [['cycles', o.cycles], ['mesures', o.mesures], ['achats', o.achats || []], ['invest', o.invest || []], ['charges', o.charges || []], ['activites', o.activites || []]]) for (const r of l) {
+    const ex = await get(s, r.id); if (!ex) { await put(s, r); res.ajoutes++; } else if (fp(ex) === fp(r)) res.identiques++; else res.conflits.push(`${s}:${r.id}`); }
+  if (o.chrono?.length && !(await all('chrono')).length) for (const c of o.chrono) await put('chrono', c); // le journal n'est restauré que sur un appareil sans journal
+  return res;
+}
+
+return { stockage, put, all, get, del, sha256js, sha, exporter, importer }; })();
+__m.pin = (() => { const { sha256js } = __m.db;
+// Empreinte salée et itérée d'un code (SHA-256 x 20 000). Synchrone et identique avec ou sans WebCrypto.
+
+const ITER = 20000;
+const hashPin = (pin, salt) => { let h = sha256js(salt + ':' + pin); for (let i = 1; i < ITER; i++) h = sha256js(h + salt); return h; };
+
+return { ITER, hashPin }; })();
+__m.moteur = (() => { 
+// Généré par scripts/gen_moteur_hash.mjs : empreinte du code moteur (non modifiable dans l'application).
+const MOTEUR = { salt: '214fdc0caf6cce5783f4cc80d4b7669d', hash: '990dde0826fe226ece441b3692e2dcb8c0f1da3943d8305c98e7650b3653ba08' };
+
+return { MOTEUR }; })();
+__m.acces = (() => { const { get, put } = __m.db; const { hashPin } = __m.pin; const { MOTEUR } = __m.moteur;
+// Accès : « agent » (sans code), « superviseur » (code modifiable, 0000 par défaut), « moteur » (code fixe, non modifiable ici).
+// Les codes ne sont jamais stockés en clair. Limite : une application locale ne protège pas contre un utilisateur qui modifie son propre appareil.
+
+const horloge = { now: () => Date.now() };
+const DEFAUT = '0000', MAX_ESSAIS = 5, VERROU_MS = 60000, SESSION_MS = 600000;
+const session = { superviseur: 0, moteur: 0 };
+const alea = () => { const b = new Uint8Array(16); (globalThis.crypto?.getRandomValues ? crypto.getRandomValues(b) : b.forEach((_, i) => (b[i] = Math.floor(Math.random() * 256)))); return [...b].map((x) => x.toString(16).padStart(2, '0')).join(''); };
+async function charger() { let a = (await get('meta', 'acces'))?.v; if (!a) { const salt = alea(); a = { sup: { salt, hash: hashPin(DEFAUT, salt) }, defaut: true, echecs: 0, verrou: 0 }; await put('meta', { k: 'acces', v: a }); } return a; }
+const sauver = (a) => put('meta', { k: 'acces', v: a });
+const via = (role) => { const t = horloge.now(); return session[role] > t ? role : role === 'superviseur' && session.moteur > t ? 'moteur' : null; };
+const actif = (role) => !!via(role);
+function exiger(role) { const v = via(role); if (!v) throw new Error('Accès refusé : code requis.'); session[v] = horloge.now() + SESSION_MS; }
+const verrouiller = () => { session.superviseur = 0; session.moteur = 0; };
+async function connecter(role, pin) {
+  const a = await charger(), t = horloge.now();
+  if (a.verrou > t) return { ok: false, msg: `Trop d'essais : réessayez dans ${Math.ceil((a.verrou - t) / 1000)} s.` };
+  const cible = role === 'moteur' ? MOTEUR : a.sup;
+  if (hashPin(String(pin), cible.salt) === cible.hash) { a.echecs = 0; a.verrou = 0; await sauver(a); session[role] = t + SESSION_MS; return { ok: true }; }
+  a.echecs++; if (a.echecs >= MAX_ESSAIS) { a.verrou = t + VERROU_MS; a.echecs = 0; } await sauver(a); return { ok: false, msg: 'Code incorrect.' };
+}
+const codeParDefaut = async () => !!(await charger()).defaut;
+async function changerCodeSuperviseur(ancien, nouveau) {
+  if (!/^.{4,12}$/.test(nouveau)) return { ok: false, msg: 'Le nouveau code doit comporter 4 à 12 caractères.' };
+  if (!actif('moteur')) { const r = await connecter('superviseur', ancien); if (!r.ok) return r; }
+  const a = await charger(), salt = alea(); a.sup = { salt, hash: hashPin(nouveau, salt) }; a.defaut = nouveau === DEFAUT; await sauver(a); return { ok: true };
+}
+async function reinitialiserSuperviseur() { exiger('moteur'); const a = await charger(), salt = alea(); a.sup = { salt, hash: hashPin(DEFAUT, salt) }; a.defaut = true; await sauver(a); }
+
+return { horloge, DEFAUT, actif, exiger, verrouiller, connecter, codeParDefaut, changerCodeSuperviseur, reinitialiserSuperviseur }; })();
+__m.chrono = (() => { const { put, all, get, sha } = __m.db; const { exiger, actif } = __m.acces;
+// Contrôle de cohérence temporelle : mêmes règles que le module Excel. Journal en ajout seul, chaîné par SHA-256.
+// L'horloge du téléphone n'est pas une preuve : une entrée signale une incohérence observée, jamais une manipulation avérée.
+
+
+const TOL_MIN = 2, FWD_MIN = 10, GENESE = '0'.repeat(64);
+const LIBELLES = { REGRESSION: 'Heure du téléphone antérieure à une heure déjà observée', RUPTURE_SESSION: 'Horloge reculée par rapport au chronomètre interne', SAUT_AVANT: 'Saut en avant non expliqué (à examiner)', RETOUR: 'Retour à une heure cohérente', REANCRAGE: 'Réancrage administrateur' };
+const canon = (v) => (v && typeof v === 'object' ? (Array.isArray(v) ? '[' + v.map(canon).join(',') + ']' : '{' + Object.keys(v).sort().map((k) => JSON.stringify(k) + ':' + canon(v[k])).join(',') + '}') : JSON.stringify(v ?? null));
+// Évaluation pure. e = { hw: plus haute heure observée, lastUtc, lastMono (chronomètre, valable seulement dans cette session de page), ep: épisode de recul ouvert }
+function evaluer(e, utc, mono, vuContinue = true) {
+  const evts = [];
+  if (e.hw != null) {
+    const reg = (e.hw - utc) / 6e4 > TOL_MIN; let back = false, fwd = false, dm = 0;
+    if (e.lastMono != null) { dm = (utc - e.lastUtc - (mono - e.lastMono)) / 6e4; if (dm < -TOL_MIN) back = true; else if (dm > FWD_MIN && vuContinue) fwd = true; }
+    if (reg) { if (!e.ep) { e.ep = true; evts.push({ type: 'REGRESSION', niveau: 'Anomalie', ecartMin: Math.round((utc - e.hw) / 6e4) }); } }
+    else { if (e.ep) { e.ep = false; evts.push({ type: 'RETOUR', niveau: 'Information', ecartMin: 0 }); } if (back) evts.push({ type: 'RUPTURE_SESSION', niveau: 'Anomalie', ecartMin: Math.round(dm) }); }
+    if (fwd) evts.push({ type: 'SAUT_AVANT', niveau: 'Surveillance', ecartMin: Math.round(dm) });
+  }
+  e.hw = e.hw == null ? utc : Math.max(e.hw, utc); e.lastUtc = utc; e.lastMono = mono;
+  return evts;
+}
+const sceller = async (prev, x) => { const e = { prev, ...x }; return { ...e, hash: await sha(prev + canon(e)) }; };
+async function verifier(l) { let prev = GENESE; for (const e of l) { const { hash, ...r } = e; if (e.prev !== prev || hash !== (await sha(prev + canon(r)))) return e.seq; prev = hash; } return 0; }
+const OUVERTE = [undefined, 'Nouvelle', 'À vérifier'];
+function synthese(l, st = {}) {
+  const an = l.filter((e) => e.niveau === 'Anomalie'), ouv = an.filter((e) => OUVERTE.includes(st[e.seq])), sv = l.filter((e) => e.niveau === 'Surveillance' && OUVERTE.includes(st[e.seq]));
+  return { etat: ouv.length ? 'ANOMALIE D\'HORODATAGE' : an.length ? 'ANOMALIE DÉJÀ ENREGISTRÉE' : sv.length ? 'SURVEILLANCE' : 'NORMAL', ouvertes: ouv.length, surveillance: sv.length, total: an.length };
+}
+let etat = null, cache = [], masque = false;
+async function init() {
+  const m = (await get('meta', 'chrono'))?.v || {}; etat = { hw: m.hw ?? null, lastUtc: m.lastUtc ?? null, ep: !!m.ep, lastMono: null };
+  cache = (await all('chrono')).sort((a, b) => a.seq - b.seq);
+  if (typeof document !== 'undefined') document.addEventListener('visibilitychange', () => { if (document.hidden) masque = true; });
+}
+async function observer(evt, ctx = {}) {
+  if (!etat) await init();
+  const utc = Date.now(), evts = evaluer(etat, utc, performance.now(), !masque), seqs = []; masque = false;
+  for (const x of evts) { const e = await sceller(cache.at(-1)?.hash ?? GENESE, { seq: cache.length + 1, type: x.type, niveau: x.niveau, ecartMin: x.ecartMin, evt, t: utc, local: new Date(utc).toISOString(), ctx }); cache.push(e); await put('chrono', e); seqs.push(e.seq); }
+  await put('meta', { k: 'chrono', v: { hw: etat.hw, lastUtc: etat.lastUtc, ep: etat.ep } });
+  return seqs;
+}
+async function lire() { if (!etat) await init(); const st = (await get('meta', 'chrono_st'))?.v || {}; return { entries: actif('superviseur') ? cache.slice() : [], statuts: st, rompue: await verifier(cache), ...synthese(cache, st) }; }
+async function fixerStatut(seq, s) { exiger('superviseur'); const st = (await get('meta', 'chrono_st'))?.v || {}; st[seq] = s; await put('meta', { k: 'chrono_st', v: st }); }
+async function reancrer() { // réservé au moteur ; l'historique est conservé et l'opération est journalisée
+  exiger('moteur'); if (!etat) await init(); const utc = Date.now();
+  const e = await sceller(cache.at(-1)?.hash ?? GENESE, { seq: cache.length + 1, type: 'REANCRAGE', niveau: 'Information', ecartMin: etat.hw == null ? 0 : Math.round((utc - etat.hw) / 6e4), evt: 'ADMIN', t: utc, local: new Date(utc).toISOString(), ctx: {} });
+  cache.push(e); await put('chrono', e); Object.assign(etat, { hw: utc, lastUtc: utc, lastMono: performance.now(), ep: false }); await put('meta', { k: 'chrono', v: { hw: utc, lastUtc: utc, ep: false } });
+}
+async function hauteHeure() { if (!etat) await init(); return etat.hw ?? 0; } // plus haute heure déjà observée (utilisée par la licence)
+
+return { TOL_MIN, LIBELLES, evaluer, sceller, verifier, synthese, init, observer, lire, fixerStatut, reancrer, hauteHeure }; })();
+__m.p256 = (() => { 
+// ECDSA P-256 en BigInt pur : fonctionne sans WebCrypto (fichier local, anciens navigateurs). Vérifié contre l'implémentation de référence de Node.
+const P = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffffn, N = 0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551n;
+const B = 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604bn, G = [0x6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296n, 0x4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5n];
+const mod = (a, m = P) => ((a % m) + m) % m;
+const inv = (a, m = P) => { let [r0, r1] = [mod(a, m), m], [s0, s1] = [1n, 0n]; while (r1) { const q = r0 / r1; [r0, r1] = [r1, r0 - q * r1]; [s0, s1] = [s1, s0 - q * s1]; } return mod(s0, m); };
+const add = (p, q) => { if (!p) return q; if (!q) return p; const [x1, y1] = p, [x2, y2] = q; let l;
+  if (x1 === x2) { if (mod(y1 + y2) === 0n) return null; l = mod((3n * x1 * x1 - 3n) * inv(2n * y1)); } else l = mod((y2 - y1) * inv(x2 - x1));
+  const x3 = mod(l * l - x1 - x2); return [x3, mod(l * (x1 - x3) - y1)]; };
+const mul = (k, p) => { let r = null, a = p; while (k > 0n) { if (k & 1n) r = add(r, a); a = add(a, a); k >>= 1n; } return r; };
+const big = (h) => BigInt('0x' + h), hex = (n) => n.toString(16).padStart(64, '0');
+const surCourbe = ([x, y]) => mod(y * y - (x * x * x - 3n * x + B)) === 0n;
+const clePublique = (dHex) => { const [x, y] = mul(big(dHex), G); return { x: hex(x), y: hex(y) }; };
+function verifier(zHex, rHex, sHex, pub) {
+  try { const r = big(rHex), s = big(sHex), Q = [big(pub.x), big(pub.y)]; if (r <= 0n || r >= N || s <= 0n || s >= N || !surCourbe(Q)) return false;
+    const w = inv(s, N), X = add(mul(mod(big(zHex) * w, N), G), mul(mod(r * w, N), Q)); return !!X && mod(X[0], N) === r; } catch { return false; }
+}
+function signer(zHex, dHex, kHex) { // kHex : nombre aléatoire secret de 256 bits, fourni par l'appelant (crypto.getRandomValues)
+  const k = mod(big(kHex), N - 1n) + 1n, r = mod(mul(k, G)[0], N), s = mod(inv(k, N) * (big(zHex) + r * big(dHex)), N); if (!r || !s) throw new Error('Signature à refaire');
+  return { r: hex(r), s: hex(s) };
+}
+
+return { clePublique, verifier, signer }; })();
+__m.licence_cle = (() => { 
+// Clé PUBLIQUE de vérification des licences (P-256). La clé privée n'est jamais dans le projet.
+const CLE_PUBLIQUE = { x: '2d79c3e632615b538c4e7021a05400bd410a1567d491938d771e5188407cd783', y: '768fbfe0d61f13af17e15c082426a090a0a24073810054ea54153201671a814a' };
+
+return { CLE_PUBLIQUE }; })();
+__m.licence = (() => { const { sha256js, get, put } = __m.db; const { verifier } = __m.p256; const { CLE_PUBLIQUE } = __m.licence_cle; const { hauteHeure } = __m.chrono;
+// Licence : jeton signé « MTL1.<charge utile base64url>.<signature r||s base64url> », vérifié hors connexion avec la clé publique embarquée.
+// Limite : une licence contrôlée dans une application locale peut être contournée par un utilisateur qui modifie son appareil ou le code.
+
+const DEMO = { cyclesMax: 1, enregistrementsMax: 150 }; // choix provisoire de l'application, à valider
+const deb64 = (s) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0));
+function analyser(token, maintenant = Date.now(), cle = CLE_PUBLIQUE) {
+  const m = /^MTL1\.([\w-]+)\.([\w-]+)$/.exec(String(token || '').trim()); if (!m) return { ok: false, msg: 'Format de licence non reconnu.' };
+  let txt, sig; try { txt = new TextDecoder().decode(deb64(m[1])); sig = [...deb64(m[2])].map((b) => b.toString(16).padStart(2, '0')).join(''); } catch { return { ok: false, msg: 'Licence illisible.' }; }
+  if (sig.length !== 128 || !verifier(sha256js(txt), sig.slice(0, 64), sig.slice(64), cle)) return { ok: false, msg: 'Signature invalide : licence refusée.' };
+  let p; try { p = JSON.parse(txt); } catch { return { ok: false, msg: 'Licence illisible.' }; }
+  const fin = p.fin ? Date.parse(p.fin + 'T23:59:59Z') : Infinity, debut = p.debut ? Date.parse(p.debut + 'T00:00:00Z') : 0;
+  return { ok: true, payload: p, etat: maintenant < debut - 864e5 ? 'future' : maintenant > fin ? 'expiree' : 'valide' };
+}
+async function installer(token) { const r = analyser(token); if (!r.ok) return r; await put('meta', { k: 'licence', v: { token: String(token).trim(), installee: Date.now() } }); return r; }
+// L'heure retenue est la plus haute entre l'horloge et la plus haute heure déjà observée : reculer l'horloge ne prolonge pas une licence.
+async function statut() { const m = (await get('meta', 'licence'))?.v; if (!m) return { etat: 'demo' }; const r = analyser(m.token, Math.max(Date.now(), await hauteHeure())); return r.ok ? r : { etat: 'invalide', msg: r.msg }; }
+async function autoriser(op) {
+  const s = await statut(); if (s.etat === 'valide') return { ok: true };
+  if (s.etat === 'demo') return op.type === 'cycle' && op.cycles >= DEMO.cyclesMax ? { ok: false, msg: `Version de démonstration : ${DEMO.cyclesMax} cycle maximum. Activez une licence (Plus → Licence).` } : op.enregistrements >= DEMO.enregistrementsMax ? { ok: false, msg: `Version de démonstration : ${DEMO.enregistrementsMax} enregistrements maximum. Activez une licence (Plus → Licence).` } : { ok: true };
+  return { ok: false, msg: s.etat === 'expiree' ? 'Licence expirée : la saisie est bloquée (consultation et export restent possibles).' : s.etat === 'future' ? 'Licence pas encore valide : vérifiez la date du téléphone.' : 'Licence non valide : saisie bloquée.' };
+}
+
+return { DEMO, analyser, installer, statut, autoriser }; })();
+__m.echange = (() => { 
+// Échange avec Excel (côté application) : export CSV par table. L'importation dans le classeur n'est PAS développée.
+const COLONNES = {
+  cycles: ['id', 'nom', 'espece', 'effectif', 'poids0', 'date', 'statut', 'prix.alevin', 'prix.aliment', 'prix.vente', 'prix.autres'],
+  mesures: ['id', 'cycle', 'type', 'date', 'poids', 'nb', 'temp', 'ph', 'o2', 'sal', 'turb', 'distribue', 'aliment'],
+  achats: ['id', 'date', 'aliment', 'fournisseur', 'qte', 'prix'],
+  invest: ['id', 'date', 'categorie', 'designation', 'infra', 'quantite', 'cout'],
+  charges: ['id', 'categorie', 'designation', 'montant', 'periodicite'] };
+const val = (o, k) => k.split('.').reduce((a, p) => (a == null ? a : a[p]), o);
+const cel = (v) => { if (v == null) return ''; const s = String(v).replace(/\r?\n/g, ' '); return /[;"]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+// ';' comme séparateur et virgule décimale : s'ouvre directement dans Excel en français ; BOM UTF-8 pour les accents.
+const csv = (table, lignes) => '\uFEFF' + [COLONNES[table].join(';'), ...lignes.map((o) => COLONNES[table].map((k) => cel(typeof val(o, k) === 'number' ? String(val(o, k)).replace('.', ',') : val(o, k))).join(';'))].join('\r\n') + '\r\n';
+
+return { COLONNES, csv }; })();
+__m.catalogue = (() => { 
+// Catalogue des 13 activités encadrées : extrait de Supervision (lignes 22 à 34) du classeur V4.8. Modifiable plus tard par le superviseur.
+const __d = [{"nom": "Nourrissage 08h00", "icone": "🐟", "famille": "NOURRISSAGE", "type": "Quantité", "unite": "kg", "heure": 0.3333333333333333, "duree": 30, "tol": 10, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": 33.3, "tolQte": null, "horaire": true}, {"nom": "Nourrissage 12h30", "icone": "🐟", "famille": "NOURRISSAGE", "type": "Quantité", "unite": "kg", "heure": 0.5208333333333334, "duree": 30, "tol": 10, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": 33.3, "tolQte": null, "horaire": true}, {"nom": "Nourrissage 16h00", "icone": "🐟", "famille": "NOURRISSAGE", "type": "Quantité", "unite": "kg", "heure": 0.6666666666666666, "duree": 30, "tol": 10, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": 33.4, "tolQte": null, "horaire": true}, {"nom": "Contrôle du pH", "icone": "💧", "famille": "EAU_PH", "type": "Mesure", "unite": "", "heure": 0.3125, "duree": 30, "tol": 10, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": null, "tolQte": null, "horaire": true}, {"nom": "Contrôle de la température", "icone": "💧", "famille": "EAU_TEMP", "type": "Mesure", "unite": "°C", "heure": 0.3125, "duree": 30, "tol": 10, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": null, "tolQte": null, "horaire": true}, {"nom": "Contrôle de l'oxygène dissous", "icone": "💧", "famille": "EAU_O2", "type": "Mesure", "unite": "mg/l", "heure": 0.3125, "duree": 30, "tol": 10, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": null, "tolQte": null, "horaire": true}, {"nom": "Renouvellement d'eau", "icone": "🔄", "famille": "RENOUV", "type": "Quantité", "unite": "m³", "heure": 0.4166666666666667, "duree": 60, "tol": 30, "freq": "Hebdomadaire", "jourSem": 5, "objectif": 30, "part": null, "tolQte": null, "horaire": true}, {"nom": "Nettoyage / entretien", "icone": "🧹", "famille": "NETTOYAGE", "type": "Réalisé / non réalisé", "unite": "", "heure": 0.4583333333333333, "duree": 60, "tol": 30, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": null, "tolQte": null, "horaire": true}, {"nom": "Observation des poissons", "icone": "🐟", "famille": "OBSERV", "type": "RAS / Anomalie", "unite": "", "heure": 0.375, "duree": 30, "tol": 15, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": null, "tolQte": null, "horaire": true}, {"nom": "Mortalités (comptage)", "icone": "🐟", "famille": "MORTALITE", "type": "Comptage", "unite": "poissons", "heure": 0.3958333333333333, "duree": 30, "tol": 15, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": null, "tolQte": null, "horaire": true}, {"nom": "Comptage / tri / échantillonnage", "icone": "📊", "famille": "COMPTAGE", "type": "Réalisé / non réalisé", "unite": "", "heure": 0.5833333333333334, "duree": 120, "tol": 30, "freq": "Hebdomadaire", "jourSem": 1, "objectif": null, "part": null, "tolQte": null, "horaire": true}, {"nom": "Traitement / intervention", "icone": "💊", "famille": "TRAITEMENT", "type": "Quantité", "unite": "unité", "heure": 0.625, "duree": 60, "tol": 30, "freq": "Désactivée", "jourSem": 0, "objectif": null, "part": null, "tolQte": null, "horaire": true}, {"nom": "Gestion des aliments — bilan du jour", "icone": "📦", "famille": "BILAN", "type": "Automatique", "unite": "kg", "heure": 0.7083333333333334, "duree": 30, "tol": 0, "freq": "Quotidienne", "jourSem": 0, "objectif": null, "part": null, "tolQte": null, "horaire": false}];
+
+return { default: __d }; })();
+__m.encadrement = (() => { const { statutParam } = __m.engine;
+// Encadrement quotidien : règles des colonnes U, W, X, Y, V, N et AL de la feuille « Encadrement quotidien ».
+
+const PARAMS = { tolQte: 10, seuilMortPct: 0.5, anticipation: 90 }; // Supervision F12, F13, F14
+const NORME = { EAU_PH: 'pH', EAU_TEMP: 'Température', EAU_O2: 'Oxygène dissous' };
+const num = (x) => typeof x === 'number' && !isNaN(x);
+const hhmm = (f) => { const m = Math.round(f * 1440); return String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
+const jourSemaine = (d) => ((new Date(d + 'T00:00:00Z').getUTCDay() + 6) % 7) + 1; // WEEKDAY(date, 2) : lundi = 1
+const planifie = (a, d) => (a.freq === 'Quotidienne' ? 1 : a.freq === 'Jours ouvrés' ? +(jourSemaine(d) <= 5) : a.freq === 'Hebdomadaire' ? +(jourSemaine(d) === a.jourSem) : 0);
+const LABELS = ['⚠️ ACTION REQUISE', '🟣 RÉSULTAT ANORMAL', '🟠 ÉCART / RETARD', '🟡 À SURVEILLER', '🟢 CONFORME', '⚪'];
+const FIXES = { NA: '⚪ Non prévu ce jour', FUT: '⏳ À VENIR', ENC: '🕗 EN COURS — résultat à renseigner', NON: '🔴 NON ENREGISTRÉE', BNA: '⚪ Bilan en attente', BPART: '⏳ Bilan en cours (repas restants)' };
+// a : activité du catalogue ; res : résultat ('' si absent) ; h : heure d'enregistrement (fraction de jour) ; now : { date, frac } ; ctx : { prevu, espece, seuilMort, repasRestants }
+function etat(a, date, res, h, now, ctx = {}) {
+  const U = planifie(a, date), C = a.heure, D = C + a.duree / 1440, rempli = res !== '' && res != null;
+  const W = !U ? 'NA' : a.famille === 'BILAN' ? (!rempli ? 'BNA' : date >= now.date && ctx.repasRestants > 0 ? 'BPART' : 'RES')
+    : rempli ? 'RES' : date > now.date ? 'FUT' : date < now.date ? 'NON' : now.frac < C ? 'FUT' : now.frac <= D + a.tol / 1440 ? 'ENC' : 'NON';
+  let X = '';
+  if (rempli) {
+    const tol = a.tolQte || PARAMS.tolQte;
+    if (NORME[a.famille]) { const s = statutParam(ctx.espece, NORME[a.famille], res); X = s === 'Jaune' ? 4 : s === 'Rouge' ? 2 : 5; }
+    else if (a.famille === 'MORTALITE') X = !num(res) ? '' : res === 0 ? 5 : res <= (ctx.seuilMort ?? 1) ? 4 : 1;
+    else if (a.famille === 'OBSERV') X = res === 'RAS' ? 5 : 2;
+    else if (a.famille === 'NETTOYAGE' || a.famille === 'COMPTAGE') X = String(res).startsWith('Réalisé') ? 5 : 3;
+    else X = !num(res) ? '' : !num(ctx.prevu) || ctx.prevu <= 0 ? 5 : res < ctx.prevu * (1 - tol / 100) ? 3 : res > ctx.prevu * (1 + tol / 100) ? 4 : 5;
+  }
+  const Y = !U || !rempli || !a.horaire ? '' : ctx.rattrape ? 3 : !num(h) ? 4 : h < C ? 4 : h <= D ? 5 : (h - D) * 1440 <= a.tol ? 4 : 3;
+  const V = ['NA', 'FUT', 'BNA', 'BPART'].includes(W) ? 6 : W === 'NON' ? 1 : W === 'ENC' ? 4 : Math.min(5, X === '' ? 9 : X, Y === '' ? 9 : Y);
+  return { U, W, X, Y, V, label: W === 'RES' ? LABELS[V - 1] : FIXES[W] };
+}
+// Contrôle de chronologie (AL) : 1 heure invalide, 3 antérieure à une validation précédente, 4 enregistrée bien avant l'heure prévue.
+const controleChrono = (h, C, tPrec, t) => (!num(h) || h < 0 || h >= 1 ? 1 : tPrec != null && t < tPrec ? 3 : num(C) && h < C - PARAMS.anticipation / 1440 ? 4 : 0);
+const CHRONO_MSG = { 1: 'Heure d\'enregistrement invalide.', 3: 'Heure d\'enregistrement antérieure à celle d\'une validation précédente (retour en arrière possible de l\'horloge).', 4: 'Validation enregistrée bien avant l\'heure prévue.' };
+const prioriteNexus = (v) => (v <= 2 ? 'P1' : v === 3 ? 'P2' : v === 4 ? 'P3' : 'OK'); // correspondance provisoire : le classeur n'a pas de niveaux P1/P2/P3
+
+return { PARAMS, hhmm, jourSemaine, planifie, etat, controleChrono, CHRONO_MSG, prioriteNexus }; })();
+__m.nexus = (() => { const E = __m.engine;
+// Nexus local : Observer -> Détecter -> Interpréter -> Encadrer. Les règles FCR, eau et température viennent du XLSM ;
+// la correspondance eau -> P1/P3 est une règle provisoire de l'application mobile, à valider.
+
+const ordre = { P1: 0, P2: 1, P3: 2, OK: 3 };
+function alertes(c, calc, st = []) {
+  const a = [], P = ['P1', 'P2', 'P3', 'OK'];
+  if (!calc.pesee) a.push({ p: 'P3', titre: 'Aucune pesée enregistrée', constat: 'Le poids actuel repose sur le poids initial.', donnees: `Poids initial ${c.poids0} g`, cause: 'Donnée manquante, pas une anomalie.', action: 'Saisir une pesée d\'échantillon.', controle: 'Le poids moyen et la biomasse se mettent à jour.', pourquoi: 'Sans pesée, la biomasse, le FCR et la ration ne reflètent pas la croissance réelle.', vue: 'saisie' });
+  const s = E.fcrStatut(calc.fcr);
+  a.push({ p: s.nc ? 'P3' : P[Math.min(s.rang, 4) - 1], titre: s.nc ? 'FCR non calculable' : `FCR ${calc.fcr}`, constat: s.texte, donnees: `Aliment distribué ${calc.alim} kg ; gain de biomasse ${E.xround(calc.bio - calc.bio0, 2)} kg`, cause: s.nc ? 'Il manque une pesée ou des distributions.' : 'Voir le diagnostic de causes dans le classeur : qualité d\'eau, ration, pesée.', action: s.nc ? 'Saisir les distributions et une pesée.' : s.rang >= 4 ? 'Poursuivre le suivi.' : 'Vérifier les données saisies avant toute conclusion.', controle: 'FCR au prochain cumul de distributions.', pourquoi: 'FCR = aliment cumulé / gain de biomasse, classé selon la grille à 7 paliers du classeur.', vue: 'resultats' });
+  if (calc.eau) {
+    const bad = Object.entries({ Température: calc.eau.temp, pH: calc.eau.ph, 'Oxygène dissous': calc.eau.o2, Salinité: calc.eau.sal, Turbidité: calc.eau.turb }).map(([k, v]) => [k, v, E.statutParam(c.espece, k, v)]).filter((x) => x[2] && x[2] !== 'Vert');
+    const rouge = bad.filter((x) => x[2] === 'Rouge');
+    a.push(bad.length ? { p: rouge.length ? 'P1' : 'P3', titre: 'Qualité de l\'eau hors zone optimale', constat: bad.map((x) => `${x[0]} ${x[1]} : ${x[2]}`).join(' ; '), donnees: `Mesure du ${calc.eau.date}`, cause: 'Écart aux normes de l\'espèce (Paramètres).', action: rouge.length ? 'Contrôler l\'eau aujourd\'hui et vérifier l\'aération.' : 'Surveiller et remesurer.', controle: 'Nouvelle mesure dans les zones vertes.', pourquoi: 'Zone verte = optimal, jaune = acceptable, rouge = hors norme (normes du classeur).', vue: 'saisie' } : { p: 'OK', titre: 'Eau conforme', constat: 'Tous les paramètres mesurés sont en zone optimale.', donnees: `Mesure du ${calc.eau.date}`, cause: '-', action: 'Poursuivre.', controle: '-', pourquoi: 'Comparaison aux normes de l\'espèce.', vue: 'saisie' });
+  } else a.push({ p: 'P3', titre: 'Aucune mesure d\'eau', constat: 'Aucune règle ne peut être appliquée.', donnees: '-', cause: 'Donnée manquante.', action: 'Saisir température, pH et oxygène.', controle: '-', pourquoi: 'Nexus ne déclare pas l\'eau conforme sans mesure.', vue: 'saisie' });
+  if (calc.eau && E.facteurTemp(calc.eau.temp) === 0) a.push({ p: 'P2', titre: 'Température trop basse pour nourrir', constat: `${calc.eau.temp} °C : facteur de ration nul.`, donnees: 'Table d\'ajustement température (Paramètres §5)', cause: 'Appétit réduit à basse température.', action: 'Ne pas nourrir aujourd\'hui.', controle: 'Remesurer la température.', pourquoi: 'Le classeur annule la ration sous 20 °C.', vue: 'saisie' });
+  if (calc.jours > 0 && calc.pesee) a.push({ p: calc.ecart < 0 ? 'P3' : 'OK', titre: calc.ecart < 0 ? 'Croissance en retard' : 'Croissance en avance', constat: `${calc.g} g mesurés, ${calc.attendu} g attendus au jour ${calc.jours} (écart ${calc.ecart} g).`, donnees: `Objectif ${E.OBJECTIF.poidsG} g en ${E.OBJECTIF.joursCible} j`, cause: 'Comparaison linéaire à l\'objectif standard.', action: calc.ecart < 0 ? 'Vérifier ration, eau et densité.' : 'Poursuivre.', controle: 'Prochaine pesée.', pourquoi: 'Poids attendu = jours / durée cible × poids cible (Calculs du classeur).', vue: 'resultats' });
+  const PS = { '🚨': 'P1', '🔴': 'P1', '🟠': 'P2', '🟡': 'P3', '🟢': 'OK' }; // correspondance statut de stock -> priorité : règle provisoire de l'application mobile
+  for (const s of st) { const p = PS[[...s.statut][0]]; if (!p) continue;
+    a.push({ p, titre: `Stock « ${s.type} » : ${s.statut.slice(3).toLowerCase()}`, constat: s.jours === 'Rupture' ? 'Stock épuisé.' : `${s.stock} kg, soit ${s.jours} jours au rythme de ${s.conso} kg par distribution. ${s.signal.startsWith('🟠') ? s.signal : ''}`, donnees: `Achats ${s.entrees} kg ; sorties ${s.sorties} kg`, cause: 'Consommation moyenne des distributions enregistrées (fenêtre 14 jours).', action: s.qte > 0 ? `Commander environ ${s.qte} kg (couverture ${E.PARAMS_STOCK.horizon} jours).` : 'Surveiller le stock.', controle: 'Jours de stock restants après achat.', pourquoi: `Jours restants = stock / consommation moyenne ; seuils ${E.PARAMS_STOCK.anticipation} / ${E.PARAMS_STOCK.urgent} / ${E.PARAMS_STOCK.critique} jours (Paramètres §15).`, vue: 'resultats' }); }
+  return a.sort((x, y) => ordre[x.p] - ordre[y.p]);
+}
+function repondre(q, c, calc, al, st = []) {
+  const t = q.toLowerCase(), top = al[0];
+  if (/ration|distribuer|quantit|combien/.test(t)) {
+    const tp = calc.eau?.temp ?? calc.nour?.temp;
+    if (tp == null) return { texte: 'Il me manque la température de l\'eau pour calculer la ration. Saisissez une mesure d\'eau ou un nourrissage avec température.', vue: 'saisie' };
+    const r = E.ration(c.espece, calc.g, calc.bio, tp);
+    return { texte: r.stop ? `À ${tp} °C la ration est nulle : ne pas nourrir.` : `Ration indicative : ${r.kg} kg/jour en ${r.repas} repas (${r.pct * 100} % de la biomasse x facteur température ${r.facteur}). Biomasse ${E.xround(calc.bio, 1)} kg.`, vue: 'saisie' };
+  }
+  if (/stock|rupture|command|achat/.test(t)) return { texte: st.length ? st.map((s) => `${s.type} : ${s.stock} kg, ${typeof s.jours === 'number' ? s.jours + ' jours restants' : s.jours} (${s.statut.slice(3).toLowerCase()})${s.qte ? ', commande conseillée ' + s.qte + ' kg' : ''}`).join(' ; ') : 'Aucun achat d\'aliment enregistré : saisissez un achat pour suivre le stock.', vue: 'resultats' };
+  if (/co[uû]t|marge|rentab|b[ée]n[ée]fice|r[ée]sultat|prix/.test(t)) { const e = E.economie(c.effectif, calc.bio, calc.alim, c.prix, c.statut || 'Actif'); return { texte: e.prixSaisis ? `Résultat estimé ${Math.round(e.AO)} F CFA (${e.AS.toLowerCase()}) ; coût de production ${e.AP} F/kg, marge ${e.AQ} F/kg. Le chiffre d'affaires est estimé sur la biomasse actuelle.` : 'Il me manque les prix (alevin, aliment, vente) : saisissez-les dans Résultats → Prix et charges.', vue: 'resultats' }; }
+  if (/fcr|conversion/.test(t)) return { texte: `FCR : ${calc.fcr}. ${E.fcrStatut(calc.fcr).texte}. ${top ? '' : ''}Il se calcule en divisant l'aliment distribué (${calc.alim} kg) par le gain de biomasse.`, vue: 'resultats' };
+  if (/eau|oxyg|ph|temp/.test(t)) { const e = al.find((x) => /eau/i.test(x.titre)); return { texte: e ? `${e.titre} : ${e.constat}` : 'Aucune mesure d\'eau.', vue: 'saisie' }; }
+  if (/pourquoi|explique/.test(t) && top) return { texte: `${top.titre}. ${top.pourquoi} Données : ${top.donnees}.`, vue: top.vue };
+  if (/priorit|contr[oô]l|alerte|p1|urgent/.test(t)) return { texte: top ? `${top.p} — ${top.titre} : ${top.constat} Action : ${top.action}` : 'Aucune alerte.', vue: top?.vue };
+  if (/croissance|poids|gmq/.test(t)) return { texte: `Poids moyen ${calc.g} g, attendu ${calc.attendu} g au jour ${calc.jours}, croissance ${calc.gmq} g/j.`, vue: 'resultats' };
+  return { texte: 'Je ne sais répondre hors ligne qu\'aux questions sur la ration, le FCR, l\'eau, la croissance et les priorités.' };
+}
+
+return { alertes, repondre }; })();
+__m.app = (() => { const { put, all, get, exporter, importer, stockage } = __m.db; const C = __m.chrono; const A = __m.acces; const { csv, COLONNES } = __m.echange; const L = __m.licence; const CAT = __m.catalogue.default; const EN = __m.encadrement; const E = __m.engine; const { alertes, repondre } = __m.nexus;
+
+
+
+
+
+
+
+
+
+const uid = () => globalThis.crypto?.randomUUID?.() ?? 'id-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const auj = () => new Date().toISOString().slice(0, 10);
+const S = { vue: 'accueil', cycles: [], mesures: [], achats: [], invest: [], charges: [], activites: [], jour: null, val: null, cid: null, chat: [], type: 'pesee', ouverte: null, sauv: null };
+const cyc = () => S.cycles.find((c) => c.id === S.cid);
+const mes = () => S.mesures.filter((m) => m.cycle === S.cid).sort((a, b) => a.date.localeCompare(b.date) || a.t - b.t);
+const sorties = () => S.mesures.filter((m) => m.type === 'nourrissage').map((m) => ({ date: m.date, type: m.aliment || 'Défaut', qte: m.distribue })); // source unique des sorties : les distributions
+const typesAliment = () => [...new Set(['Défaut', ...S.achats.map((a) => a.aliment)])];
+const stocks = () => typesAliment().map((t) => ({ type: t, ...E.stockType(S.achats.filter((a) => a.aliment === t).map((a) => ({ date: a.date, qte: a.qte })), sorties().filter((s) => s.type === t), auj()) })).filter((s) => s.jours !== 'Données insuffisantes');
+const ctx = () => { const c = cyc(); if (!c) return null; const calc = E.calculerCycle(c, mes(), auj()), st = stocks(); const al = alertes(c, calc, st), enc = jourEnc(c, calc, local().date); for (const a of alertesEnc(enc)) al.unshift(a); if (A.actif('superviseur') && S.ch?.ouvertes) al.unshift({ p: 'P1', titre: 'Incohérence d\'horodatage détectée', constat: 'Une incohérence a été relevée dans la chronologie des enregistrements.', donnees: `${S.ch.ouvertes} entrée(s) à vérifier`, cause: 'Heure du téléphone irrégulière (constat non probant).', action: 'Vérifier les enregistrements concernés dans Supervision.', controle: 'Statut des entrées du journal', pourquoi: 'Le journal d\'horodatage compare chaque heure observée aux références précédentes.', vue: 'supervision' }); return { c, calc, st, al, enc }; };
+async function charger() {
+  S.cycles = await all('cycles'); S.mesures = await all('mesures'); S.achats = await all('achats'); S.invest = await all('invest'); S.charges = await all('charges'); S.activites = await all('activites');
+  const m = await get('meta', 'cid'); S.cid = (S.cycles.find((c) => c.id === m?.v) || S.cycles[0])?.id ?? null;
+  S.ch = await C.lire(); S.defaut = await A.codeParDefaut(); S.lic = await L.statut(); S.chat = (await get('meta', 'chat'))?.v || []; S.sauv = (await get('meta', 'sauv'))?.v || null;
+}
+const toast = (t, err) => { const e = $('#toast'); e.textContent = t; e.className = 'show' + (err ? ' err' : ''); setTimeout(() => (e.className = ''), 3200); };
+const chip = (p) => `<span class="chip ${p}">${p === 'OK' ? 'Conforme' : p}</span>`;
+const kpi = (l, v, s = '') => `<div class="kpi"><b>${esc(v)}</b><span>${esc(l)}</span><i>${esc(s)}</i></div>`;
+const vide = '<div class="card"><h3>Aucun cycle</h3><p>Créez votre premier cycle pour démarrer le suivi.</p><button class="btn" data-go="saisie" data-type="cycle">Créer un cycle</button></div>';
+function accueil() {
+  const x = ctx(); if (!x) return vide; const { c, calc, al } = x, st = E.fcrStatut(calc.fcr);
+  const sel = `<select id="cid">${S.cycles.map((k) => `<option value="${esc(k.id)}" ${k.id === S.cid ? 'selected' : ''}>${esc(k.nom)}</option>`).join('')}</select>`;
+  return `<div class="card hero"><small>Exploitation active</small>${sel}<p>${esc(c.espece)} · jour ${calc.jours} · ${S.mesures.length} enregistrements</p></div>
+  <div class="grid">${kpi('Survivants', calc.n, `${E.xround(calc.survie * 100, 1)} % de survie`)}${kpi('Biomasse (kg)', E.xround(calc.bio, 1), `poids moyen ${calc.g} g`)}${kpi('FCR', calc.fcr, st.nc ? 'non calculable' : '')}${kpi('Croissance (g/j)', calc.gmq, `écart ${calc.ecart} g`)}</div>
+  ${carteJour(x.enc)}<h2>Alertes</h2>${al.slice(0, 3).map(carte).join('')}
+  <div class="state"><span class="dot ${navigator.onLine ? 'on' : 'off'}"></span>${navigator.onLine ? 'En ligne' : 'Hors connexion : tout fonctionne localement'} · ${S.sauv ? 'Dernière sauvegarde ' + esc(S.sauv.slice(0, 10)) : '<b>Aucune sauvegarde exportée</b>'}</div>`;
+}
+const carte = (a, i = -1) => `<div class="card al ${a.p}">${chip(a.p)}<h3>${esc(a.titre)}</h3><p>${esc(a.constat)}</p><p class="sub"><b>Action :</b> ${esc(a.action)}</p>
+  <button class="lnk" data-why="${i}">Pourquoi ?</button>${S.ouverte === i && i >= 0 ? `<div class="why"><p>${esc(a.pourquoi)}</p><p><b>Données :</b> ${esc(a.donnees)}</p><p><b>Cause possible :</b> ${esc(a.cause)}</p><p><b>À contrôler :</b> ${esc(a.controle)}</p><button class="lnk" data-go="${a.vue}">Ouvrir le module</button></div>` : ''}</div>`;
+const F = {
+  pesee: [['date', 'Date', 'date', auj()], ['poids', 'Poids moyen (g)', 'number', '', '0.1']],
+  mortalite: [['date', 'Date', 'date', auj()], ['nb', 'Poissons morts', 'number', '', '1']],
+  eau: [['date', 'Date', 'date', auj()], ['temp', 'Température (°C)', 'number', '', '0.1'], ['ph', 'pH', 'number', '', '0.1'], ['o2', 'Oxygène dissous (mg/l)', 'number', '', '0.1'], ['sal', 'Salinité (‰, option)', 'number', '', '0.1'], ['turb', 'Turbidité (NTU, option)', 'number', '', '1']],
+  nourrissage: [['date', 'Date', 'date', auj()], ['distribue', 'Aliment distribué (kg)', 'number', '', '0.01'], ['temp', 'Température de l\'eau (°C)', 'number', '', '0.1'], ['aliment', 'Type d\'aliment', 'select-aliment', 'Défaut']],
+  prix: [['alevin', 'Prix d\'un alevin (F CFA)', 'number', '', '0.1'], ['aliment', 'Prix de l\'aliment (F CFA/kg)', 'number', '', '1'], ['vente', 'Prix de vente (F CFA/kg)', 'number', '', '1'], ['autres', 'Autres charges directes du cycle (F CFA)', 'number', '', '1'], ['statut', 'Statut du cycle', 'select-statut', 'Actif']],
+  invest: [['date', 'Date', 'date', auj()], ['designation', 'Désignation', 'text', ''], ['infra', 'Infrastructure concernée (option)', 'text', ''], ['quantite', 'Quantité', 'number', '1', '1'], ['cout', 'Coût unitaire (F CFA)', 'number', '', '1']],
+  charge: [['categorie', 'Catégorie', 'liste:Salaires permanents|Autres charges fixes', 'Salaires permanents'], ['designation', 'Désignation', 'text', ''], ['montant', 'Montant (F CFA)', 'number', '', '1'], ['periodicite', 'Périodicité (étiquette)', 'liste:Mensuel|Annuel|Par cycle', 'Mensuel']],
+  achat: [['date', 'Date', 'date', auj()], ['aliment', 'Type d\'aliment', 'text', 'Défaut'], ['fournisseur', 'Fournisseur (option)', 'text', ''], ['qte', 'Quantité achetée (kg)', 'number', '', '0.1'], ['prix', 'Prix unitaire (F CFA/kg, option)', 'number', '', '1']],
+  cycle: [['nom', 'Nom du cycle', 'text', ''], ['espece', 'Espèce', 'select', 'Clarias'], ['effectif', 'Effectif initial', 'number', '', '1'], ['poids0', 'Poids moyen initial (g)', 'number', '', '0.1'], ['date', 'Date d\'empoissonnement', 'date', auj()]],
+};
+const NOMS = { pesee: 'Pesée', mortalite: 'Mortalité', eau: 'Eau', nourrissage: 'Nourrissage', achat: 'Achat d\'aliment', prix: 'Prix et charges', invest: 'Investissement', charge: 'Charge fixe', cycle: 'Nouveau cycle' };
+function saisie() {
+  const x = ctx(); if (!x && !['cycle', 'achat', 'invest', 'charge'].includes(S.type)) return vide;
+  const f = F[S.type].map(([k, l, t, v, step]) => t.startsWith('liste:') ? `<label>${l}<select name="${k}">${t.slice(6).split('|').map((o) => `<option ${o === v ? 'selected' : ''}>${o}</option>`).join('')}</select></label>` : t === 'select-statut' ? `<label>${l}<select name="${k}">${['Actif', 'Terminé', 'Suspendu'].map((s) => `<option ${s === (cyc()?.statut || 'Actif') ? 'selected' : ''}>${s}</option>`).join('')}</select></label>` : t === 'select-aliment' ? `<label>${l}<select name="${k}">${typesAliment().map((a) => `<option>${esc(a)}</option>`).join('')}</select></label>` : t === 'select' ? `<label>${l}<select name="${k}"><option>Clarias</option><option>Tilapia</option></select></label>` : `<label>${l}<input name="${k}" type="${t}" ${t === 'number' ? `inputmode="decimal" step="${step}" min="0"` : ''} value="${esc(S.type === 'prix' ? cyc()?.prix?.[k] ?? '' : v)}" ${t === 'text' ? 'maxlength="60"' : ''}></label>`).join('');
+  let aide = '';
+  if (x && S.type === 'nourrissage') { const t = x.calc.eau?.temp; if (t != null) { const r = E.ration(x.c.espece, x.calc.g, x.calc.bio, t); aide = `<div class="note">Ration indicative : <b>${r.stop ? 'ne pas nourrir' : r.kg + ' kg en ' + r.repas + ' repas'}</b> (dernière température ${t} °C).</div>`; } }
+  return `<div class="seg"><button data-go="encadrement">Activités du jour</button>${Object.keys(NOMS).map((k) => `<button data-type="${k}" class="${k === S.type ? 'on' : ''}">${NOMS[k]}</button>`).join('')}</div>
+  <form id="f" class="card"><h3>${NOMS[S.type]}</h3>${aide}${f}<p id="err" class="errtxt"></p><button class="btn" id="ok" type="submit">Enregistrer</button></form>`;
+}
+async function enregistrer(ev) {
+  ev.preventDefault(); const fd = Object.fromEntries(new FormData(ev.target)), n = (k) => (fd[k] === '' ? null : Number(fd[k])), err = (m) => ($('#err').textContent = m);
+  const c = cyc(), t = S.type; let o;
+  if (t === 'invest' || t === 'charge') {
+    if (!fd.designation.trim()) return err('La désignation est obligatoire.');
+    if (t === 'invest') { if (!fd.date || fd.date > auj()) return err('La date est obligatoire et ne peut pas être dans le futur.'); if (!(n('quantite') > 0) || !(n('cout') >= 0)) return err('Quantité (> 0) et coût unitaire (≥ 0) sont obligatoires.'); o = { id: uid(), date: fd.date, t: Date.now(), designation: fd.designation.trim(), infra: fd.infra.trim(), quantite: n('quantite'), cout: n('cout') }; }
+    else { if (!(n('montant') >= 0) || n('montant') == null) return err('Le montant est obligatoire (≥ 0).'); o = { id: uid(), t: Date.now(), categorie: fd.categorie, designation: fd.designation.trim(), montant: n('montant'), periodicite: fd.periodicite }; }
+    const liste = t === 'invest' ? S.invest : S.charges, cle = JSON.stringify({ ...o, id: 0, t: 0 }); if (liste.some((a) => JSON.stringify({ ...a, id: 0, t: 0 }) === cle)) return err('Cet enregistrement existe déjà.');
+  } else if (t === 'prix') {
+    const p = { alevin: n('alevin'), aliment: n('aliment'), vente: n('vente'), autres: n('autres') };
+    if (Object.values(p).some((x) => x != null && x < 0)) return err('Les prix et charges ne peuvent pas être négatifs.');
+    o = { ...c, prix: Object.fromEntries(Object.entries(p).filter(([, x]) => x != null)), statut: fd.statut };
+  } else if (t === 'achat') {
+    if (!fd.date || fd.date > auj()) return err('La date est obligatoire et ne peut pas être dans le futur.');
+    if (!fd.aliment.trim() || !(n('qte') > 0)) return err('Le type d\'aliment et une quantité supérieure à 0 sont obligatoires.');
+    o = { id: uid(), type: 'achat', date: fd.date, t: Date.now(), aliment: fd.aliment.trim(), fournisseur: fd.fournisseur.trim(), qte: n('qte'), prix: n('prix') };
+    const cle = JSON.stringify({ ...o, id: 0, t: 0 }); if (S.achats.some((a) => JSON.stringify({ ...a, id: 0, t: 0 }) === cle)) return err('Cet achat existe déjà.');
+  } else if (t === 'cycle') {
+    if (!fd.nom.trim() || !(n('effectif') >= 1) || !(n('poids0') > 0)) return err('Nom, effectif (≥ 1) et poids initial (> 0) sont obligatoires.');
+    o = { id: 'CYC-' + fd.date.replaceAll('-', '') + '-' + String(S.cycles.length + 1).padStart(3, '0'), nom: fd.nom.trim(), espece: fd.espece, effectif: Math.round(n('effectif')), poids0: n('poids0'), date: fd.date };
+  } else {
+    if (!fd.date || fd.date > auj()) return err('La date est obligatoire et ne peut pas être dans le futur.');
+    if (fd.date < c.date) return err('La date précède l\'empoissonnement du cycle.');
+    o = { id: uid(), cycle: c.id, type: t, date: fd.date, t: Date.now() };
+    if (t === 'pesee') { if (!(n('poids') > 0)) return err('Le poids doit être supérieur à 0.'); o.poids = n('poids'); }
+    if (t === 'mortalite') { const s = ctx().calc.n; if (!(n('nb') >= 1) || n('nb') > s) return err(`Saisissez de 1 à ${s} poissons.`); o.nb = Math.round(n('nb')); }
+    if (t === 'eau') { if ([n('temp'), n('ph'), n('o2')].some((v) => v == null)) return err('Température, pH et oxygène sont obligatoires.'); Object.assign(o, { temp: n('temp'), ph: n('ph'), o2: n('o2'), sal: n('sal'), turb: n('turb') }); }
+    if (t === 'nourrissage') { if (n('distribue') == null) return err('La quantité distribuée est obligatoire.'); Object.assign(o, { distribue: n('distribue'), temp: n('temp'), aliment: fd.aliment || 'Défaut' }); }
+    const cle = JSON.stringify({ ...o, id: 0, t: 0 }); if (mes().some((m) => JSON.stringify({ ...m, id: 0, t: 0 }) === cle)) return err('Cet enregistrement existe déjà.');
+  }
+  { const au = await L.autoriser({ type: t === 'cycle' ? 'cycle' : 'saisie', cycles: S.cycles.length, enregistrements: S.mesures.length + S.achats.length + S.invest.length + S.charges.length + S.activites.length }); if (!au.ok) return err(au.msg); }
+  $('#ok').disabled = true;
+  try { if (!['cycle', 'prix'].includes(t)) { const an = await C.observer('SAISIE', { activite: NOMS[t] }); if (an.length) o.anom = an; } await put(t === 'cycle' || t === 'prix' ? 'cycles' : t === 'achat' ? 'achats' : t === 'invest' ? 'invest' : t === 'charge' ? 'charges' : 'mesures', o); if (t === 'cycle') await put('meta', { k: 'cid', v: o.id }); await charger(); toast(NOMS[t] + ' enregistré.'); S.type = t === 'cycle' ? 'pesee' : t; S.vue = t === 'cycle' ? 'accueil' : 'saisie'; rendre(); }
+  catch (e) { $('#ok').disabled = false; err('Échec de l\'enregistrement : ' + (e?.message || e)); }
+}
+function nexus() {
+  const x = ctx(); if (!x) return vide;
+  return `<h2>Alertes de Nexus</h2>${x.al.map(carte).join('')}<h2>Discuter avec Nexus <small>(réponses locales)</small></h2>
+  <div class="chat">${S.chat.map((m) => `<div class="m ${m.r}">${esc(m.t)}${m.vue ? `<br><button class="lnk" data-go="${m.vue}">Ouvrir le module</button>` : ''}</div>`).join('') || '<p class="sub">Essayez une suggestion ci-dessous.</p>'}</div>
+  <div class="sugg">${['Quelle quantité distribuer ?', 'Pourquoi cette alerte ?', 'Que contrôler en priorité ?', 'Explique le FCR'].map((q) => `<button data-q="${esc(q)}">${esc(q)}</button>`).join('')}</div>
+  <form id="q" class="ask"><input name="q" placeholder="Posez une question…" maxlength="200" autocomplete="off"><button class="btn">Envoyer</button></form>`;
+}
+async function poser(q) {
+  const x = ctx(); if (!x || !q.trim()) return; const r = repondre(q, x.c, x.calc, x.al, x.st);
+  S.chat.push({ r: 'u', t: q }, { r: 'n', t: r.texte, vue: r.vue }); S.chat = S.chat.slice(-50); await put('meta', { k: 'chat', v: S.chat }); rendre();
+}
+function resultats() {
+  const x = ctx(); if (!x) return vide; const { c, calc } = x, ps = mes().filter((m) => m.type === 'pesee'), W = 320, H = 150;
+  const pts = [[0, c.poids0], ...ps.map((p) => [Math.max(0, Math.round((new Date(p.date) - new Date(c.date)) / 864e5)), p.poids])];
+  const mx = Math.max(E.OBJECTIF.joursCible, ...pts.map((p) => p[0])), my = Math.max(E.OBJECTIF.poidsG, ...pts.map((p) => p[1])), X = (j) => 10 + (j / mx) * (W - 20), Y = (g) => H - 14 - (g / my) * (H - 24);
+  const line = pts.map((p) => `${X(p[0])},${Y(p[1])}`).join(' ');
+  const hist = mes().slice().reverse().slice(0, 15).map((m) => `<li><b>${esc(NOMS[m.type])}</b> ${esc(m.date)} — ${m.type === 'pesee' ? m.poids + ' g' : m.type === 'mortalite' ? m.nb + ' morts' : m.type === 'nourrissage' ? m.distribue + ' kg' : `${m.temp} °C, pH ${m.ph}, O₂ ${m.o2}`}</li>`).join('');
+  return `<h2>Résultats du cycle</h2><div class="grid">${kpi('Poids moyen (g)', calc.g, `attendu ${calc.attendu} g`)}${kpi('Mortalité cumulée', calc.mort)}${kpi('Aliment (kg)', E.xround(calc.alim, 2))}${kpi('FCR', calc.fcr)}</div>
+  ${carteEco(x.c, x.calc)}${carteStocks(x.st)}<div class="card"><h3>Croissance</h3><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Courbe de croissance"><line x1="${X(0)}" y1="${Y(0)}" x2="${X(E.OBJECTIF.joursCible)}" y2="${Y(E.OBJECTIF.poidsG)}" class="obj"/><polyline points="${line}" class="cur"/>${pts.map((p) => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="3"/>`).join('')}</svg><p class="sub">Pointillé : objectif ${E.OBJECTIF.poidsG} g en ${E.OBJECTIF.joursCible} jours.</p></div>
+  <div class="card"><h3>Historique</h3><ul class="hist">${hist || '<li>Aucun enregistrement.</li>'}</ul></div>`;
+}
+function plus() {
+  return `<h2>Sauvegarde</h2><div class="card"><p>Les données sont stockées sur cet appareil. Exportez-les pour les conserver ailleurs.</p><button class="btn" id="exp">Exporter (JSON)</button><p class="sub">Pour Excel (CSV, séparateur « ; ») :</p>${Object.keys(COLONNES).map((t) => `<button class="btn alt" data-csv="${t}">${{ cycles: 'Cycles', mesures: 'Mesures', achats: 'Achats', invest: 'Investissements', charges: 'Charges fixes' }[t]}</button>`).join('')}<label class="btn alt">Restaurer une sauvegarde<input type="file" id="imp" accept=".json,application/json" hidden></label><p id="st" class="sub"></p></div>
+  ${licenceCard()}<h2>Accès réservés</h2><div class="card"><button class="btn" data-go="supervision">Supervision</button><button class="btn alt" data-go="moteur">Administration (moteur)</button><p class="sub">Ces zones demandent un code.</p></div>
+  <h2>Version et limites</h2><div class="card"><p>Mon Technicien mobile — règles de calcul ${E.VERSION_REGLES} (aperçu). Calculs comparés au classeur V4.8 sur un cycle de référence.</p><p class="sub"><b>Pas encore disponibles :</b> encadrement quotidien, supervision, licence, rôles, horodatage, échange avec Excel, IA distante. Les écrans correspondants ne sont volontairement pas affichés.</p></div>`;
+}
+const fr = (x) => (typeof x === 'number' ? Math.round(x).toLocaleString('fr-FR') : x);
+const carteEco = (c, calc) => { const e = E.economie(c.effectif, calc.bio, calc.alim, c.prix, c.statut || 'Actif');
+  return `<div class="card"><h3>Économie du cycle <small>(${esc(e.AS)})</small></h3>${e.prixSaisis ? `<p>Résultat : <b class="${e.AO < 0 ? 'neg' : ''}">${fr(e.AO)} F CFA</b>${typeof e.AR === 'number' ? ` (${E.xround(e.AR * 100, 1)} % du chiffre d'affaires)` : ''}</p><p class="sub">Chiffre d'affaires estimé ${fr(e.AH)} · alevins ${fr(e.AF)} · aliment ${fr(e.AG)} · autres ${fr(c.prix?.autres || 0)}<br>Coût de production ${fr(e.AP)} F/kg · marge ${fr(e.AQ)} F/kg · marge variable ${fr(e.AI)} F</p><p class="sub">Aliment : quantités réellement saisies uniquement.</p>` : '<p class="sub">Renseignez les prix pour estimer le coût de production, la marge et le résultat.</p>'}<button class="lnk" data-go="saisie" data-type="prix">Saisir les prix et charges</button><button class="lnk" data-go="economie">Rentabilité et compte d'exploitation</button></div>`; };
+const carteStocks = (st) => `<div class="card"><h3>Stocks d'aliments</h3>${st.length ? st.map((s) => `<p><b>${esc(s.type)}</b> — ${s.stock} kg · ${typeof s.jours === 'number' ? s.jours + ' j restants' : esc(s.jours)}<br><span class="sub">${esc(s.statut)}${s.rupture.startsWith('20') ? ' · rupture vers le ' + s.rupture : ''}${s.qte ? ' · commande conseillée ' + s.qte + ' kg' : ''}</span></p>`).join('') : '<p class="sub">Aucun stock suivi. Saisie → Achat d\'aliment.</p>'}<button class="lnk" data-go="saisie" data-type="achat">Saisir un achat</button></div>`;
+const LIB = { ...C.LIBELLES }, CH = { 'ANOMALIE D\'HORODATAGE': '🔴', 'ANOMALIE DÉJÀ ENREGISTRÉE': '🟠', SURVEILLANCE: '🟡', NORMAL: '🟢' };
+const chrono = () => { const c = S.ch; if (!c) return ''; const l = c.entries.slice().reverse().slice(0, 15);
+  return `<h2>Supervision — contrôle de cohérence</h2><div class="card"><h3>${CH[c.etat]} ${esc(c.etat)}</h3>${c.ouvertes ? '<p>Une incohérence a été relevée dans la chronologie des enregistrements. Vérification recommandée des enregistrements concernés.</p>' : ''}
+  <p class="sub">Constat factuel sur l'heure du téléphone ; il n'établit pas à lui seul une manipulation volontaire. Intégrité du journal : ${c.rompue ? '<b>chaîne rompue à l\'entrée ' + c.rompue + '</b>' : 'valide'}.</p>
+  ${l.map((e) => `<p><b>${esc(LIB[e.type] || e.type)}</b> ${e.ecartMin ? '(' + e.ecartMin + ' min)' : ''}<br><span class="sub">${esc(e.local.slice(0, 16).replace('T', ' '))} UTC · ${esc(e.niveau)} · ${esc(e.evt)}${e.ctx?.activite ? ' · ' + esc(e.ctx.activite) : ''}</span>${e.niveau !== 'Information' ? `<br><select data-st="${e.seq}">${['Nouvelle', 'À vérifier', 'Vérifiée', 'Classée'].map((s) => `<option ${s === (c.statuts[e.seq] || 'Nouvelle') ? 'selected' : ''}>${s}</option>`).join('')}</select>` : ''}</p>`).join('') || '<p class="sub">Aucune incohérence enregistrée.</p>'}
+  <p class="sub">Le journal ne peut pas être supprimé. L'accès réservé au superviseur sera ajouté avec le module rôles.</p></div>`; };
+const codeForm = (role, titre) => `<h2>${titre}</h2><form id="pin" class="card" data-role="${role}"><label>Code d'accès<input name="pin" type="password" autocomplete="off" maxlength="40"></label><p id="err" class="errtxt"></p><button class="btn">Déverrouiller</button></form>`;
+const supervision = () => !A.actif('superviseur') ? codeForm('superviseur', 'Supervision') : `${S.defaut ? '<div class="note"><b>Code par défaut (0000) encore actif.</b> Changez-le ci-dessous.</div>' : ''}${resumeEnc()}${chrono()}
+  <h2>Code superviseur</h2><form id="chg" class="card"><label>Code actuel<input name="a" type="password" autocomplete="off"></label><label>Nouveau code (4 à 12 caractères)<input name="n" type="password" autocomplete="off" maxlength="12"></label><label>Confirmer<input name="c" type="password" autocomplete="off" maxlength="12"></label><p id="err" class="errtxt"></p><button class="btn">Changer le code</button></form><button class="btn alt" data-lock>Verrouiller</button>`;
+const moteur = () => !A.actif('moteur') ? codeForm('moteur', 'Administration (moteur)') : `<h2>Administration (moteur)</h2><div class="card"><p>Règles ${E.VERSION_REGLES} · stockage : ${esc(stockage.mode)} · licence : ${esc(S.lic?.etat || '')}${S.lic?.payload?.id ? ' (' + esc(S.lic.payload.id) + ')' : ''}</p><p class="sub">Le code moteur est fixe : il ne peut pas être modifié dans l'application.</p>
+  <button class="btn" data-act="reancrer">Réancrer l'horodatage</button><button class="btn alt" data-act="rsup">Remettre le code superviseur à 0000</button><p class="sub">Le réancrage déplace la référence temporelle ; il est inscrit au journal et rien n'est effacé.</p></div><button class="btn alt" data-lock>Verrouiller</button>`;
+const pct = (x) => (typeof x === 'number' ? E.xround(x * 100, 1) + ' %' : x);
+function economie() {
+  const x = ctx(), cf = E.chargesFixes(S.charges), cs = S.cycles.map((c) => { const k = E.calculerCycle(c, S.mesures.filter((m) => m.cycle === c.id).sort((a, b) => a.date.localeCompare(b.date) || a.t - b.t), auj()); return { id: c.id, F: c.effectif, K: k.bio, M: k.alim, prix: c.prix || {}, statut: c.statut || 'Actif' }; });
+  const cons = E.consolidee(cs, cf), ce = E.compteExploitation(S.invest, cons), k = cs.find((c) => c.id === S.cid), r = k && E.rentabiliteCycle(k.F, k.K, k.M, k.prix, cf);
+  const ligne = (l, v) => `<p>${l} <b>${typeof v === 'number' ? fr(v) : esc(v)}</b></p>`;
+  return `<h2>Rentabilité du cycle actif</h2>${r ? `<div class="card"><p><b class="${r.benefice < 0 ? 'neg' : ''}">Bénéfice : ${fr(r.benefice)} F CFA</b> (${pct(r.renta)})</p><p class="sub">Chiffre d'affaires ${fr(r.ca)} · coût total ${fr(r.total)} (alevins ${fr(r.alevins)}, aliment ${fr(r.aliment)}, charges fixes ${fr(cf.total)}) · coût de revient ${typeof r.revient === 'number' ? fr(r.revient) : '-'} F/kg</p><p>${esc(r.reco)}</p><p class="sub">Ici les charges fixes sont comptées en totalité dans le cycle, comme dans le classeur.</p></div>` : '<div class="card"><p class="sub">Aucun cycle.</p></div>'}
+  <h2>Exploitation consolidée</h2><div class="card">${ligne('Cycles (actifs et terminés) :', cons.n)}${ligne('Production (kg) :', cons.prod)}${ligne('Chiffre d\'affaires :', cons.ca)}${ligne('Coût total :', cons.cout)}<p class="sub">alevins ${fr(cons.alev)} · aliment ${fr(cons.alim)} · autres directes ${fr(cons.aut)} · charges fixes ${fr(cons.fixes)}</p><p><b class="${cons.res < 0 ? 'neg' : ''}">Résultat : ${fr(cons.res)} F CFA</b> (${pct(cons.renta)})</p><p>${esc(ce.etat)}</p>
+  ${ce.partAliment != null ? `<p class="sub">${ce.partAliment > 0.6 ? '⚠️ L\'aliment représente ' + pct(ce.partAliment) + ' des charges, part importante : vérifiez prix d\'achat, gaspillage et FCR.' : 'Part de l\'aliment dans les charges : ' + pct(ce.partAliment) + '.'}</p>` : ''}</div>
+  <h2>Compte d'exploitation</h2><div class="card"><p>Investissement total : <b>${fr(ce.invest)} F CFA</b></p><p>ROI : <b>${typeof ce.roi === 'number' ? pct(ce.roi) : esc(ce.roi)}</b></p>${S.invest.map((i) => `<p class="sub">${esc(i.date)} · ${esc(i.designation)} · ${i.quantite} × ${fr(i.cout)}</p>`).join('')}<button class="lnk" data-go="saisie" data-type="invest">Saisir un investissement</button></div>
+  <div class="card"><p>Charges fixes : <b>${fr(cf.total)} F CFA</b> (salaires ${fr(cf.salaires)} · autres ${fr(cf.autres)})</p>${S.charges.map((c) => `<p class="sub">${esc(c.categorie)} · ${esc(c.designation)} · ${fr(c.montant)} (${esc(c.periodicite)})</p>`).join('')}<p class="sub">La périodicité est une simple étiquette : les montants sont additionnés tels quels, comme dans le classeur.</p><button class="lnk" data-go="saisie" data-type="charge">Saisir une charge fixe</button></div>`;
+}
+const local = () => { const d = new Date(), p = (n) => String(n).padStart(2, '0'); return { date: `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`, frac: (d.getHours() * 60 + d.getMinutes()) / 1440 }; };
+const RANGC = { 1: 'P1', 2: 'P1', 3: 'P2', 4: 'P3', 5: 'OK' };
+function jourEnc(c, calc, date) {
+  const now = local(), tp = calc.eau?.temp ?? calc.nour?.temp, ration = tp != null ? E.ration(c.espece, calc.g, calc.bio, tp).kg : null, rec = (n) => S.activites.find((r) => r.cycle === c.id && r.date === date && r.n === n);
+  const repas = CAT.map((a, i) => (a.famille === 'NOURRISSAGE' && EN.planifie(a, date) ? i : -1)).filter((i) => i >= 0), seuilMort = Math.max(1, (EN.PARAMS.seuilMortPct / 100) * calc.n);
+  const prevus = CAT.map((a) => (a.famille === 'NOURRISSAGE' && ration != null ? E.xround((ration * a.part) / 100, 2) : null)), somme = prevus.filter((x) => x != null).reduce((s, x) => s + x, 0);
+  const lignes = CAT.map((a, i) => {
+    const r = rec(i); let res = r ? r.res : '';
+    if (!r && a.famille === 'MORTALITE') { const m = S.mesures.filter((x) => x.cycle === c.id && x.type === 'mortalite' && x.date === date).reduce((s, x) => s + x.nb, 0); if (m > 0) res = m; }
+    if (!r && a.famille === 'COMPTAGE' && S.mesures.some((x) => x.cycle === c.id && x.type === 'pesee' && x.date === date)) res = 'Réalisé (Pesées)';
+    const prevu = a.famille === 'BILAN' ? (repas.length && somme ? E.xround(somme, 2) : null) : prevus[i];
+    return { i, a, r, res, prevu, e: EN.etat(a, date, res, r?.h, now, { prevu, espece: c.espece, seuilMort, repasRestants: repas.filter((k) => !rec(k)).length, rattrape: !!(r && r.vDate && r.vDate > r.date) }) };
+  });
+  const n = (f) => lignes.filter((l) => l.e.U && f(l.e)).length;
+  return { date, lignes, faites: n((e) => e.W === 'RES'), enCours: n((e) => e.W === 'ENC'), nonEnr: n((e) => e.W === 'NON'), ecarts: n((e) => e.W === 'RES' && e.V <= 3) };
+}
+const alertesEnc = (j) => [j.ecarts && { p: 'P2', titre: `${j.ecarts} activité(s) en écart ou résultat anormal`, constat: 'Des résultats du jour sortent de la norme ou ont été enregistrés en retard.', donnees: `Journal du ${j.date}`, cause: 'Voir le détail de chaque activité.', action: 'Ouvrir les activités du jour et lire la consigne.', controle: 'Statut de chaque activité', pourquoi: 'Statuts du classeur : action requise, résultat anormal, écart/retard.', vue: 'encadrement' },
+  j.nonEnr && { p: 'P1', titre: `${j.nonEnr} activité(s) non enregistrée(s)`, constat: 'Des activités prévues sont passées sans résultat enregistré.', donnees: `Journal du ${j.date}`, cause: 'Activité non faite ou résultat non saisi.', action: 'Réaliser puis saisir le résultat, ou noter la raison du retard.', controle: 'Statut « non enregistrée »', pourquoi: 'L\'heure prévue et la tolérance de l\'activité sont dépassées.', vue: 'encadrement' }].filter(Boolean);
+const carteJour = (j) => `<div class="card"><h3>Activités du jour</h3><p>${j.faites} faite(s) · ${j.enCours} en cours · <b class="${j.nonEnr ? 'neg' : ''}">${j.nonEnr} non enregistrée(s)</b></p><button class="lnk" data-go="encadrement">Ouvrir les activités du jour</button></div>`;
+function encadrement() {
+  const x = ctx(); if (!x) return vide; const c = x.c, now = local(), date = S.jour || now.date, j = jourEnc(c, x.calc, date), sup = A.actif('superviseur');
+  const jours = [...Array(8)].map((_, k) => { const d = new Date(); d.setDate(d.getDate() - k); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }).filter((d) => d >= c.date);
+  const champ = (a) => a.type === 'Réalisé / non réalisé' ? '<select name="res"><option>Réalisé</option><option>Non réalisé</option></select>' : a.type === 'RAS / Anomalie' ? '<select name="res"><option>RAS</option><option>Anomalie</option></select>' : `<input name="res" type="number" inputmode="decimal" step="0.01" min="0" placeholder="${esc(a.unite)}">`;
+  return `<h2>Activités du jour</h2><select id="jour">${jours.map((d) => `<option ${d === date ? 'selected' : ''}>${d}</option>`).join('')}</select><p class="sub">${j.faites} faite(s) · ${j.enCours} en cours · ${j.nonEnr} non enregistrée(s). L'heure d'enregistrement est celle du téléphone.</p>
+  ${j.lignes.filter((l) => l.e.U).map((l) => `<div class="card al ${l.e.W === 'RES' ? RANGC[l.e.V] || '' : ''}"><b>${l.a.icone} ${esc(l.a.nom)}</b> · ${EN.hhmm(l.a.heure)}<br><span>${esc(l.e.label)}</span>${l.prevu != null ? `<br><span class="sub">Prévu : ${l.prevu} ${esc(l.a.unite)}</span>` : ''}${l.res !== '' ? `<br><span class="sub">Résultat : ${esc(l.res)} ${typeof l.res === 'number' ? esc(l.a.unite) : ''}${l.r ? ' · enregistré à ' + EN.hhmm(l.r.h) : ' · (journal)'}${l.r?.obs ? ' · ' + esc(l.r.obs) : ''}</span>` : ''}${sup && l.r?.al ? `<br><span class="sub neg">⚠ ${esc(EN.CHRONO_MSG[l.r.al])}</span>` : ''}
+  ${!l.r && date <= now.date && l.e.W !== 'NA' && !(l.a.famille === 'BILAN' ? false : l.res !== '') ? (S.val === l.i ? `<form id="val"><label>${l.a.type === 'Automatique' ? 'Consommation du jour' : 'Résultat'}${champ(l.a)}</label><label>Observation (option)<input name="obs" maxlength="120"></label><p id="err" class="errtxt"></p><button class="btn">Enregistrer</button><button type="button" class="lnk" data-val="">Annuler</button></form>` : `<button class="lnk" data-val="${l.i}">Valider cette activité</button>`) : ''}</div>`).join('')}`;
+}
+async function valider(e) {
+  e.preventDefault(); const fd = Object.fromEntries(new FormData(e.target)), i = S.val, a = CAT[i], err = (m) => ($('#err').textContent = m), c = cyc(), now = local(), date = S.jour || now.date; let res = fd.res ?? '';
+  if (['Quantité', 'Mesure', 'Comptage', 'Automatique'].includes(a.type)) { res = fd.res === '' ? NaN : Number(fd.res); if (!(res >= 0)) return err('Saisissez une valeur numérique (≥ 0).'); } else if (!res) return err('Choisissez un résultat.');
+  if (S.activites.some((r) => r.cycle === c.id && r.date === date && r.n === i)) return err('Cette activité est déjà enregistrée.');
+  const tPrec = S.activites.reduce((m, r) => Math.max(m, r.t), 0) || null, t = Date.now(), h = now.frac, al = EN.controleChrono(h, date < now.date ? NaN : a.heure, tPrec, t);
+  const au = await L.autoriser({ type: 'saisie', cycles: S.cycles.length, enregistrements: S.mesures.length + S.achats.length + S.invest.length + S.charges.length + S.activites.length }); if (!au.ok) return err(au.msg);
+  try { const an = await C.observer('VALIDATION', { activite: a.nom }); await put('activites', { id: uid(), cycle: c.id, date, n: i, res, obs: (fd.obs || '').trim(), h, t, al, vDate: now.date, anom: an }); await charger(); S.val = null; toast('Activité enregistrée.'); } catch (x) { return err('Échec de l\'enregistrement : ' + (x?.message || x)); }
+  rendre();
+}
+function resumeEnc() {
+  const x = ctx(); if (!x) return ''; const lim = new Date(); lim.setDate(lim.getDate() - 6); const p2 = (n) => String(n).padStart(2, '0'), d0 = `${lim.getFullYear()}-${p2(lim.getMonth() + 1)}-${p2(lim.getDate())}`, l = S.activites.filter((r) => r.al > 0 && r.date >= d0).sort((a, b) => b.t - a.t);
+  return `<h2>Encadrement quotidien</h2><div class="card"><p>Aujourd'hui : ${x.enc.faites} faite(s) · ${x.enc.enCours} en cours · <b class="${x.enc.nonEnr ? 'neg' : ''}">${x.enc.nonEnr} non enregistrée(s)</b> · ${x.enc.ecarts} en écart</p><h3>Contrôle de chronologie (7 jours)</h3>${l.map((r) => `<p>${esc(CAT[r.n].nom)} · ${esc(r.date)} · ${EN.hhmm(r.h)}<br><span class="sub neg">⚠ ${esc(EN.CHRONO_MSG[r.al])}</span></p>`).join('') || '<p class="sub">Aucune incohérence de chronologie sur les activités.</p>'}<button class="lnk" data-go="encadrement">Ouvrir les activités du jour</button></div>`;
+}
+const VUES = { accueil, saisie, nexus, resultats, plus, supervision, moteur, economie, encadrement };
+const licAvis = () => (S.lic && S.lic.etat !== 'valide' ? `<div class="note">${S.lic.etat === 'expiree' ? '<b>Licence expirée</b> : saisie bloquée ; consultation et export restent possibles (Plus → Licence).' : S.lic.etat === 'demo' ? '<b>Version de démonstration</b> : fonctions limitées (Plus → Licence pour activer).' : '<b>Licence non valide</b> : saisie bloquée (Plus → Licence).'}</div>` : '');
+const licenceCard = () => { const l = S.lic || {}, p = l.payload || {}; const txt = l.etat === 'valide' ? `Licence valide — ${esc(p.client)}${p.fin ? ' jusqu\'au ' + esc(p.fin) : ' (sans limite de durée)'}` : l.etat === 'expiree' ? `Licence expirée le ${esc(p.fin)} : saisie bloquée (consultation et export possibles).` : l.etat === 'future' ? 'Licence pas encore valide : vérifiez la date du téléphone.' : l.etat === 'invalide' ? 'Licence enregistrée non valide : saisie bloquée.' : `Version de démonstration : ${L.DEMO.cyclesMax} cycle et ${L.DEMO.enregistrementsMax} enregistrements maximum.`;
+  return `<h2>Licence</h2><div class="card"><p>${txt}</p><form id="lic"><label>Code de licence<textarea name="tok" rows="3" placeholder="MTL1.…"></textarea></label><p id="err" class="errtxt"></p><button class="btn">Activer la licence</button></form></div>`; };
+const avis = () => (stockage.mode === 'memoire' ? '<div class="note"><b>Stockage indisponible dans ce navigateur.</b> Les données ne sont conservées que tant que cette page reste ouverte. Exportez-les souvent (Plus → Exporter).</div>' : '') + (/^https?:$/.test(location.protocol) ? '' : '<div class="note">Mode fichier local : pas d\'installation ni de cache hors ligne. Ouvrez l\'application depuis une adresse https pour les obtenir.</div>');
+function rendre() {
+  $('#v').innerHTML = avis() + licAvis() + VUES[S.vue](); const nv = ['supervision', 'moteur'].includes(S.vue) ? 'plus' : S.vue === 'economie' ? 'resultats' : S.vue === 'encadrement' ? 'saisie' : S.vue; document.querySelectorAll('nav button').forEach((b) => b.classList.toggle('on', b.dataset.go === nv));
+  $('#lic')?.addEventListener('submit', async (e) => { e.preventDefault(); const r = await L.installer(new FormData(e.target).get('tok')); if (!r.ok) return ($('#err').textContent = r.msg); S.lic = await L.statut(); toast('Licence activée.'); rendre(); });
+  $('#val')?.addEventListener('submit', valider);
+  $('#pin')?.addEventListener('submit', async (e) => { e.preventDefault(); const f = e.target, r = await A.connecter(f.dataset.role, new FormData(f).get('pin')); if (!r.ok) return ($('#err').textContent = r.msg); S.ch = await C.lire(); rendre(); });
+  $('#chg')?.addEventListener('submit', async (e) => { e.preventDefault(); const d = new FormData(e.target), err = (m) => ($('#err').textContent = m); if (d.get('n') !== d.get('c')) return err('La confirmation ne correspond pas.'); const r = await A.changerCodeSuperviseur(d.get('a'), d.get('n')); if (!r.ok) return err(r.msg); S.defaut = await A.codeParDefaut(); toast('Code superviseur modifié.'); rendre(); }); scrollTo(0, 0);
+  $('#f')?.addEventListener('submit', enregistrer); $('#q')?.addEventListener('submit', (e) => { e.preventDefault(); poser(new FormData(e.target).get('q')); });
+}
+document.addEventListener('click', async (e) => {
+  const b = e.target.closest('[data-go],[data-type],[data-why],[data-q],[data-lock],[data-act],[data-csv],[data-val],#exp'); if (!b) return;
+  if (b.dataset.val != null) { S.val = b.dataset.val === '' ? null : +b.dataset.val; return rendre(); }
+  if (b.dataset.csv) { const t = b.dataset.csv, src = { cycles: S.cycles, mesures: S.mesures, achats: S.achats, invest: S.invest, charges: S.charges }[t], a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv(t, src)], { type: 'text/csv;charset=utf-8' })); a.download = `mon-technicien-${t}-${auj()}.csv`; a.click(); return toast(`${src.length} ligne(s) exportée(s) (${t}).`); }
+  if (b.dataset.lock != null) { A.verrouiller(); S.ch = await C.lire(); S.vue = 'plus'; return rendre(); }
+  if (b.dataset.act) { try { if (b.dataset.act === 'reancrer') { await C.reancrer(); toast('Horodatage réancré (inscrit au journal).'); } else { await A.reinitialiserSuperviseur(); S.defaut = true; toast('Code superviseur remis à 0000.'); } S.ch = await C.lire(); } catch (x) { toast(x.message, true); } return rendre(); }
+  if (b.dataset.type) S.type = b.dataset.type; if (b.dataset.go) S.vue = b.dataset.go;
+  if (b.dataset.why != null) S.ouverte = S.ouverte === +b.dataset.why ? null : +b.dataset.why;
+  if (b.dataset.q) return poser(b.dataset.q);
+  if (b.id === 'exp') { const o = await exporter(), a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(o)], { type: 'application/json' })); a.download = `mon-technicien-${auj()}.json`; a.click(); await put('meta', { k: 'sauv', v: o.date }); S.sauv = o.date; $('#st').textContent = `Export créé (${o.cycles.length} cycle(s), ${o.mesures.length} enregistrement(s)). Conservez le fichier hors du téléphone.`; return; }
+  rendre();
+});
+document.addEventListener('change', async (e) => {
+  if (e.target.id === 'jour') { S.jour = e.target.value; S.val = null; rendre(); }
+  if (e.target.dataset?.st) { try { await C.fixerStatut(+e.target.dataset.st, e.target.value); S.ch = await C.lire(); } catch (x) { toast(x.message, true); } rendre(); }
+  if (e.target.id === 'cid') { S.cid = e.target.value; await put('meta', { k: 'cid', v: S.cid }); rendre(); }
+  if (e.target.id === 'imp') { try { const r = await importer(await e.target.files[0].text()); await charger(); toast(`Restauré : ${r.ajoutes} ajouté(s), ${r.identiques} déjà présent(s)${r.conflits.length ? ', ' + r.conflits.length + ' conflit(s) ignoré(s) (contenu différent pour un même identifiant)' : ''}.`, r.conflits.length > 0); rendre(); } catch (x) { toast(x.message, true); } }
+});
+addEventListener('online', rendre); addEventListener('offline', rendre);
+(async () => {
+  try { navigator.storage?.persist?.(); await charger(); } catch (e) { $('#v').innerHTML = `<div class="card"><h3>Stockage indisponible</h3><p>${esc(e.message)}</p></div>`; return; }
+  await C.observer('OUVERTURE'); S.ch = await C.lire(); rendre();
+  const obs = (e) => C.observer(e).then(async () => { S.ch = await C.lire(); if (S.vue === 'plus') rendre(); }).catch(() => {});
+  setInterval(() => !document.hidden && obs('PERIODIQUE'), 6e4); document.addEventListener('visibilitychange', () => !document.hidden && obs('RETOUR_APPLICATION'));
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('./sw.js').then((r) => r.addEventListener('updatefound', () => toast('Nouvelle version prête : rouvrez l\'application.'))).catch(() => {});
+})();
+
+return {  }; })();</script></body></html>
