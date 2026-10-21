@@ -19,7 +19,7 @@ nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#fff;box-shad
 <nav aria-label="Navigation principale"><button data-go="accueil">Accueil</button><button data-go="saisie">Saisie</button><button data-go="nexus">Nexus</button><button data-go="resultats">Résultats</button><button data-go="plus">Plus</button></nav>
 <script>const __m = {};
 __m.reference = (() => { 
-const __d = {"normes": {"Clarias": {"Température": [24, 26, 30, 32], "pH": [6, 6.5, 8.5, 9], "Oxygène dissous": [2, 3, 8, 10], "Salinité": [0, 0, 5, 8], "Turbidité": [0, 0, 50, 100]}, "Tilapia": {"Température": [20, 25, 32, 35], "pH": [5, 6.5, 9, 10], "Oxygène dissous": [1, 3, 8, 10], "Salinité": [0, 0, 5, 10], "Turbidité": [0, 0, 50, 100]}}, "tempFacteur": [[-999, 0], [20, 0.5], [24, 0.8], [28, 1]], "fcrPaliers": [[-999, "🔴 ANORMALEMENT BAS — CONTRÔLE OBLIGATOIRE (vérifier les données avant de conclure à une excellente performance)", 1], [0.5, "🟡 TRÈS FAIBLE — À SURVEILLER", 3], [1, "🟢 TRÈS BON", 4], [1.4, "🟢 BON / SATISFAISANT", 4], [1.8, "🟡 MOYEN — À SURVEILLER", 3], [2.2, "🟠 ÉLEVÉ — À CORRIGER", 2], [2.8, "🔴 CRITIQUE — ACTION REQUISE", 1]], "tables": {"Clarias": [["Poids min (g)", "Poids max (g)", "Ration (% biomasse/j)", "Repas/j"], [0, 5, 0.1, 3], [5, 20, 0.08, 3], [20, 50, 0.06, 3], [50, 100, 0.05, 3], [100, 250, 0.04, 3], [250, 500, 0.03, 2], [500, 1000, 0.025, 2], [1000, 999999, 0.02, 2]], "Tilapia": [["Poids min (g)", "Poids max (g)", "Ration (% biomasse/j)", "Repas/j"], [0, 5, 0.125, 4], [5, 20, 0.09, 4], [20, 100, 0.06, 3], [100, 250, 0.035, 3], [250, 500, 0.025, 2], [500, 999999, 0.0175, 2]]}};
+const __d = {"seeds": [{"id": "Clarias", "nom": "Défaut", "espece": "Clarias", "rows": [[0, 5, 0.1, 3], [5, 20, 0.08, 3], [20, 50, 0.06, 3], [50, 100, 0.05, 3], [100, 250, 0.04, 3], [250, 500, 0.03, 2], [500, 1000, 0.025, 2], [1000, 999999, 0.02, 2]]}, {"id": "Clarias|Biomar", "nom": "Biomar", "espece": "Clarias", "rows": [[0, 5, 0.09, 3], [5, 20, 0.07, 3], [20, 50, 0.06, 3], [50, 100, 0.05, 3], [100, 250, 0.04, 3], [250, 500, 0.028, 2], [500, 1000, 0.02, 2], [1000, 999999, 0.015, 2]]}, {"id": "Clarias|Alltech Coppens", "nom": "Alltech Coppens", "espece": "Clarias", "rows": [[0.025, 0.15, 0.12, 6], [0.15, 0.63, 0.1, 6], [0.63, 1.5, 0.09, 6], [1.5, 3, 0.08, 6], [3, 12, 0.07, 6], [12, 50, 0.06, 4], [50, 200, 0.045, 3], [200, 500, 0.03, 3], [500, 1000, 0.02, 2], [1000, 1500, 0.015, 2]]}, {"id": "Tilapia", "nom": "Défaut", "espece": "Tilapia", "rows": [[0, 5, 0.125, 4], [5, 20, 0.09, 4], [20, 100, 0.06, 3], [100, 250, 0.035, 3], [250, 500, 0.025, 2], [500, 999999, 0.0175, 2]]}, {"id": "Tilapia|Biomar", "nom": "Biomar", "espece": "Tilapia", "rows": [[0, 5, 0.125, 4], [5, 20, 0.09, 4], [20, 100, 0.06, 3], [100, 250, 0.035, 3], [250, 500, 0.025, 2], [500, 999999, 0.0175, 2]]}, {"id": "Tilapia|Alltech Coppens", "nom": "Alltech Coppens", "espece": "Tilapia", "rows": [[0, 5, 0.125, 4], [5, 20, 0.09, 4], [20, 100, 0.06, 3], [100, 250, 0.035, 3], [250, 500, 0.025, 2], [500, 999999, 0.0175, 2]]}, {"id": "Tilapia|Raanan", "nom": "Raanan", "espece": "Tilapia", "rows": [[0, 5, 0.125, 4], [5, 20, 0.09, 4], [20, 100, 0.06, 3], [100, 250, 0.035, 3], [250, 500, 0.025, 2], [500, 999999, 0.0175, 2]]}], "dens": {"Bassin béton": {"min": 30, "max": 32}, "Étang": {"min": 38, "max": 40}, "Bac hors sol": {"min": 15, "max": 20}}, "densTilapia": {"Bassin béton": {"min": 10, "max": 20}, "Étang": {"min": 2, "max": 3}, "Bac hors sol": {"min": 15, "max": 25}}, "cage": {"d1": 250, "d10": 200}, "normes": {"Clarias": {"Température": [24, 26, 30, 32], "pH": [6, 6.5, 8.5, 9], "Oxygène dissous": [2, 3, 8, 10], "Salinité": [0, 0, 5, 8], "Turbidité": [0, 0, 50, 100]}, "Tilapia": {"Température": [20, 25, 32, 35], "pH": [5, 6.5, 9, 10], "Oxygène dissous": [1, 3, 8, 10], "Salinité": [0, 0, 5, 10], "Turbidité": [0, 0, 50, 100]}}, "tempFacteur": [[-999, 0], [20, 0.5], [24, 0.8], [28, 1]], "fcrPaliers": [[-999, "🔴 ANORMALEMENT BAS — CONTRÔLE OBLIGATOIRE (vérifier les données avant de conclure à une excellente performance)", 1], [0.5, "🟡 TRÈS FAIBLE — À SURVEILLER", 3], [1, "🟢 TRÈS BON", 4], [1.4, "🟢 BON / SATISFAISANT", 4], [1.8, "🟡 MOYEN — À SURVEILLER", 3], [2.2, "🟠 ÉLEVÉ — À CORRIGER", 2], [2.8, "🔴 CRITIQUE — ACTION REQUISE", 1]], "tables": {"Clarias": [["Poids min (g)", "Poids max (g)", "Ration (% biomasse/j)", "Repas/j"], [0, 5, 0.1, 3], [5, 20, 0.08, 3], [20, 50, 0.06, 3], [50, 100, 0.05, 3], [100, 250, 0.04, 3], [250, 500, 0.03, 2], [500, 1000, 0.025, 2], [1000, 999999, 0.02, 2]], "Tilapia": [["Poids min (g)", "Poids max (g)", "Ration (% biomasse/j)", "Repas/j"], [0, 5, 0.125, 4], [5, 20, 0.09, 4], [20, 100, 0.06, 3], [100, 250, 0.035, 3], [250, 500, 0.025, 2], [500, 999999, 0.0175, 2]]}};
 
 return { default: __d }; })();
 __m.engine = (() => { const R = __m.reference.default;
@@ -49,8 +49,29 @@ function rationTable(esp, poids) {
   return { pct: r[2], repas: r[3] };
 }
 function ration(esp, poidsG, biomasseKg, tempC) {
-  const t = rationTable(esp, poidsG), f = facteurTemp(tempC);
-  return { pct: t.pct, repas: t.repas, facteur: f, ajustee: t.pct * f, kg: xround(biomasseKg * t.pct * f, 2), stop: f === 0 };
+  const t = rationTable(esp, poidsG), connue = tempC != null && !isNaN(tempC), f = connue ? facteurTemp(tempC) : 1; // sans température : ration de base (facteur 1), ajustée dès qu'une température est saisie
+  return { pct: t.pct, repas: t.repas, facteur: f, ajustee: t.pct * f, kg: xround(biomasseKg * t.pct * f, 2), stop: connue && f === 0, tempConnue: connue };
+}
+const INFRAS = ['Bassin béton', 'Étang', 'Bac hors sol', 'Cage flottante'], clone = (x) => JSON.parse(JSON.stringify(x));
+const ENTETE = ['Poids min (g)', 'Poids max (g)', 'Ration (% biomasse/j)', 'Repas/j'], TEMP0 = clone(R.tempFacteur), NORMES0 = clone(R.normes), FCR0 = clone(R.fcrPaliers), OBJ0 = { poidsG: 1000, joursCible: 180 }, STOCK0 = { anticipation: 15, urgent: 7, critique: 3, horizon: 30, delai: 0, securite: 0 }, FIAB0 = { pesee: 21, elevee: 0.85, controle: 0.6 };
+const defParams = () => ({ tables: Object.fromEntries(R.seeds.map((t) => [t.id, { nom: t.nom, espece: t.espece, rows: clone(t.rows) }])), dens: { Clarias: clone(R.dens), Tilapia: clone(R.densTilapia) }, prixTable: {}, cage: clone(R.cage), temp: clone(TEMP0), normes: clone(NORMES0), objectif: clone(OBJ0), fcr: FCR0.map((p) => p[0]), stock: clone(STOCK0), fiab: clone(FIAB0) });
+let P = null; // paramètres actifs : valeurs du classeur (feuille Paramètres), modifiables dans l'application
+function appliquer(p) { P = p || defParams(); if (!P.dens?.Clarias) P.dens = { Clarias: P.dens || clone(R.dens), Tilapia: clone(R.densTilapia) }; if (!P.dens.Tilapia) P.dens.Tilapia = clone(R.densTilapia); P.prixTable ||= {}; P.normes ||= clone(NORMES0); P.objectif = { ...OBJ0, ...P.objectif }; if (!P.fcr || P.fcr.length !== FCR0.length) P.fcr = FCR0.map((p) => p[0]); P.stock = { ...STOCK0, ...P.stock }; P.fiab = { ...FIAB0, ...P.fiab }; R.normes = P.normes; R.fcrPaliers = FCR0.map((p, i) => [P.fcr[i], p[1], p[2]]); Object.assign(OBJECTIF, P.objectif); Object.assign(PARAMS_STOCK, P.stock); R.tables = Object.fromEntries(Object.entries(P.tables).map(([id, t]) => [id, [ENTETE, ...t.rows]])); R.tempFacteur = P.temp; return P; }
+const cle = (c) => (c?.table && R.tables[c.table] ? c.table : c.espece);
+const prixEffectif = (c) => { const p = c?.prix || {}; if (typeof p.aliment === 'number') return p; const t = (P || appliquer()).prixTable?.[cle(c)]; return t > 0 ? { ...p, aliment: t } : p; }; // prix saisi pour le cycle, sinon prix de sa table (Paramètres §14), sinon absent (compté 0)
+const liste = () => Object.entries((P || appliquer()).tables).map(([id, t]) => ({ id, nom: t.nom, espece: t.espece }));
+const estSeed = (id) => R.seeds.some((t) => t.id === id);
+function densite(esp, c, n) { // règles du classeur : poissons/m² (min-max par type) ; cage flottante Tilapia en poissons/m³, dégressif avec le volume (1 m³ -> 10 m³)
+  if (!c || !INFRAS.includes(c.infra) || !(c.lon > 0 && c.lar > 0 && c.prof > 0) || !(n > 0)) return null;
+  const D = P || appliquer(), surf = c.lon * c.lar, vol = surf * c.prof, base = { surf: xround(surf, 2), vol: xround(vol, 2) };
+  if (c.infra === 'Cage flottante') {
+    const reel = n / vol;
+    if (esp !== 'Tilapia') return { ...base, unite: 'poissons/m³', reel: xround(reel, 1), statut: 'Rouge', msg: 'Cage flottante non recommandée pour le Clarias gariepinus' };
+    const rec = D.cage.d1 + (D.cage.d10 - D.cage.d1) * Math.min(1, Math.max(0, (vol - 1) / 9)), q = reel / rec, st = q < 0.8 ? 'Bleu' : q <= 1.1 ? 'Vert' : q <= 1.3 ? 'Orange' : 'Rouge';
+    return { ...base, unite: 'poissons/m³', reel: xround(reel, 1), min: xround(0.8 * rec, 0), max: xround(1.1 * rec, 0), nMin: Math.ceil(0.8 * rec * vol), nMax: Math.floor(1.1 * rec * vol), statut: st, msg: { Bleu: 'Densité faible (sous la recommandation)', Vert: 'Densité acceptable', Orange: 'Densité élevée : vigilance', Rouge: 'Densité très élevée : risque' }[st], sugN: st === 'Rouge' || st === 'Orange' ? Math.floor(1.1 * rec * vol) : null, sugS: null };
+  }
+  const { min, max } = (D.dens[esp] || D.dens.Clarias)[c.infra], reel = n / surf, trop = reel > max;
+  return { ...base, unite: 'poissons/m²', reel: xround(reel, 1), min, max, nMin: Math.ceil(min * surf), nMax: Math.floor(max * surf), statut: trop ? 'Rouge' : 'Vert', msg: trop ? 'Risque de mortalité élevé' : 'Densité conforme', sugN: trop ? Math.floor(max * surf) : null, sugS: trop ? xround(n / max, 1) : null };
 }
 const jours = (d0, d1) => Math.round((new Date(d1) - new Date(d0)) / 864e5);
 function calculerCycle(c, mesures, aujourdhui) {
@@ -64,6 +85,24 @@ function calculerCycle(c, mesures, aujourdhui) {
     attendu, ecart: g - attendu, gmq: j > 0 ? xround((g - c.poids0) / j, 2) : 0, pesee: !!pes,
     eau: dernier('eau'), nour: dernier('nourrissage') };
 }
+// --- Fiabilité des données : règles de la feuille cachée _nexus_fiabilite (V4.8) et de Paramètres §7bis.
+// Points d'anomalie sur 12 (FCR 3, prix aliment 2, prix vente 2, pesée 2, mortalité 3) ; score = (12 - points) / 12.
+function fiabilite(c, mesures, auj) {
+  const complet = !!(c && c.nom && c.espece && c.date && Number.isFinite(c.effectif) && c.effectif > 0 && Number.isFinite(c.poids0));
+  if (!complet) return { complet: false, score: null, niveau: null, statut: '', raisons: [], points: 0 };
+  const D = (P || appliquer()).fiab, calc = calculerCycle(c, mesures, auj), f = fcrStatut(calc.fcr), raisons = []; let pts = 0;
+  const add = (n, t) => { pts += n; raisons.push(t); };
+  if (f.nc) add(2, 'FCR non calculable (données insuffisantes)'); else if (f.rang === 1) add(3, 'FCR anormal : vérification obligatoire'); else if (f.rang === 3) add(1, 'FCR à surveiller');
+  if (!(prixEffectif(c).aliment > 0)) add(2, 'Prix de l\'aliment non renseigné');
+  if (!(c.prix?.vente > 0)) add(2, 'Prix de vente non renseigné');
+  const dp = mesures.filter((m) => m.type === 'pesee').map((m) => m.date).sort().at(-1);
+  if (!dp) add(2, 'Aucune pesée enregistrée pour ce cycle'); else if (jours(dp, auj) > D.pesee) add(2, `Dernière pesée ancienne (${jours(dp, auj)} jours)`);
+  const mort = calc.mort / c.effectif;
+  if (mort > 0.1) add(3, `Mortalité anormalement élevée (${xround(mort * 100, 1)} %)`); else if (mort > 0.05) add(1, `Mortalité à surveiller (${xround(mort * 100, 1)} %)`);
+  const score = Math.max(0, xround((100 * (12 - pts)) / 12, 0)), niveau = score >= D.elevee * 100 ? 'elevee' : score >= D.controle * 100 ? 'controle' : 'faible';
+  return { complet: true, score, niveau, points: pts, raisons, statut: `${{ elevee: '🟢 Fiabilité élevée', controle: '🟠 Fiabilité à contrôler', faible: '🔴 Fiabilité faible' }[niveau]} — ${score} %` };
+}
+const fiabiliteMoyenne = (l) => { const ok = l.filter((x) => x.complet); return { n: ok.length, moyenne: ok.length ? xround(ok.reduce((a, x) => a + x.score, 0) / ok.length, 0) : null, faibles: ok.filter((x) => x.niveau === 'faible').length }; };
 // --- Stocks d'aliments : règles de la feuille « Stocks d'aliments » et de Paramètres §15 (seuils 15 / 7 / 3 jours, horizon 30 j)
 const PARAMS_STOCK = { anticipation: 15, urgent: 7, critique: 3, horizon: 30, delai: 0, securite: 0 };
 const mround = (x, m) => xround(x / m, 0) * m;
@@ -114,7 +153,7 @@ function compteExploitation(inv, c) {
     partAliment: c.cout === 0 ? null : c.alim / c.cout };
 }
 
-return { VERSION_REGLES, OBJECTIF, xround, survivants, biomasse, fcr, fcrStatut, statutParam, facteurTemp, rationTable, ration, calculerCycle, PARAMS_STOCK, mround, stockType, economie, chargesFixes, investissement, rentabiliteCycle, consolidee, compteExploitation }; })();
+return { VERSION_REGLES, OBJECTIF, xround, survivants, biomasse, fcr, fcrStatut, statutParam, facteurTemp, rationTable, ration, calculerCycle, PARAMS_STOCK, mround, stockType, economie, chargesFixes, investissement, rentabiliteCycle, consolidee, compteExploitation, densite, INFRAS, fcrPaliers: () => R.fcrPaliers, prixEffectif, fiabilite, fiabiliteMoyenne, defParams, appliquer, cle, liste, estSeed }; })();
 __m.db = (() => { 
 // Base locale IndexedDB (schéma v1). Écriture en cas d'erreur : la promesse est rejetée, rien n'est affiché comme enregistré.
 const NOM = 'mon-technicien', VERSION = 5, STORES = { cycles: 'id', mesures: 'id', meta: 'k', achats: 'id', chrono: 'seq', invest: 'id', charges: 'id', activites: 'id' }; // v2 : achats ; v3 : chrono ; v4 : invest, charges ; v5 : activites
@@ -316,7 +355,7 @@ return { DEMO, analyser, installer, statut, autoriser }; })();
 __m.echange = (() => { 
 // Échange avec Excel (côté application) : export CSV par table. L'importation dans le classeur n'est PAS développée.
 const COLONNES = {
-  cycles: ['id', 'nom', 'espece', 'effectif', 'poids0', 'date', 'statut', 'prix.alevin', 'prix.aliment', 'prix.vente', 'prix.autres'],
+  cycles: ['id', 'nom', 'espece', 'infra', 'lon', 'lar', 'prof', 'table', 'effectif', 'poids0', 'date', 'statut', 'prix.alevin', 'prix.aliment', 'prix.vente', 'prix.autres'],
   mesures: ['id', 'cycle', 'type', 'date', 'poids', 'nb', 'temp', 'ph', 'o2', 'sal', 'turb', 'distribue', 'aliment'],
   achats: ['id', 'date', 'aliment', 'fournisseur', 'qte', 'prix'],
   invest: ['id', 'date', 'categorie', 'designation', 'infra', 'quantite', 'cout'],
@@ -392,13 +431,12 @@ function alertes(c, calc, st = []) {
 function repondre(q, c, calc, al, st = []) {
   const t = q.toLowerCase(), top = al[0];
   if (/ration|distribuer|quantit|combien/.test(t)) {
-    const tp = calc.eau?.temp ?? calc.nour?.temp;
-    if (tp == null) return { texte: 'Il me manque la température de l\'eau pour calculer la ration. Saisissez une mesure d\'eau ou un nourrissage avec température.', vue: 'saisie' };
-    const r = E.ration(c.espece, calc.g, calc.bio, tp);
-    return { texte: r.stop ? `À ${tp} °C la ration est nulle : ne pas nourrir.` : `Ration indicative : ${r.kg} kg/jour en ${r.repas} repas (${r.pct * 100} % de la biomasse x facteur température ${r.facteur}). Biomasse ${E.xround(calc.bio, 1)} kg.`, vue: 'saisie' };
+    const tp = calc.eau?.temp ?? calc.nour?.temp ?? null, r = E.ration(E.cle(c), calc.g, calc.bio, tp);
+    return { texte: r.stop ? `À ${tp} °C la ration est nulle : ne pas nourrir.` : `Ration indicative : ${r.kg} kg/jour en ${r.repas} repas (${E.xround(r.pct * 100, 2)} % de la biomasse${r.tempConnue ? ' x facteur température ' + r.facteur + ' à ' + tp + ' °C' : ', sans correction de température : saisissez l\'eau pour l\'ajuster'}). Biomasse ${E.xround(calc.bio, 1)} kg.`, vue: 'saisie' };
   }
   if (/stock|rupture|command|achat/.test(t)) return { texte: st.length ? st.map((s) => `${s.type} : ${s.stock} kg, ${typeof s.jours === 'number' ? s.jours + ' jours restants' : s.jours} (${s.statut.slice(3).toLowerCase()})${s.qte ? ', commande conseillée ' + s.qte + ' kg' : ''}`).join(' ; ') : 'Aucun achat d\'aliment enregistré : saisissez un achat pour suivre le stock.', vue: 'resultats' };
-  if (/co[uû]t|marge|rentab|b[ée]n[ée]fice|r[ée]sultat|prix/.test(t)) { const e = E.economie(c.effectif, calc.bio, calc.alim, c.prix, c.statut || 'Actif'); return { texte: e.prixSaisis ? `Résultat estimé ${Math.round(e.AO)} F CFA (${e.AS.toLowerCase()}) ; coût de production ${e.AP} F/kg, marge ${e.AQ} F/kg. Le chiffre d'affaires est estimé sur la biomasse actuelle.` : 'Il me manque les prix (alevin, aliment, vente) : saisissez-les dans Résultats → Prix et charges.', vue: 'resultats' }; }
+  if (/fiabilit|fiable/.test(t)) { const f = E.fiabilite(c, mes(), auj()); return { texte: f.complet ? `${f.statut}.${f.raisons.length ? ' À vérifier : ' + f.raisons.join(' ; ') + '.' : ' Aucune anomalie détectée.'}` : 'Cycle incomplet : la fiabilité ne peut pas être évaluée.', vue: 'resultats' }; }
+  if (/co[uû]t|marge|rentab|b[ée]n[ée]fice|r[ée]sultat|prix/.test(t)) { const e = E.economie(c.effectif, calc.bio, calc.alim, E.prixEffectif(c), c.statut || 'Actif'); return { texte: e.prixSaisis ? `Résultat estimé ${Math.round(e.AO)} F CFA (${e.AS.toLowerCase()}) ; coût de production ${e.AP} F/kg, marge ${e.AQ} F/kg. Le chiffre d'affaires est estimé sur la biomasse actuelle.` : 'Il me manque les prix (alevin, aliment, vente) : saisissez-les dans Résultats → Prix et charges.', vue: 'resultats' }; }
   if (/fcr|conversion/.test(t)) return { texte: `FCR : ${calc.fcr}. ${E.fcrStatut(calc.fcr).texte}. ${top ? '' : ''}Il se calcule en divisant l'aliment distribué (${calc.alim} kg) par le gain de biomasse.`, vue: 'resultats' };
   if (/eau|oxyg|ph|temp/.test(t)) { const e = al.find((x) => /eau/i.test(x.titre)); return { texte: e ? `${e.titre} : ${e.constat}` : 'Aucune mesure d\'eau.', vue: 'saisie' }; }
   if (/pourquoi|explique/.test(t) && top) return { texte: `${top.titre}. ${top.pourquoi} Données : ${top.donnees}.`, vue: top.vue };
@@ -408,7 +446,7 @@ function repondre(q, c, calc, al, st = []) {
 }
 
 return { alertes, repondre }; })();
-__m.app = (() => { const { put, all, get, exporter, importer, stockage } = __m.db; const C = __m.chrono; const A = __m.acces; const { csv, COLONNES } = __m.echange; const L = __m.licence; const CAT = __m.catalogue.default; const EN = __m.encadrement; const E = __m.engine; const { alertes, repondre } = __m.nexus;
+__m.app = (() => { const { put, all, get, del, exporter, importer, stockage } = __m.db; const C = __m.chrono; const A = __m.acces; const { csv, COLONNES } = __m.echange; const L = __m.licence; const CAT = __m.catalogue.default; const EN = __m.encadrement; const E = __m.engine; const { alertes, repondre } = __m.nexus;
 
 
 
@@ -426,13 +464,13 @@ const S = { vue: 'accueil', cycles: [], mesures: [], achats: [], invest: [], cha
 const cyc = () => S.cycles.find((c) => c.id === S.cid);
 const mes = () => S.mesures.filter((m) => m.cycle === S.cid).sort((a, b) => a.date.localeCompare(b.date) || a.t - b.t);
 const sorties = () => S.mesures.filter((m) => m.type === 'nourrissage').map((m) => ({ date: m.date, type: m.aliment || 'Défaut', qte: m.distribue })); // source unique des sorties : les distributions
-const typesAliment = () => [...new Set(['Défaut', ...S.achats.map((a) => a.aliment)])];
+const typesAliment = () => [...new Set(['Défaut', ...E.liste().filter((t) => t.id !== t.espece).map((t) => t.nom), ...S.achats.map((a) => a.aliment)])];
 const stocks = () => typesAliment().map((t) => ({ type: t, ...E.stockType(S.achats.filter((a) => a.aliment === t).map((a) => ({ date: a.date, qte: a.qte })), sorties().filter((s) => s.type === t), auj()) })).filter((s) => s.jours !== 'Données insuffisantes');
-const ctx = () => { const c = cyc(); if (!c) return null; const calc = E.calculerCycle(c, mes(), auj()), st = stocks(); const al = alertes(c, calc, st), enc = jourEnc(c, calc, local().date); for (const a of alertesEnc(enc)) al.unshift(a); if (A.actif('superviseur') && S.ch?.ouvertes) al.unshift({ p: 'P1', titre: 'Incohérence d\'horodatage détectée', constat: 'Une incohérence a été relevée dans la chronologie des enregistrements.', donnees: `${S.ch.ouvertes} entrée(s) à vérifier`, cause: 'Heure du téléphone irrégulière (constat non probant).', action: 'Vérifier les enregistrements concernés dans Supervision.', controle: 'Statut des entrées du journal', pourquoi: 'Le journal d\'horodatage compare chaque heure observée aux références précédentes.', vue: 'supervision' }); return { c, calc, st, al, enc }; };
+const ctx = () => { const c = cyc(); if (!c) return null; const calc = E.calculerCycle(c, mes(), auj()), st = stocks(), dens = E.densite(c.espece, c, c.effectif); const al = alertes(c, calc, st), enc = jourEnc(c, calc, local().date); for (const a of alertesEnc(enc)) al.unshift(a); if (dens && (dens.statut === 'Rouge' || dens.statut === 'Orange')) al.unshift({ p: dens.statut === 'Rouge' ? 'P1' : 'P3', titre: dens.statut === 'Rouge' ? 'Densité trop élevée' : 'Densité élevée', constat: `${dens.msg} : ${dens.reel} ${dens.unite}` + (dens.max != null ? ` pour ${dens.min} à ${dens.max} recommandés.` : '.'), donnees: `${c.effectif} alevins · ${c.infra} ${c.lon} x ${c.lar} x ${c.prof} m`, cause: 'Trop de poissons pour la surface ou le volume de l\'infrastructure.', action: dens.sugN ? `Réduire à ${dens.sugN} alevins${dens.sugS ? ' ou passer à ' + dens.sugS + ' m²' : ''} ; surveiller l\'oxygène.` : 'Revoir le choix d\'infrastructure.', controle: 'Oxygène dissous et comportement des poissons.', pourquoi: 'Densité = alevins / surface (volume en cage), comparée aux densités recommandées des Paramètres.', vue: 'parametres' }); if (A.actif('superviseur') && S.ch?.ouvertes) al.unshift({ p: 'P1', titre: 'Incohérence d\'horodatage détectée', constat: 'Une incohérence a été relevée dans la chronologie des enregistrements.', donnees: `${S.ch.ouvertes} entrée(s) à vérifier`, cause: 'Heure du téléphone irrégulière (constat non probant).', action: 'Vérifier les enregistrements concernés dans Supervision.', controle: 'Statut des entrées du journal', pourquoi: 'Le journal d\'horodatage compare chaque heure observée aux références précédentes.', vue: 'supervision' }); return { c, calc, st, al, enc, dens }; };
 async function charger() {
   S.cycles = await all('cycles'); S.mesures = await all('mesures'); S.achats = await all('achats'); S.invest = await all('invest'); S.charges = await all('charges'); S.activites = await all('activites');
   const m = await get('meta', 'cid'); S.cid = (S.cycles.find((c) => c.id === m?.v) || S.cycles[0])?.id ?? null;
-  S.ch = await C.lire(); S.defaut = await A.codeParDefaut(); S.lic = await L.statut(); S.chat = (await get('meta', 'chat'))?.v || []; S.sauv = (await get('meta', 'sauv'))?.v || null;
+  S.ch = await C.lire(); S.defaut = await A.codeParDefaut(); S.lic = await L.statut(); S.chat = (await get('meta', 'chat'))?.v || []; S.sauv = (await get('meta', 'sauv'))?.v || null; S.params = (await get('meta', 'params'))?.v || null; E.appliquer(S.params);
 }
 const toast = (t, err) => { const e = $('#toast'); e.textContent = t; e.className = 'show' + (err ? ' err' : ''); setTimeout(() => (e.className = ''), 3200); };
 const chip = (p) => `<span class="chip ${p}">${p === 'OK' ? 'Conforme' : p}</span>`;
@@ -441,10 +479,25 @@ const vide = '<div class="card"><h3>Aucun cycle</h3><p>Créez votre premier cycl
 function accueil() {
   const x = ctx(); if (!x) return vide; const { c, calc, al } = x, st = E.fcrStatut(calc.fcr);
   const sel = `<select id="cid">${S.cycles.map((k) => `<option value="${esc(k.id)}" ${k.id === S.cid ? 'selected' : ''}>${esc(k.nom)}</option>`).join('')}</select>`;
-  return `<div class="card hero"><small>Exploitation active</small>${sel}<p>${esc(c.espece)} · jour ${calc.jours} · ${S.mesures.length} enregistrements</p></div>
+  return `<div class="card hero"><small>Exploitation active</small>${sel}<p>${esc(c.espece)} · jour ${calc.jours} · ${S.mesures.length} enregistrements</p>${(() => { const f = fiabCycle(c); return f.complet ? `<p class="sub">Fiabilité des résultats : ${esc(f.statut)}</p>` : ''; })()}</div>
   <div class="grid">${kpi('Survivants', calc.n, `${E.xround(calc.survie * 100, 1)} % de survie`)}${kpi('Biomasse (kg)', E.xround(calc.bio, 1), `poids moyen ${calc.g} g`)}${kpi('FCR', calc.fcr, st.nc ? 'non calculable' : '')}${kpi('Croissance (g/j)', calc.gmq, `écart ${calc.ecart} g`)}</div>
-  ${carteJour(x.enc)}<h2>Alertes</h2>${al.slice(0, 3).map(carte).join('')}
+  ${carteInfra(x)}${carteJour(x.enc)}<h2>Alertes</h2>${al.slice(0, 3).map(carte).join('')}
   <div class="state"><span class="dot ${navigator.onLine ? 'on' : 'off'}"></span>${navigator.onLine ? 'En ligne' : 'Hors connexion : tout fonctionne localement'} · ${S.sauv ? 'Dernière sauvegarde ' + esc(S.sauv.slice(0, 10)) : '<b>Aucune sauvegarde exportée</b>'}</div>`;
+}
+const PT = { Vert: '🟢', Orange: '🟠', Rouge: '🔴', Bleu: '🔵' };
+const resumeDens = (d) => `<b>${PT[d.statut]} ${esc(d.msg)}</b><br>${d.reel} ${d.unite}${d.min != null ? ` (recommandé ${d.min} à ${d.max})` : ''} · ${d.surf} m² · ${d.vol} m³${d.nMax ? `<br>Nombre conseillé d\'alevins : ${d.nMin} à ${d.nMax}` : ''}${d.sugN ? `<br>Suggestion : réduire à ${d.sugN} alevins${d.sugS ? ' ou passer à ' + d.sugS + ' m²' : ''}` : ''}`;
+function carteInfra(x) {
+  const { c, calc, dens } = x, tp = calc.eau?.temp ?? calc.nour?.temp ?? null, r = E.ration(E.cle(c), calc.g, calc.bio, tp), tb = E.liste().find((t) => t.id === E.cle(c));
+  const ra = `<p><b>Ration du jour : ${r.stop ? 'ne pas nourrir' : r.kg + ' kg en ' + r.repas + ' repas'}</b><br><span class="sub">Table ${esc(tb?.nom ?? '')} · ${E.xround(r.pct * 100, 2)} % de la biomasse (${E.xround(calc.bio, 1)} kg)${r.tempConnue ? ', ajustée à ' + tp + ' °C' : ', sans température : saisissez l\'eau pour ajuster'}</span></p>`;
+  const de = dens ? `<p>${esc(c.infra)} ${c.lon} x ${c.lar} x ${c.prof} m<br>${resumeDens(dens)}</p>` : `<p class="sub">Infrastructure non renseignée : la densité ne peut pas être contrôlée.</p><button class="lnk" data-go="saisie" data-type="infra">Renseigner l\'infrastructure</button>`;
+  return `<div class="card"><h3>Infrastructure et ration</h3>${de}${ra}<button class="lnk" data-go="parametres">Paramètres : densités et tables de ration</button></div>`;
+}
+function apercuCycle() {
+  const el = $('#apercu'), f = $('#f'); if (!el || !f || S.type !== 'cycle') return;
+  const d = Object.fromEntries(new FormData(f)), v = (k) => (d[k] === '' || d[k] == null ? NaN : Number(d[k])), N = v('effectif'), g = v('poids0');
+  if (!(N >= 1) || !(g > 0)) return;
+  const ok = !d.table || E.liste().some((t) => t.id === d.table && t.espece === d.espece), bio = (N * g) / 1000, r = E.ration(E.cle({ espece: d.espece, table: ok ? d.table : '' }), g, bio, null), dn = E.densite(d.espece, { infra: d.infra, lon: v('lon'), lar: v('lar'), prof: v('prof') }, N);
+  el.innerHTML = `<b>Ration du premier jour : ${r.kg} kg en ${r.repas} repas</b> (biomasse ${E.xround(bio, 1)} kg)<br>` + (dn ? resumeDens(dn) : 'Ajoutez les dimensions pour contrôler la densité.') + (ok ? '' : '<br>⚠️ Cette table correspond à une autre espèce.');
 }
 const carte = (a, i = -1) => `<div class="card al ${a.p}">${chip(a.p)}<h3>${esc(a.titre)}</h3><p>${esc(a.constat)}</p><p class="sub"><b>Action :</b> ${esc(a.action)}</p>
   <button class="lnk" data-why="${i}">Pourquoi ?</button>${S.ouverte === i && i >= 0 ? `<div class="why"><p>${esc(a.pourquoi)}</p><p><b>Données :</b> ${esc(a.donnees)}</p><p><b>Cause possible :</b> ${esc(a.cause)}</p><p><b>À contrôler :</b> ${esc(a.controle)}</p><button class="lnk" data-go="${a.vue}">Ouvrir le module</button></div>` : ''}</div>`;
@@ -453,18 +506,20 @@ const F = {
   mortalite: [['date', 'Date', 'date', auj()], ['nb', 'Poissons morts', 'number', '', '1']],
   eau: [['date', 'Date', 'date', auj()], ['temp', 'Température (°C)', 'number', '', '0.1'], ['ph', 'pH', 'number', '', '0.1'], ['o2', 'Oxygène dissous (mg/l)', 'number', '', '0.1'], ['sal', 'Salinité (‰, option)', 'number', '', '0.1'], ['turb', 'Turbidité (NTU, option)', 'number', '', '1']],
   nourrissage: [['date', 'Date', 'date', auj()], ['distribue', 'Aliment distribué (kg)', 'number', '', '0.01'], ['temp', 'Température de l\'eau (°C)', 'number', '', '0.1'], ['aliment', 'Type d\'aliment', 'select-aliment', 'Défaut']],
-  prix: [['alevin', 'Prix d\'un alevin (F CFA)', 'number', '', '0.1'], ['aliment', 'Prix de l\'aliment (F CFA/kg)', 'number', '', '1'], ['vente', 'Prix de vente (F CFA/kg)', 'number', '', '1'], ['autres', 'Autres charges directes du cycle (F CFA)', 'number', '', '1'], ['statut', 'Statut du cycle', 'select-statut', 'Actif']],
+  prix: [['alevin', 'Prix d\'un alevin (F CFA)', 'number', '', '0.1'], ['aliment', 'Prix de l\'aliment (F CFA/kg ; vide = prix de la table)', 'number', '', '1'], ['vente', 'Prix de vente (F CFA/kg)', 'number', '', '1'], ['autres', 'Autres charges directes du cycle (F CFA)', 'number', '', '1'], ['statut', 'Statut du cycle', 'select-statut', 'Actif']],
   invest: [['date', 'Date', 'date', auj()], ['designation', 'Désignation', 'text', ''], ['infra', 'Infrastructure concernée (option)', 'text', ''], ['quantite', 'Quantité', 'number', '1', '1'], ['cout', 'Coût unitaire (F CFA)', 'number', '', '1']],
   charge: [['categorie', 'Catégorie', 'liste:Salaires permanents|Autres charges fixes', 'Salaires permanents'], ['designation', 'Désignation', 'text', ''], ['montant', 'Montant (F CFA)', 'number', '', '1'], ['periodicite', 'Périodicité (étiquette)', 'liste:Mensuel|Annuel|Par cycle', 'Mensuel']],
   achat: [['date', 'Date', 'date', auj()], ['aliment', 'Type d\'aliment', 'text', 'Défaut'], ['fournisseur', 'Fournisseur (option)', 'text', ''], ['qte', 'Quantité achetée (kg)', 'number', '', '0.1'], ['prix', 'Prix unitaire (F CFA/kg, option)', 'number', '', '1']],
-  cycle: [['nom', 'Nom du cycle', 'text', ''], ['espece', 'Espèce', 'select', 'Clarias'], ['effectif', 'Effectif initial', 'number', '', '1'], ['poids0', 'Poids moyen initial (g)', 'number', '', '0.1'], ['date', 'Date d\'empoissonnement', 'date', auj()]],
+  infra: [['infra', 'Type d\'infrastructure', 'select-infra', 'Bassin béton'], ['lon', 'Longueur (m)', 'number', '', '0.1'], ['lar', 'Largeur (m)', 'number', '', '0.1'], ['prof', 'Profondeur d\'eau utile (m)', 'number', '', '0.1'], ['table', 'Table de ration (aliment)', 'select-table', '']],
+  cycle: [['nom', 'Nom du cycle', 'text', ''], ['espece', 'Espèce', 'select', 'Clarias'], ['table', 'Table de ration (aliment)', 'select-table', ''], ['infra', 'Type d\'infrastructure', 'select-infra', 'Bassin béton'], ['lon', 'Longueur (m)', 'number', '', '0.1'], ['lar', 'Largeur (m)', 'number', '', '0.1'], ['prof', 'Profondeur d\'eau utile (m)', 'number', '', '0.1'], ['effectif', 'Effectif initial', 'number', '', '1'], ['poids0', 'Poids moyen initial (g)', 'number', '', '0.1'], ['date', 'Date d\'empoissonnement', 'date', auj()]],
 };
-const NOMS = { pesee: 'Pesée', mortalite: 'Mortalité', eau: 'Eau', nourrissage: 'Nourrissage', achat: 'Achat d\'aliment', prix: 'Prix et charges', invest: 'Investissement', charge: 'Charge fixe', cycle: 'Nouveau cycle' };
+const NOMS = { pesee: 'Pesée', mortalite: 'Mortalité', eau: 'Eau', nourrissage: 'Nourrissage', achat: 'Achat d\'aliment', prix: 'Prix et charges', invest: 'Investissement', charge: 'Charge fixe', cycle: 'Nouveau cycle', infra: 'Infrastructure' };
 function saisie() {
   const x = ctx(); if (!x && !['cycle', 'achat', 'invest', 'charge'].includes(S.type)) return vide;
-  const f = F[S.type].map(([k, l, t, v, step]) => t.startsWith('liste:') ? `<label>${l}<select name="${k}">${t.slice(6).split('|').map((o) => `<option ${o === v ? 'selected' : ''}>${o}</option>`).join('')}</select></label>` : t === 'select-statut' ? `<label>${l}<select name="${k}">${['Actif', 'Terminé', 'Suspendu'].map((s) => `<option ${s === (cyc()?.statut || 'Actif') ? 'selected' : ''}>${s}</option>`).join('')}</select></label>` : t === 'select-aliment' ? `<label>${l}<select name="${k}">${typesAliment().map((a) => `<option>${esc(a)}</option>`).join('')}</select></label>` : t === 'select' ? `<label>${l}<select name="${k}"><option>Clarias</option><option>Tilapia</option></select></label>` : `<label>${l}<input name="${k}" type="${t}" ${t === 'number' ? `inputmode="decimal" step="${step}" min="0"` : ''} value="${esc(S.type === 'prix' ? cyc()?.prix?.[k] ?? '' : v)}" ${t === 'text' ? 'maxlength="60"' : ''}></label>`).join('');
+  const f = F[S.type].map(([k, l, t, v, step]) => t.startsWith('liste:') ? `<label>${l}<select name="${k}">${t.slice(6).split('|').map((o) => `<option ${o === v ? 'selected' : ''}>${o}</option>`).join('')}</select></label>` : t === 'select-statut' ? `<label>${l}<select name="${k}">${['Actif', 'Terminé', 'Suspendu'].map((s) => `<option ${s === (cyc()?.statut || 'Actif') ? 'selected' : ''}>${s}</option>`).join('')}</select></label>` : t === 'select-aliment' ? `<label>${l}<input name="${k}" list="dl-al" maxlength="40" value="Défaut" autocomplete="off"><datalist id="dl-al">${typesAliment().map((a) => `<option value="${esc(a)}">`).join('')}</datalist></label>` : t === 'select-table' ? `<label>${l}<select name="${k}"><option value="">Table par défaut de l'espèce</option>${E.liste().filter((o) => o.id !== o.espece).map((o) => `<option value="${esc(o.id)}" ${S.type === 'infra' && o.id === cyc()?.table ? 'selected' : ''}>${esc(o.nom)} · ${esc(o.espece)}</option>`).join('')}</select></label>` : t === 'select-infra' ? `<label>${l}<select name="${k}">${E.INFRAS.map((o) => `<option ${o === (S.type === 'infra' ? cyc()?.infra : v) ? 'selected' : ''}>${o}</option>`).join('')}</select></label>` : t === 'select' ? `<label>${l}<select name="${k}"><option>Clarias</option><option>Tilapia</option></select></label>` : `<label>${l}<input name="${k}" type="${t}" ${t === 'number' ? `inputmode="decimal" step="${step}" min="0"` : ''} value="${esc(S.type === 'prix' ? cyc()?.prix?.[k] ?? '' : S.type === 'infra' ? cyc()?.[k] ?? '' : v)}" ${t === 'text' ? 'maxlength="60"' : ''}></label>`).join('');
   let aide = '';
-  if (x && S.type === 'nourrissage') { const t = x.calc.eau?.temp; if (t != null) { const r = E.ration(x.c.espece, x.calc.g, x.calc.bio, t); aide = `<div class="note">Ration indicative : <b>${r.stop ? 'ne pas nourrir' : r.kg + ' kg en ' + r.repas + ' repas'}</b> (dernière température ${t} °C).</div>`; } }
+  if (x && S.type === 'nourrissage') { const t = x.calc.eau?.temp ?? null, r = E.ration(E.cle(x.c), x.calc.g, x.calc.bio, t); aide = `<div class="note">Ration du jour : <b>${r.stop ? 'ne pas nourrir' : r.kg + ' kg en ' + r.repas + ' repas'}</b> ${t != null ? '(ajustée à ' + t + ' °C)' : '(sans correction de température : saisissez l\'eau pour l\'ajuster)'}. <button type="button" class="lnk" data-go="parametres">Tables de ration</button></div>`; }
+  if (S.type === 'cycle') aide = '<div class="note" id="apercu">Renseignez l\'effectif, le poids moyen et les dimensions : la densité et la ration du premier jour s\'affichent ici.</div>';
   return `<div class="seg"><button data-go="encadrement">Activités du jour</button>${Object.keys(NOMS).map((k) => `<button data-type="${k}" class="${k === S.type ? 'on' : ''}">${NOMS[k]}</button>`).join('')}</div>
   <form id="f" class="card"><h3>${NOMS[S.type]}</h3>${aide}${f}<p id="err" class="errtxt"></p><button class="btn" id="ok" type="submit">Enregistrer</button></form>`;
 }
@@ -487,7 +542,13 @@ async function enregistrer(ev) {
     const cle = JSON.stringify({ ...o, id: 0, t: 0 }); if (S.achats.some((a) => JSON.stringify({ ...a, id: 0, t: 0 }) === cle)) return err('Cet achat existe déjà.');
   } else if (t === 'cycle') {
     if (!fd.nom.trim() || !(n('effectif') >= 1) || !(n('poids0') > 0)) return err('Nom, effectif (≥ 1) et poids initial (> 0) sont obligatoires.');
-    o = { id: 'CYC-' + fd.date.replaceAll('-', '') + '-' + String(S.cycles.length + 1).padStart(3, '0'), nom: fd.nom.trim(), espece: fd.espece, effectif: Math.round(n('effectif')), poids0: n('poids0'), date: fd.date };
+    if (!(n('lon') > 0) || !(n('lar') > 0) || !(n('prof') > 0)) return err('Longueur, largeur et profondeur d\'eau de l\'infrastructure sont obligatoires (> 0).');
+    if (fd.table && !E.liste().some((x) => x.id === fd.table && x.espece === fd.espece)) return err('Cette table de ration correspond à une autre espèce.');
+    o = { id: 'CYC-' + fd.date.replaceAll('-', '') + '-' + String(S.cycles.length + 1).padStart(3, '0'), nom: fd.nom.trim(), espece: fd.espece, infra: fd.infra, lon: n('lon'), lar: n('lar'), prof: n('prof'), table: fd.table || '', effectif: Math.round(n('effectif')), poids0: n('poids0'), date: fd.date };
+  } else if (t === 'infra') {
+    if (!(n('lon') > 0) || !(n('lar') > 0) || !(n('prof') > 0)) return err('Longueur, largeur et profondeur d\'eau sont obligatoires (> 0).');
+    if (fd.table && !E.liste().some((x) => x.id === fd.table && x.espece === c.espece)) return err('Cette table de ration correspond à une autre espèce.');
+    o = { ...c, infra: fd.infra, lon: n('lon'), lar: n('lar'), prof: n('prof'), table: fd.table || '' };
   } else {
     if (!fd.date || fd.date > auj()) return err('La date est obligatoire et ne peut pas être dans le futur.');
     if (fd.date < c.date) return err('La date précède l\'empoissonnement du cycle.');
@@ -500,7 +561,7 @@ async function enregistrer(ev) {
   }
   { const au = await L.autoriser({ type: t === 'cycle' ? 'cycle' : 'saisie', cycles: S.cycles.length, enregistrements: S.mesures.length + S.achats.length + S.invest.length + S.charges.length + S.activites.length }); if (!au.ok) return err(au.msg); }
   $('#ok').disabled = true;
-  try { if (!['cycle', 'prix'].includes(t)) { const an = await C.observer('SAISIE', { activite: NOMS[t] }); if (an.length) o.anom = an; } await put(t === 'cycle' || t === 'prix' ? 'cycles' : t === 'achat' ? 'achats' : t === 'invest' ? 'invest' : t === 'charge' ? 'charges' : 'mesures', o); if (t === 'cycle') await put('meta', { k: 'cid', v: o.id }); await charger(); toast(NOMS[t] + ' enregistré.'); S.type = t === 'cycle' ? 'pesee' : t; S.vue = t === 'cycle' ? 'accueil' : 'saisie'; rendre(); }
+  try { if (!['cycle', 'prix', 'infra'].includes(t)) { const an = await C.observer('SAISIE', { activite: NOMS[t] }); if (an.length) o.anom = an; } await put(t === 'cycle' || t === 'prix' || t === 'infra' ? 'cycles' : t === 'achat' ? 'achats' : t === 'invest' ? 'invest' : t === 'charge' ? 'charges' : 'mesures', o); if (t === 'cycle') await put('meta', { k: 'cid', v: o.id }); await charger(); toast(NOMS[t] + ' enregistré.'); S.type = t === 'cycle' ? 'pesee' : t; S.vue = t === 'cycle' ? 'accueil' : 'saisie'; rendre(); }
   catch (e) { $('#ok').disabled = false; err('Échec de l\'enregistrement : ' + (e?.message || e)); }
 }
 function nexus() {
@@ -521,17 +582,21 @@ function resultats() {
   const line = pts.map((p) => `${X(p[0])},${Y(p[1])}`).join(' ');
   const hist = mes().slice().reverse().slice(0, 15).map((m) => `<li><b>${esc(NOMS[m.type])}</b> ${esc(m.date)} — ${m.type === 'pesee' ? m.poids + ' g' : m.type === 'mortalite' ? m.nb + ' morts' : m.type === 'nourrissage' ? m.distribue + ' kg' : `${m.temp} °C, pH ${m.ph}, O₂ ${m.o2}`}</li>`).join('');
   return `<h2>Résultats du cycle</h2><div class="grid">${kpi('Poids moyen (g)', calc.g, `attendu ${calc.attendu} g`)}${kpi('Mortalité cumulée', calc.mort)}${kpi('Aliment (kg)', E.xround(calc.alim, 2))}${kpi('FCR', calc.fcr)}</div>
-  ${carteEco(x.c, x.calc)}${carteStocks(x.st)}<div class="card"><h3>Croissance</h3><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Courbe de croissance"><line x1="${X(0)}" y1="${Y(0)}" x2="${X(E.OBJECTIF.joursCible)}" y2="${Y(E.OBJECTIF.poidsG)}" class="obj"/><polyline points="${line}" class="cur"/>${pts.map((p) => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="3"/>`).join('')}</svg><p class="sub">Pointillé : objectif ${E.OBJECTIF.poidsG} g en ${E.OBJECTIF.joursCible} jours.</p></div>
+  ${carteEco(x.c, x.calc)}${carteFiab(x.c)}${carteStocks(x.st)}<div class="card"><h3>Croissance</h3><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Courbe de croissance"><line x1="${X(0)}" y1="${Y(0)}" x2="${X(E.OBJECTIF.joursCible)}" y2="${Y(E.OBJECTIF.poidsG)}" class="obj"/><polyline points="${line}" class="cur"/>${pts.map((p) => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="3"/>`).join('')}</svg><p class="sub">Pointillé : objectif ${E.OBJECTIF.poidsG} g en ${E.OBJECTIF.joursCible} jours.</p></div>
   <div class="card"><h3>Historique</h3><ul class="hist">${hist || '<li>Aucun enregistrement.</li>'}</ul></div>`;
 }
 function plus() {
-  return `<h2>Sauvegarde</h2><div class="card"><p>Les données sont stockées sur cet appareil. Exportez-les pour les conserver ailleurs.</p><button class="btn" id="exp">Exporter (JSON)</button><p class="sub">Pour Excel (CSV, séparateur « ; ») :</p>${Object.keys(COLONNES).map((t) => `<button class="btn alt" data-csv="${t}">${{ cycles: 'Cycles', mesures: 'Mesures', achats: 'Achats', invest: 'Investissements', charges: 'Charges fixes' }[t]}</button>`).join('')}<label class="btn alt">Restaurer une sauvegarde<input type="file" id="imp" accept=".json,application/json" hidden></label><p id="st" class="sub"></p></div>
+  return `<h2>Paramètres</h2><div class="card"><p>Densités recommandées, tables de nourrissage (nom de l'aliment, ration par poids) et ajustement selon la température.</p><button class="btn" data-go="parametres">Ouvrir les paramètres</button></div><h2>Sauvegarde</h2><div class="card"><p>Les données sont stockées sur cet appareil. Exportez-les pour les conserver ailleurs.</p><button class="btn" id="exp">Exporter (JSON)</button><p class="sub">Pour Excel (CSV, séparateur « ; ») :</p>${Object.keys(COLONNES).map((t) => `<button class="btn alt" data-csv="${t}">${{ cycles: 'Cycles', mesures: 'Mesures', achats: 'Achats', invest: 'Investissements', charges: 'Charges fixes' }[t]}</button>`).join('')}<label class="btn alt">Restaurer une sauvegarde<input type="file" id="imp" accept=".json,application/json" hidden></label><p id="st" class="sub"></p></div>
   ${licenceCard()}<h2>Accès réservés</h2><div class="card"><button class="btn" data-go="supervision">Supervision</button><button class="btn alt" data-go="moteur">Administration (moteur)</button><p class="sub">Ces zones demandent un code.</p></div>
   <h2>Version et limites</h2><div class="card"><p>Mon Technicien mobile — règles de calcul ${E.VERSION_REGLES} (aperçu). Calculs comparés au classeur V4.8 sur un cycle de référence.</p><p class="sub"><b>Pas encore disponibles :</b> encadrement quotidien, supervision, licence, rôles, horodatage, échange avec Excel, IA distante. Les écrans correspondants ne sont volontairement pas affichés.</p></div>`;
 }
 const fr = (x) => (typeof x === 'number' ? Math.round(x).toLocaleString('fr-FR') : x);
-const carteEco = (c, calc) => { const e = E.economie(c.effectif, calc.bio, calc.alim, c.prix, c.statut || 'Actif');
-  return `<div class="card"><h3>Économie du cycle <small>(${esc(e.AS)})</small></h3>${e.prixSaisis ? `<p>Résultat : <b class="${e.AO < 0 ? 'neg' : ''}">${fr(e.AO)} F CFA</b>${typeof e.AR === 'number' ? ` (${E.xround(e.AR * 100, 1)} % du chiffre d'affaires)` : ''}</p><p class="sub">Chiffre d'affaires estimé ${fr(e.AH)} · alevins ${fr(e.AF)} · aliment ${fr(e.AG)} · autres ${fr(c.prix?.autres || 0)}<br>Coût de production ${fr(e.AP)} F/kg · marge ${fr(e.AQ)} F/kg · marge variable ${fr(e.AI)} F</p><p class="sub">Aliment : quantités réellement saisies uniquement.</p>` : '<p class="sub">Renseignez les prix pour estimer le coût de production, la marge et le résultat.</p>'}<button class="lnk" data-go="saisie" data-type="prix">Saisir les prix et charges</button><button class="lnk" data-go="economie">Rentabilité et compte d'exploitation</button></div>`; };
+const mesDe = (c) => S.mesures.filter((m) => m.cycle === c.id).sort((a, b) => a.date.localeCompare(b.date) || a.t - b.t), fiabCycle = (c) => E.fiabilite(c, mesDe(c), auj());
+const carteFiab = (c) => { const f = fiabCycle(c); if (!f.complet) return '<div class="card"><h3>Fiabilité des données</h3><p class="sub">Cycle incomplet (nom, espèce, date, effectif et poids initial requis) : fiabilité non évaluée.</p></div>';
+  return `<div class="card"><h3>Fiabilité des données</h3><p><b>${esc(f.statut)}</b></p>${f.raisons.length ? `<ul class="hist">${f.raisons.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : '<p class="sub">Aucune anomalie détectée.</p>'}<p class="sub">Cet indice évalue la qualité des données (FCR, prix, pesées, mortalité), pas la performance de l'élevage. Une rentabilité élevée avec une fiabilité faible est à interpréter avec prudence.</p></div>`; };
+const carteFiabEco = () => { const c = cyc(), m = E.fiabiliteMoyenne(S.cycles.map(fiabCycle)); return `<h2>Fiabilité des données</h2>${c ? carteFiab(c) : ''}${m.n ? `<div class="card"><p>Fiabilité moyenne de l'exploitation : <b>${m.moyenne} %</b></p><p class="sub">${m.n} cycle(s) évalué(s) · ${m.faibles} avec une fiabilité faible 🔴</p></div>` : ''}`; };
+const carteEco = (c, calc) => { const pe = E.prixEffectif(c), e = E.economie(c.effectif, calc.bio, calc.alim, E.prixEffectif(c), c.statut || 'Actif');
+  return `<div class="card"><h3>Économie du cycle <small>(${esc(e.AS)})</small></h3>${e.prixSaisis ? `<p>Résultat : <b class="${e.AO < 0 ? 'neg' : ''}">${fr(e.AO)} F CFA</b>${typeof e.AR === 'number' ? ` (${E.xround(e.AR * 100, 1)} % du chiffre d'affaires)` : ''}</p><p class="sub">Chiffre d'affaires estimé ${fr(e.AH)} · alevins ${fr(e.AF)} · aliment ${fr(e.AG)} · autres ${fr(c.prix?.autres || 0)}<br>Coût de production ${fr(e.AP)} F/kg · marge ${fr(e.AQ)} F/kg · marge variable ${fr(e.AI)} F</p><p class="sub">Aliment : quantités réellement saisies uniquement.${typeof pe.aliment === 'number' ? ` Prix de l\'aliment : ${fr(pe.aliment)} F/kg (${typeof c.prix?.aliment === 'number' ? 'saisi pour ce cycle' : 'prix de la table'}).` : ''}</p>` : '<p class="sub">Renseignez les prix pour estimer le coût de production, la marge et le résultat.</p>'}<button class="lnk" data-go="saisie" data-type="prix">Saisir les prix et charges</button><button class="lnk" data-go="economie">Rentabilité et compte d'exploitation</button></div>`; };
 const carteStocks = (st) => `<div class="card"><h3>Stocks d'aliments</h3>${st.length ? st.map((s) => `<p><b>${esc(s.type)}</b> — ${s.stock} kg · ${typeof s.jours === 'number' ? s.jours + ' j restants' : esc(s.jours)}<br><span class="sub">${esc(s.statut)}${s.rupture.startsWith('20') ? ' · rupture vers le ' + s.rupture : ''}${s.qte ? ' · commande conseillée ' + s.qte + ' kg' : ''}</span></p>`).join('') : '<p class="sub">Aucun stock suivi. Saisie → Achat d\'aliment.</p>'}<button class="lnk" data-go="saisie" data-type="achat">Saisir un achat</button></div>`;
 const LIB = { ...C.LIBELLES }, CH = { 'ANOMALIE D\'HORODATAGE': '🔴', 'ANOMALIE DÉJÀ ENREGISTRÉE': '🟠', SURVEILLANCE: '🟡', NORMAL: '🟢' };
 const chrono = () => { const c = S.ch; if (!c) return ''; const l = c.entries.slice().reverse().slice(0, 15);
@@ -546,10 +611,10 @@ const moteur = () => !A.actif('moteur') ? codeForm('moteur', 'Administration (mo
   <button class="btn" data-act="reancrer">Réancrer l'horodatage</button><button class="btn alt" data-act="rsup">Remettre le code superviseur à 0000</button><p class="sub">Le réancrage déplace la référence temporelle ; il est inscrit au journal et rien n'est effacé.</p></div><button class="btn alt" data-lock>Verrouiller</button>`;
 const pct = (x) => (typeof x === 'number' ? E.xround(x * 100, 1) + ' %' : x);
 function economie() {
-  const x = ctx(), cf = E.chargesFixes(S.charges), cs = S.cycles.map((c) => { const k = E.calculerCycle(c, S.mesures.filter((m) => m.cycle === c.id).sort((a, b) => a.date.localeCompare(b.date) || a.t - b.t), auj()); return { id: c.id, F: c.effectif, K: k.bio, M: k.alim, prix: c.prix || {}, statut: c.statut || 'Actif' }; });
+  const x = ctx(), cf = E.chargesFixes(S.charges), cs = S.cycles.map((c) => { const k = E.calculerCycle(c, S.mesures.filter((m) => m.cycle === c.id).sort((a, b) => a.date.localeCompare(b.date) || a.t - b.t), auj()); return { id: c.id, F: c.effectif, K: k.bio, M: k.alim, prix: E.prixEffectif(c), statut: c.statut || 'Actif' }; });
   const cons = E.consolidee(cs, cf), ce = E.compteExploitation(S.invest, cons), k = cs.find((c) => c.id === S.cid), r = k && E.rentabiliteCycle(k.F, k.K, k.M, k.prix, cf);
   const ligne = (l, v) => `<p>${l} <b>${typeof v === 'number' ? fr(v) : esc(v)}</b></p>`;
-  return `<h2>Rentabilité du cycle actif</h2>${r ? `<div class="card"><p><b class="${r.benefice < 0 ? 'neg' : ''}">Bénéfice : ${fr(r.benefice)} F CFA</b> (${pct(r.renta)})</p><p class="sub">Chiffre d'affaires ${fr(r.ca)} · coût total ${fr(r.total)} (alevins ${fr(r.alevins)}, aliment ${fr(r.aliment)}, charges fixes ${fr(cf.total)}) · coût de revient ${typeof r.revient === 'number' ? fr(r.revient) : '-'} F/kg</p><p>${esc(r.reco)}</p><p class="sub">Ici les charges fixes sont comptées en totalité dans le cycle, comme dans le classeur.</p></div>` : '<div class="card"><p class="sub">Aucun cycle.</p></div>'}
+  return `${carteFiabEco()}<h2>Rentabilité du cycle actif</h2>${r ? `<div class="card"><p><b class="${r.benefice < 0 ? 'neg' : ''}">Bénéfice : ${fr(r.benefice)} F CFA</b> (${pct(r.renta)})</p><p class="sub">Chiffre d'affaires ${fr(r.ca)} · coût total ${fr(r.total)} (alevins ${fr(r.alevins)}, aliment ${fr(r.aliment)}, charges fixes ${fr(cf.total)}) · coût de revient ${typeof r.revient === 'number' ? fr(r.revient) : '-'} F/kg</p><p>${esc(r.reco)}</p><p class="sub">Ici les charges fixes sont comptées en totalité dans le cycle, comme dans le classeur.</p></div>` : '<div class="card"><p class="sub">Aucun cycle.</p></div>'}
   <h2>Exploitation consolidée</h2><div class="card">${ligne('Cycles (actifs et terminés) :', cons.n)}${ligne('Production (kg) :', cons.prod)}${ligne('Chiffre d\'affaires :', cons.ca)}${ligne('Coût total :', cons.cout)}<p class="sub">alevins ${fr(cons.alev)} · aliment ${fr(cons.alim)} · autres directes ${fr(cons.aut)} · charges fixes ${fr(cons.fixes)}</p><p><b class="${cons.res < 0 ? 'neg' : ''}">Résultat : ${fr(cons.res)} F CFA</b> (${pct(cons.renta)})</p><p>${esc(ce.etat)}</p>
   ${ce.partAliment != null ? `<p class="sub">${ce.partAliment > 0.6 ? '⚠️ L\'aliment représente ' + pct(ce.partAliment) + ' des charges, part importante : vérifiez prix d\'achat, gaspillage et FCR.' : 'Part de l\'aliment dans les charges : ' + pct(ce.partAliment) + '.'}</p>` : ''}</div>
   <h2>Compte d'exploitation</h2><div class="card"><p>Investissement total : <b>${fr(ce.invest)} F CFA</b></p><p>ROI : <b>${typeof ce.roi === 'number' ? pct(ce.roi) : esc(ce.roi)}</b></p>${S.invest.map((i) => `<p class="sub">${esc(i.date)} · ${esc(i.designation)} · ${i.quantite} × ${fr(i.cout)}</p>`).join('')}<button class="lnk" data-go="saisie" data-type="invest">Saisir un investissement</button></div>
@@ -558,7 +623,7 @@ function economie() {
 const local = () => { const d = new Date(), p = (n) => String(n).padStart(2, '0'); return { date: `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`, frac: (d.getHours() * 60 + d.getMinutes()) / 1440 }; };
 const RANGC = { 1: 'P1', 2: 'P1', 3: 'P2', 4: 'P3', 5: 'OK' };
 function jourEnc(c, calc, date) {
-  const now = local(), tp = calc.eau?.temp ?? calc.nour?.temp, ration = tp != null ? E.ration(c.espece, calc.g, calc.bio, tp).kg : null, rec = (n) => S.activites.find((r) => r.cycle === c.id && r.date === date && r.n === n);
+  const now = local(), tp = calc.eau?.temp ?? calc.nour?.temp, ration = E.ration(E.cle(c), calc.g, calc.bio, tp ?? null).kg, rec = (n) => S.activites.find((r) => r.cycle === c.id && r.date === date && r.n === n);
   const repas = CAT.map((a, i) => (a.famille === 'NOURRISSAGE' && EN.planifie(a, date) ? i : -1)).filter((i) => i >= 0), seuilMort = Math.max(1, (EN.PARAMS.seuilMortPct / 100) * calc.n);
   const prevus = CAT.map((a) => (a.famille === 'NOURRISSAGE' && ration != null ? E.xround((ration * a.part) / 100, 2) : null)), somme = prevus.filter((x) => x != null).reduce((s, x) => s + x, 0);
   const lignes = CAT.map((a, i) => {
@@ -595,21 +660,116 @@ function resumeEnc() {
   const x = ctx(); if (!x) return ''; const lim = new Date(); lim.setDate(lim.getDate() - 6); const p2 = (n) => String(n).padStart(2, '0'), d0 = `${lim.getFullYear()}-${p2(lim.getMonth() + 1)}-${p2(lim.getDate())}`, l = S.activites.filter((r) => r.al > 0 && r.date >= d0).sort((a, b) => b.t - a.t);
   return `<h2>Encadrement quotidien</h2><div class="card"><p>Aujourd'hui : ${x.enc.faites} faite(s) · ${x.enc.enCours} en cours · <b class="${x.enc.nonEnr ? 'neg' : ''}">${x.enc.nonEnr} non enregistrée(s)</b> · ${x.enc.ecarts} en écart</p><h3>Contrôle de chronologie (7 jours)</h3>${l.map((r) => `<p>${esc(CAT[r.n].nom)} · ${esc(r.date)} · ${EN.hhmm(r.h)}<br><span class="sub neg">⚠ ${esc(EN.CHRONO_MSG[r.al])}</span></p>`).join('') || '<p class="sub">Aucune incohérence de chronologie sur les activités.</p>'}<button class="lnk" data-go="encadrement">Ouvrir les activités du jour</button></div>`;
 }
-const VUES = { accueil, saisie, nexus, resultats, plus, supervision, moteur, economie, encadrement };
+const clone = (x) => JSON.parse(JSON.stringify(x)), pTab = () => clone(S.params || E.defParams());
+async function sauverParams(p) { await put('meta', { k: 'params', v: p }); S.params = p; E.appliquer(p); }
+const inp = (n, v, st = 'any') => `<input name="${n}" type="number" inputmode="decimal" step="${st}" min="0" value="${esc(v)}">`;
+function parametres() {
+  const P = S.params || E.defParams(), ed = S.ed;
+  if (ed) return `<form id="pe" class="card"><h3>${ed.id ? 'Modifier la table' : 'Nouvelle table de nourrissage'}</h3><label>Nom de l'aliment (table)<input name="nom" maxlength="40" value="${esc(ed.nom)}"></label>${ed.id ? '' : `<label>Espèce<select name="espece">${['Clarias', 'Tilapia'].map((e) => `<option ${e === ed.espece ? 'selected' : ''}>${e}</option>`).join('')}</select></label>`}<p class="sub">Par ligne : poids min (g) · poids max (g) · ration (% de la biomasse par jour) · repas par jour</p>${ed.rows.map((r, i) => `<div class="ask">${inp('a' + i, r[0])}${inp('b' + i, r[1])}${inp('c' + i, r[2])}${inp('d' + i, r[3], '1')}<button type="button" class="lnk" data-p="del" data-i="${i}" aria-label="Supprimer la ligne">✕</button></div>`).join('')}<button type="button" class="btn alt" data-p="add">+ Ligne</button><p class="errtxt" data-e></p><button class="btn" type="submit">Enregistrer</button><button type="button" class="btn alt" data-p="cancel">Annuler</button></form>`;
+  const tl = Object.entries(P.tables).map(([id, t]) => `<div class="card"><b>${esc(t.nom)}</b> <span class="sub">· ${esc(t.espece)} · ${t.rows.length} tranches de poids</span><br><button class="lnk" data-p="edit" data-id="${esc(id)}">Modifier</button>${E.estSeed(id) ? '' : `<button class="lnk" data-p="sup" data-id="${esc(id)}">Supprimer</button>`}</div>`).join('');
+  const dn = ['Clarias', 'Tilapia'].map((e) => `<p class="sub"><b>${e}</b></p>` + ['Bassin béton', 'Étang', 'Bac hors sol'].map((k) => `<label>${k} : min / max<div class="ask">${inp('min_' + e + '_' + k, P.dens[e][k].min)}${inp('max_' + e + '_' + k, P.dens[e][k].max)}</div></label>`).join('')).join('');
+  const PARS = ['Température', 'pH', 'Oxygène dissous', 'Salinité', 'Turbidité'], UN = { Température: ' (°C)', 'Oxygène dissous': ' (mg/l)', Salinité: ' (‰)', Turbidité: ' (NTU)' };
+  const nm = ['Clarias', 'Tilapia'].map((e) => `<p class="sub"><b>${e}</b> : min acceptable / min optimal / max optimal / max acceptable</p>` + PARS.map((k) => `<label>${k}${UN[k] || ''}<div class="ask">${P.normes[e][k].map((x, i) => inp('n_' + e + '_' + k + '_' + i, x)).join('')}</div></label>`).join('')).join('');
+  const pal = E.fcrPaliers(), fc = P.fcr.map((b, i) => i === 0 ? `<p class="sub">Moins de ${P.fcr[1]} : ${esc(pal[0][1].split(' — ')[0])}</p>` : `<label>À partir de : ${esc(pal[i][1].split(' — ')[0])}<div class="ask">${inp('fcr' + i, b)}</div></label>`).join('');
+  const sk = [['anticipation', 'Seuil à anticiper (jours de stock)'], ['urgent', 'Seuil urgent (jours)'], ['critique', 'Seuil critique (jours)'], ['horizon', 'Horizon de commande recommandée (jours)'], ['delai', 'Délai de livraison du fournisseur (jours)'], ['securite', 'Stock de sécurité (kg par type d\'aliment)']].map(([k, l]) => `<label>${l}<div class="ask">${inp('s_' + k, P.stock[k])}</div></label>`).join('');
+  const pp = Object.entries(P.tables).map(([id, t]) => `<label>${esc(t.nom)} <span class="sub">· ${esc(t.espece)}</span><div class="ask">${inp('pp_' + id, P.prixTable?.[id] ?? '', '1')}</div></label>`).join('');
+  const fb = [['q_pesee', 'Pesée jugée ancienne au-delà de (jours)', P.fiab.pesee, '1'], ['q_elevee', 'Fiabilité élevée à partir de (%)', Math.round(P.fiab.elevee * 100), 'any'], ['q_controle', 'Fiabilité à contrôler à partir de (%)', Math.round(P.fiab.controle * 100), 'any']].map(([k, l, v, st]) => `<label>${l}<div class="ask">${inp(k, v, st)}</div></label>`).join('');
+  const tp = P.temp.map(([t, f], i) => `<label>${i === 0 ? 'Moins de ' + P.temp[1][0] + ' °C' : 'À partir de (°C) / facteur'}<div class="ask">${i === 0 ? '' : inp('t' + i, t)}${inp('f' + i, f)}</div></label>`).join('');
+  return `<h2>Paramètres</h2><p class="sub">Valeurs du classeur Excel, modifiables ici. Elles restent sur cet appareil.</p>
+  <h2>Tables de nourrissage <small>(aliment et ration par poids)</small></h2>${tl}<button class="btn" data-p="new">+ Nouvelle table</button><p class="sub">La table se choisit pour chaque cycle (Nouveau cycle ou onglet Infrastructure).</p>
+  <form id="pd" class="card"><h3>Densités recommandées</h3><p class="sub">Poissons par m² (longueur x largeur), par espèce</p>${dn}<p class="sub">Cage flottante (Tilapia uniquement), poissons par m³ : dégressif de 1 m³ à 10 m³</p><label>À 1 m³ / à 10 m³<div class="ask">${inp('c1', P.cage.d1)}${inp('c10', P.cage.d10)}</div></label><p class="errtxt" data-e></p><button class="btn" type="submit">Enregistrer les densités</button></form>
+  <form id="pt" class="card"><h3>Ajustement selon la température de l'eau</h3><p class="sub">Facteur appliqué à la ration (0 = ne pas nourrir, 1 = normal)</p>${tp}<p class="errtxt" data-e></p><button class="btn" type="submit">Enregistrer</button></form>
+  <form id="pn" class="card"><h3>Normes physico-chimiques de l'eau</h3><p class="sub">Vert entre les deux seuils optimaux, jaune entre acceptable et optimal, rouge au-delà.</p>${nm}<p class="errtxt" data-e></p><button class="btn" type="submit">Enregistrer les normes</button></form>
+  <form id="po" class="card"><h3>Objectif de croissance</h3><label>Poids cible (g)<div class="ask">${inp('og', P.objectif.poidsG)}</div></label><label>Durée cible (jours)<div class="ask">${inp('oj', P.objectif.joursCible, '1')}</div></label><p class="errtxt" data-e></p><button class="btn" type="submit">Enregistrer l'objectif</button></form>
+  <form id="pf" class="card"><h3>Seuils FCR (7 paliers)</h3><p class="sub">Début de chaque palier, dans l'ordre croissant. Seuils indicatifs de pilotage.</p>${fc}<p class="errtxt" data-e></p><button class="btn" type="submit">Enregistrer les seuils FCR</button></form>
+  <form id="ps" class="card"><h3>Stocks d'aliments</h3>${sk}<p class="errtxt" data-e></p><button class="btn" type="submit">Enregistrer les stocks</button></form>
+  <form id="pp" class="card"><h3>Prix de l'aliment par table (F CFA/kg)</h3><p class="sub">Utilisé pour le coût d'aliment des cycles qui suivent cette table, sauf si un prix est saisi pour le cycle. Vide : prix non renseigné, compté 0.</p>${pp}<p class="errtxt" data-e></p><button class="btn" type="submit">Enregistrer les prix</button></form>
+  <form id="pq" class="card"><h3>Fiabilité des données</h3><p class="sub">Indice sur 100 % calculé pour chaque cycle : FCR, prix de l'aliment et de vente, fraîcheur de la dernière pesée, mortalité. En dessous du second seuil, la fiabilité est faible.</p>${fb}<p class="errtxt" data-e></p><button class="btn" type="submit">Enregistrer les seuils</button></form>
+  <button class="btn alt" data-p="reset">Rétablir les valeurs d'origine</button>`;
+}
+function lireEd() { const f = $('#pe'); if (!f || !S.ed) return; const d = new FormData(f); S.ed.nom = d.get('nom') ?? S.ed.nom; if (d.get('espece')) S.ed.espece = d.get('espece'); S.ed.rows = S.ed.rows.map((_, i) => ['a', 'b', 'c', 'd'].map((k) => d.get(k + i) ?? '')); }
+async function actionParam(b) {
+  const a = b.dataset.p;
+  if (a === 'new') S.ed = { id: null, nom: '', espece: 'Clarias', rows: [['', '', '', '']] };
+  else if (a === 'edit') { const t = pTab().tables[b.dataset.id]; S.ed = { id: b.dataset.id, nom: t.nom, espece: t.espece, rows: t.rows.map((r) => [r[0], r[1], E.xround(r[2] * 100, 3), r[3]]) }; }
+  else if (a === 'cancel') S.ed = null;
+  else if (a === 'add' || a === 'del') { lireEd(); if (a === 'add') S.ed.rows.push(['', '', '', '']); else S.ed.rows.splice(+b.dataset.i, 1); }
+  else if (a === 'sup') { const p = pTab(); delete p.tables[b.dataset.id]; delete p.prixTable?.[b.dataset.id]; await sauverParams(p); toast('Table supprimée.'); }
+  else if (a === 'reset') { await del('meta', 'params'); S.params = null; S.ed = null; E.appliquer(null); toast('Valeurs d\'origine rétablies.'); }
+  rendre();
+}
+async function sauverEd(ev) {
+  ev.preventDefault(); lireEd(); const ed = S.ed, err = (m) => (ev.target.querySelector('[data-e]').textContent = m), P = pTab(), nom = ed.nom.trim();
+  if (!nom) return err('Le nom est obligatoire.');
+  const rows = ed.rows.filter((r) => r.some((x) => x !== '')).map((r) => r.map(Number));
+  if (!rows.length) return err('Ajoutez au moins une tranche de poids.');
+  for (const [a, b, p, r] of rows) if (!(a >= 0) || !(b > a) || !(p > 0 && p <= 100) || !(r >= 1 && r <= 12)) return err('Chaque ligne : poids max > poids min, ration entre 0 et 100 %, repas de 1 à 12.');
+  rows.sort((x, y) => x[0] - y[0]); for (let i = 1; i < rows.length; i++) if (rows[i][0] < rows[i - 1][1]) return err('Les tranches de poids ne doivent pas se chevaucher.');
+  if (Object.entries(P.tables).some(([id, t]) => id !== ed.id && t.espece === ed.espece && t.nom.toLowerCase() === nom.toLowerCase())) return err('Ce nom existe déjà pour cette espèce.');
+  P.tables[ed.id || ed.espece + '|' + nom] = { nom, espece: ed.espece, rows: rows.map(([a, b, p, r]) => [a, b, E.xround(p / 100, 6), Math.round(r)]) };
+  await sauverParams(P); S.ed = null; toast('Table enregistrée.'); rendre();
+}
+async function sauverDens(ev) {
+  ev.preventDefault(); const d = new FormData(ev.target), v = (k) => Number(d.get(k)), err = (m) => (ev.target.querySelector('[data-e]').textContent = m), P = pTab();
+  for (const e of ['Clarias', 'Tilapia']) for (const k of ['Bassin béton', 'Étang', 'Bac hors sol']) { const mn = v('min_' + e + '_' + k), mx = v('max_' + e + '_' + k); if (!(mn >= 0) || !(mx > 0) || mx < mn) return err(`${e}, ${k} : le maximum doit être supérieur ou égal au minimum.`); P.dens[e][k] = { min: mn, max: mx }; }
+  if (!(v('c1') > 0) || !(v('c10') > 0)) return err('Densités de cage : valeurs supérieures à 0.');
+  P.cage = { d1: v('c1'), d10: v('c10') }; await sauverParams(P); toast('Densités enregistrées.'); rendre();
+}
+async function sauverTemp(ev) {
+  ev.preventDefault(); const d = new FormData(ev.target), err = (m) => (ev.target.querySelector('[data-e]').textContent = m), P = pTab(), temp = P.temp.map((_, i) => [i === 0 ? -999 : Number(d.get('t' + i)), Number(d.get('f' + i))]);
+  if (temp.some(([t, f], i) => isNaN(t) || !(f >= 0 && f <= 1.5) || (i > 1 && t <= temp[i - 1][0]))) return err('Températures croissantes et facteurs entre 0 et 1,5.');
+  P.temp = temp; await sauverParams(P); toast('Facteurs enregistrés.'); rendre();
+}
+const formNum = (d, k) => (d.get(k) == null || String(d.get(k)).trim() === '' ? NaN : Number(d.get(k))), formErr = (ev) => (m) => (ev.target.querySelector('[data-e]').textContent = m);
+async function sauverNormes(ev) {
+  ev.preventDefault(); const d = new FormData(ev.target), err = formErr(ev), P = pTab();
+  for (const e of ['Clarias', 'Tilapia']) for (const k of ['Température', 'pH', 'Oxygène dissous', 'Salinité', 'Turbidité']) { const a = [0, 1, 2, 3].map((i) => formNum(d, 'n_' + e + '_' + k + '_' + i)); if (a.some((x) => isNaN(x) || x < 0) || a.some((x, i) => i && x < a[i - 1])) return err(`${e}, ${k} : quatre valeurs positives, dans l'ordre croissant (min acceptable, min optimal, max optimal, max acceptable).`); P.normes[e][k] = a; }
+  await sauverParams(P); toast('Normes enregistrées.'); rendre();
+}
+async function sauverObjectif(ev) {
+  ev.preventDefault(); const d = new FormData(ev.target), err = formErr(ev), P = pTab(), g = formNum(d, 'og'), j = formNum(d, 'oj');
+  if (!(g > 0) || !(j > 0) || !Number.isInteger(j)) return err('Poids cible supérieur à 0 et durée en jours entiers supérieure à 0.');
+  P.objectif = { poidsG: g, joursCible: j }; await sauverParams(P); toast('Objectif enregistré.'); rendre();
+}
+async function sauverFcr(ev) {
+  ev.preventDefault(); const d = new FormData(ev.target), err = formErr(ev), P = pTab(), f = P.fcr.map((b, i) => (i === 0 ? b : formNum(d, 'fcr' + i)));
+  if (f.slice(1).some((x) => isNaN(x) || x < 0) || f.some((x, i) => i > 1 && x <= f[i - 1])) return err('Les débuts de palier doivent être positifs et strictement croissants.');
+  P.fcr = f; await sauverParams(P); toast('Seuils FCR enregistrés.'); rendre();
+}
+async function sauverStock(ev) {
+  ev.preventDefault(); const d = new FormData(ev.target), err = formErr(ev), P = pTab(), s = {};
+  for (const k of ['anticipation', 'urgent', 'critique', 'horizon', 'delai', 'securite']) s[k] = formNum(d, 's_' + k);
+  if (Object.values(s).some((x) => isNaN(x) || x < 0)) return err('Toutes les valeurs doivent être renseignées et positives ou nulles.');
+  if (!(s.critique < s.urgent && s.urgent < s.anticipation)) return err('Il faut : critique < urgent < à anticiper (en jours).');
+  if (!(s.horizon > 0)) return err('L\'horizon de commande doit être supérieur à 0.');
+  P.stock = s; await sauverParams(P); toast('Paramètres de stock enregistrés.'); rendre();
+}
+async function sauverPrix(ev) {
+  ev.preventDefault(); const d = new FormData(ev.target), err = formErr(ev), P = pTab(), r = {};
+  for (const id of Object.keys(P.tables)) { const x = formNum(d, 'pp_' + id); if (isNaN(x)) continue; if (x < 0) return err('Les prix ne peuvent pas être négatifs.'); r[id] = x; }
+  P.prixTable = r; await sauverParams(P); toast('Prix enregistrés.'); rendre();
+}
+async function sauverFiab(ev) {
+  ev.preventDefault(); const d = new FormData(ev.target), err = formErr(ev), P = pTab(), j = formNum(d, 'q_pesee'), e = formNum(d, 'q_elevee'), k = formNum(d, 'q_controle');
+  if (!(j >= 1) || !Number.isInteger(j)) return err('Le délai de pesée doit être un nombre entier de jours, au moins 1.');
+  if (!(e > 0 && e <= 100) || !(k >= 0 && k < e)) return err('Fiabilité élevée entre 1 et 100 %, et seuil « à contrôler » strictement inférieur.');
+  P.fiab = { pesee: j, elevee: e / 100, controle: k / 100 }; await sauverParams(P); toast('Seuils de fiabilité enregistrés.'); rendre();
+}
+const VUES = { accueil, saisie, nexus, resultats, plus, supervision, moteur, economie, encadrement, parametres };
 const licAvis = () => (S.lic && S.lic.etat !== 'valide' ? `<div class="note">${S.lic.etat === 'expiree' ? '<b>Licence expirée</b> : saisie bloquée ; consultation et export restent possibles (Plus → Licence).' : S.lic.etat === 'demo' ? '<b>Version de démonstration</b> : fonctions limitées (Plus → Licence pour activer).' : '<b>Licence non valide</b> : saisie bloquée (Plus → Licence).'}</div>` : '');
 const licenceCard = () => { const l = S.lic || {}, p = l.payload || {}; const txt = l.etat === 'valide' ? `Licence valide — ${esc(p.client)}${p.fin ? ' jusqu\'au ' + esc(p.fin) : ' (sans limite de durée)'}` : l.etat === 'expiree' ? `Licence expirée le ${esc(p.fin)} : saisie bloquée (consultation et export possibles).` : l.etat === 'future' ? 'Licence pas encore valide : vérifiez la date du téléphone.' : l.etat === 'invalide' ? 'Licence enregistrée non valide : saisie bloquée.' : `Version de démonstration : ${L.DEMO.cyclesMax} cycle et ${L.DEMO.enregistrementsMax} enregistrements maximum.`;
   return `<h2>Licence</h2><div class="card"><p>${txt}</p><form id="lic"><label>Code de licence<textarea name="tok" rows="3" placeholder="MTL1.…"></textarea></label><p id="err" class="errtxt"></p><button class="btn">Activer la licence</button></form></div>`; };
 const avis = () => (stockage.mode === 'memoire' ? '<div class="note"><b>Stockage indisponible dans ce navigateur.</b> Les données ne sont conservées que tant que cette page reste ouverte. Exportez-les souvent (Plus → Exporter).</div>' : '') + (/^https?:$/.test(location.protocol) ? '' : '<div class="note">Mode fichier local : pas d\'installation ni de cache hors ligne. Ouvrez l\'application depuis une adresse https pour les obtenir.</div>');
 function rendre() {
-  $('#v').innerHTML = avis() + licAvis() + VUES[S.vue](); const nv = ['supervision', 'moteur'].includes(S.vue) ? 'plus' : S.vue === 'economie' ? 'resultats' : S.vue === 'encadrement' ? 'saisie' : S.vue; document.querySelectorAll('nav button').forEach((b) => b.classList.toggle('on', b.dataset.go === nv));
+  $('#v').innerHTML = avis() + licAvis() + VUES[S.vue](); const nv = ['supervision', 'moteur', 'parametres'].includes(S.vue) ? 'plus' : S.vue === 'economie' ? 'resultats' : S.vue === 'encadrement' ? 'saisie' : S.vue; document.querySelectorAll('nav button').forEach((b) => b.classList.toggle('on', b.dataset.go === nv));
   $('#lic')?.addEventListener('submit', async (e) => { e.preventDefault(); const r = await L.installer(new FormData(e.target).get('tok')); if (!r.ok) return ($('#err').textContent = r.msg); S.lic = await L.statut(); toast('Licence activée.'); rendre(); });
-  $('#val')?.addEventListener('submit', valider);
+  $('#val')?.addEventListener('submit', valider); $('#pe')?.addEventListener('submit', sauverEd); $('#pd')?.addEventListener('submit', sauverDens); $('#pt')?.addEventListener('submit', sauverTemp); $('#pn')?.addEventListener('submit', sauverNormes); $('#po')?.addEventListener('submit', sauverObjectif); $('#pf')?.addEventListener('submit', sauverFcr); $('#ps')?.addEventListener('submit', sauverStock); $('#pp')?.addEventListener('submit', sauverPrix); $('#pq')?.addEventListener('submit', sauverFiab);
   $('#pin')?.addEventListener('submit', async (e) => { e.preventDefault(); const f = e.target, r = await A.connecter(f.dataset.role, new FormData(f).get('pin')); if (!r.ok) return ($('#err').textContent = r.msg); S.ch = await C.lire(); rendre(); });
   $('#chg')?.addEventListener('submit', async (e) => { e.preventDefault(); const d = new FormData(e.target), err = (m) => ($('#err').textContent = m); if (d.get('n') !== d.get('c')) return err('La confirmation ne correspond pas.'); const r = await A.changerCodeSuperviseur(d.get('a'), d.get('n')); if (!r.ok) return err(r.msg); S.defaut = await A.codeParDefaut(); toast('Code superviseur modifié.'); rendre(); }); scrollTo(0, 0);
-  $('#f')?.addEventListener('submit', enregistrer); $('#q')?.addEventListener('submit', (e) => { e.preventDefault(); poser(new FormData(e.target).get('q')); });
+  $('#f')?.addEventListener('submit', enregistrer); $('#f')?.addEventListener('input', apercuCycle); apercuCycle(); $('#q')?.addEventListener('submit', (e) => { e.preventDefault(); poser(new FormData(e.target).get('q')); });
 }
 document.addEventListener('click', async (e) => {
-  const b = e.target.closest('[data-go],[data-type],[data-why],[data-q],[data-lock],[data-act],[data-csv],[data-val],#exp'); if (!b) return;
+  const b = e.target.closest('[data-go],[data-type],[data-why],[data-q],[data-lock],[data-act],[data-csv],[data-val],[data-p],#exp'); if (!b) return; if (b.dataset.p) return actionParam(b);
   if (b.dataset.val != null) { S.val = b.dataset.val === '' ? null : +b.dataset.val; return rendre(); }
   if (b.dataset.csv) { const t = b.dataset.csv, src = { cycles: S.cycles, mesures: S.mesures, achats: S.achats, invest: S.invest, charges: S.charges }[t], a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv(t, src)], { type: 'text/csv;charset=utf-8' })); a.download = `mon-technicien-${t}-${auj()}.csv`; a.click(); return toast(`${src.length} ligne(s) exportée(s) (${t}).`); }
   if (b.dataset.lock != null) { A.verrouiller(); S.ch = await C.lire(); S.vue = 'plus'; return rendre(); }
