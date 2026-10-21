@@ -122,13 +122,14 @@ let _db;
 const ouvrir = () => _db ? Promise.resolve(_db) : new Promise((ok, ko) => {
   const r = indexedDB.open(NOM, VERSION);
   r.onupgradeneeded = () => { for (const [s, k] of Object.entries(STORES)) if (!r.result.objectStoreNames.contains(s)) r.result.createObjectStore(s, { keyPath: k }); };
-  r.onsuccess = () => ok((_db = r.result)); r.onerror = () => ko(r.error);
+  const delai = setTimeout(() => { const e = new Error('Mise à jour des données bloquée : une autre fenêtre ou copie de l\'application est ouverte. Fermez-la complètement (retirez-la des applications récentes), puis rouvrez Mon Technicien.'); e.bloque = true; ko(e); }, 6000);
+  r.onsuccess = () => { clearTimeout(delai); r.result.onversionchange = () => { r.result.close(); _db = null; }; ok((_db = r.result)); }; r.onerror = () => { clearTimeout(delai); ko(r.error); };
 });
 const tx = async (s, mode, f) => { const db = await ouvrir(); return new Promise((ok, ko) => { const t = db.transaction(s, mode), q = f(t.objectStore(s)); t.oncomplete = () => ok(q?.result); t.onerror = t.onabort = () => ko(t.error); }); };
 const stockage = { mode: 'indexedDB' }; // passe à 'memoire' si le navigateur interdit IndexedDB (ex. fichier ouvert via content://)
 const MEM = { cycles: new Map(), mesures: new Map(), meta: new Map(), achats: new Map(), chrono: new Map(), invest: new Map(), charges: new Map(), activites: new Map() }, cl = (x) => JSON.parse(JSON.stringify(x));
 const mem = (s, o, a) => (o === 'put' ? void MEM[s].set(a[STORES[s]], cl(a)) : o === 'all' ? [...MEM[s].values()].map(cl) : o === 'get' ? (MEM[s].has(a) ? cl(MEM[s].get(a)) : undefined) : void MEM[s].delete(a));
-const op = async (s, o, a, mode, f) => { if (stockage.mode === 'indexedDB') { try { return await tx(s, mode, f); } catch (e) { if (_db) throw e; stockage.mode = 'memoire'; } } return mem(s, o, a); };
+const op = async (s, o, a, mode, f) => { if (stockage.mode === 'indexedDB') { try { return await tx(s, mode, f); } catch (e) { if (_db || e.bloque) throw e; stockage.mode = 'memoire'; } } return mem(s, o, a); };
 const put = (s, o) => op(s, 'put', o, 'readwrite', (st) => st.put(o));
 const all = (s) => op(s, 'all', null, 'readonly', (st) => st.getAll());
 const get = (s, k) => op(s, 'get', k, 'readonly', (st) => st.get(k));
@@ -291,12 +292,13 @@ __m.licence = (() => { const { sha256js, get, put } = __m.db; const { verifier }
 // Licence : jeton signé « MTL1.<charge utile base64url>.<signature r||s base64url> », vérifié hors connexion avec la clé publique embarquée.
 // Limite : une licence contrôlée dans une application locale peut être contournée par un utilisateur qui modifie son appareil ou le code.
 
+const CLE_PROPRIETAIRE = {x: 'af8c84c0dee9a3466adbd40c26282611ed40b557fdd6feb1ebe2e720369c787c', y: '86e9f712db264d9ebf7eab4728622341efcfa9cc049bb0ce7636f026baef87f2'}; // clé publique du propriétaire (licence illimitée ; la clé privée reste hors de l'application)
 const DEMO = { cyclesMax: 1, enregistrementsMax: 150 }; // choix provisoire de l'application, à valider
 const deb64 = (s) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0));
 function analyser(token, maintenant = Date.now(), cle = CLE_PUBLIQUE) {
   const m = /^MTL1\.([\w-]+)\.([\w-]+)$/.exec(String(token || '').trim()); if (!m) return { ok: false, msg: 'Format de licence non reconnu.' };
   let txt, sig; try { txt = new TextDecoder().decode(deb64(m[1])); sig = [...deb64(m[2])].map((b) => b.toString(16).padStart(2, '0')).join(''); } catch { return { ok: false, msg: 'Licence illisible.' }; }
-  if (sig.length !== 128 || !verifier(sha256js(txt), sig.slice(0, 64), sig.slice(64), cle)) return { ok: false, msg: 'Signature invalide : licence refusée.' };
+  if (sig.length !== 128 || !(verifier(sha256js(txt), sig.slice(0, 64), sig.slice(64), cle) || (cle === CLE_PUBLIQUE && verifier(sha256js(txt), sig.slice(0, 64), sig.slice(64), CLE_PROPRIETAIRE)))) return { ok: false, msg: 'Signature invalide : licence refusée.' };
   let p; try { p = JSON.parse(txt); } catch { return { ok: false, msg: 'Licence illisible.' }; }
   const fin = p.fin ? Date.parse(p.fin + 'T23:59:59Z') : Infinity, debut = p.debut ? Date.parse(p.debut + 'T00:00:00Z') : 0;
   return { ok: true, payload: p, etat: maintenant < debut - 864e5 ? 'future' : maintenant > fin ? 'expiree' : 'valide' };
@@ -627,7 +629,8 @@ document.addEventListener('change', async (e) => {
 addEventListener('online', rendre); addEventListener('offline', rendre);
 (async () => {
   try { navigator.storage?.persist?.(); await charger(); } catch (e) { $('#v').innerHTML = `<div class="card"><h3>Stockage indisponible</h3><p>${esc(e.message)}</p></div>`; return; }
-  await C.observer('OUVERTURE'); S.ch = await C.lire(); rendre();
+  try { await C.observer('OUVERTURE'); S.ch = await C.lire(); } catch (e) { $('#v').innerHTML = `<div class="card"><h3>Démarrage impossible</h3><p>${esc(e.message)}</p></div>`; return; }
+  rendre();
   const obs = (e) => C.observer(e).then(async () => { S.ch = await C.lire(); if (S.vue === 'plus') rendre(); }).catch(() => {});
   setInterval(() => !document.hidden && obs('PERIODIQUE'), 6e4); document.addEventListener('visibilitychange', () => !document.hidden && obs('RETOUR_APPLICATION'));
   if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('./sw.js').then((r) => r.addEventListener('updatefound', () => toast('Nouvelle version prête : rouvrez l\'application.'))).catch(() => {});
