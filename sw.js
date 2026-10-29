@@ -1,4 +1,4 @@
-const V = 'mt-v44', FICHIERS = ['./', 'index.html', 'manifest.webmanifest', 'nexusmt-icon-192.png', 'nexusmt-icon-512.png', 'nexusmt-icon-maskable-512.png', 'nexusmt-apple-180.png'];
+const V = 'mt-v45', FICHIERS = ['./', 'index.html', 'manifest.webmanifest', 'nexusmt-icon-192-1.png', 'nexusmt-icon-512-1.png', 'nexusmt-icon-maskable-512-1.png', 'nexusmt-apple-180.png'];
 self.addEventListener('install', (e) => e.waitUntil(caches.open(V).then((c) => c.addAll(['./', 'index.html']).then(() => Promise.all(FICHIERS.slice(2).map((f) => c.add(f).catch(() => {}))))).then(() => self.skipWaiting())));
 self.addEventListener('activate', (e) => e.waitUntil(caches.keys().then((k) => Promise.all(k.filter((n) => n !== V).map((n) => caches.delete(n)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', (e) => { if (e.request.method !== 'GET') return; e.respondWith(caches.match(e.request, { ignoreSearch: true }).then((r) => r || fetch(e.request).catch(() => (e.request.mode === 'navigate' ? caches.match('index.html') : Response.error())))); });

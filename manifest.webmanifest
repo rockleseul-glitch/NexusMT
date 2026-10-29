@@ -1,29 +1,28 @@
 {
   "name": "Mon Technicien — Nexus V3",
   "short_name": "Mon Technicien",
-  "description": "Suivi piscicole hors connexion (Clarias et Tilapia)",
-  "start_url": "./index.html",
+  "description": "Mon Technicien — Nexus V3 : application de suivi piscicole hors connexion pour le Clarias et le Tilapia (cycles, pesées, alimentation, qualité de l'eau, rentabilité).",
+  "lang": "fr",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#0d1117",
-  "theme_color": "#0d1117",
-  "lang": "fr",
+  "background_color": "#f4f7f8",
+  "theme_color": "#0b5d66",
   "icons": [
     {
-      "src": "nexusmt-icon-192-1.png",
+      "src": "nexusmt-icon-192-1.png?v=45",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "nexusmt-icon-512-1.png",
+      "src": "nexusmt-icon-512-1.png?v=45",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "nexusmt-icon-maskable-512-1.png",
+      "src": "nexusmt-icon-maskable-512-1.png?v=45",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
